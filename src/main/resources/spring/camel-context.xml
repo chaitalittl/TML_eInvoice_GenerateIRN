@@ -5,7 +5,8 @@
     xmlns:util="http://www.springframework.org/schema/util"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
     <bean class="com.tml.IRN.LogAggregator" id="logger"/>
-    <cxf:cxfEndpoint address="http://0.0.0.0:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
+    <bean class="com.tml.IRN.ResponseProcessor" id="resProcessor"/>
+    <cxf:cxfEndpoint address="http://localhost:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
@@ -15,38 +16,40 @@
         id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!-- Define a traditional camel context here -->
     <camelContext id="camel"
-        xmlns="http://camel.apache.org/schema/spring" xmlns:com="http://com.tml.IRN">
+        xmlns="http://camel.apache.org/schema/spring" xmlns:com="http://com.tml.IRN" streamCache="true">
         <dataFormats>
             <jaxb contextPath="com.tml.IRN" id="xml"
                 objectFactory="true" prettyPrint="true"/>
-            <!--<json id="json" library="Jackson" unmarshalTypeName="com.tml.crm.KYCInputResponse"/>
+            <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.ResponseObj"/>
             <json id="gson" library="Gson"/>
-            <soapjaxb contextPath="com.tml.crm" id="soapxml" namespacePrefixRef="myMap"/>-->
+            <!-- <soapjaxb contextPath="com.tml.crm" id="soapxml" namespacePrefixRef="myMap"/>-->
         </dataFormats>
         <route id="simple-route">
             <!--  <from id="route-timer" uri="timer:foo?period=200"/> -->
             <from id="_from1" uri="cxf:bean:GenIRN"/>
-            <!-- <doTry id="_doTry15"> -->
-            <bean id="_bean65"
-                method="sourceIp(REQUEST FROM Source:: **********)" ref="logger"/>
-            <bean id="_bean66"
-                method="request(******* Request Received from User *********)" ref="logger"/>
-            <log id="_log1" message="after setting User_GSTIN"/>
             <log id="_log1" message="Request Received from CRM____${body}"/>
-            <setHeader headerName="User_GSTIN" id="_setHeader1">
-                <xpath resultType="java.lang.String">/User_GSTIN/text()</xpath>
-            </setHeader>
-            <log id="_log1" message="after setting User_GSTIN____${header.User_GSTIN}"/>
-            <setBody id="_setBody2">
-                <simple>
-                        &lt;ns2:IRPResponse xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-   &lt;request_id&gt;&lt;/request_id&gt;
-   &lt;result&gt;Please Check Document Type gold&lt;/result&gt;
-   &lt;statusCode&gt;&lt;/statusCode&gt;
-&lt;/ns2:IRPResponse&gt;
-</simple>
-            </setBody>
-            <!-- <log id="route-log" message=">>> ${body}"/> -->
+            
+               <setHeader headerName="User">
+                    <xpath resultType="java.lang.String">//com:IRNInput/User/text()</xpath>
+                </setHeader>
+				
+				<log id="_log1" message="User_GSTIN__${header.User}"/>
+                
+                <!-- <setHeader headerName="TaxSch" id="_setHeader2">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TaxSch/text()</xpath>
+                </setHeader>
+                <setHeader headerName="pIrn" id="_setHeader3">
+                    <xpath resultType="java.lang.String">//com:IRNInput/is_irn/text()</xpath>
+                </setHeader>
+                <setHeader headerName="pCnlRsn" id="_setHeader4">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/catg/text()</xpath>
+                </setHeader>
+                <setHeader headerName="pCnlRem" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/claimingRefund/text()</xpath>
+                </setHeader> -->
+               
+            <!-- <unmarshal id="_unmarshal1" ref="json"/>
+             <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/> -->
         </route>
     </camelContext>
 </beans>
