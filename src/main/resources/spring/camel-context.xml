@@ -6,7 +6,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
     <bean class="com.tml.IRN.LogAggregator" id="logger"/>
     <bean class="com.tml.IRN.ResponseProcessor" id="resProcessor"/>
-    <cxf:cxfEndpoint address="http://localhost:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
+    <cxf:cxfEndpoint address="http://localhost:8091/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
@@ -16,7 +16,7 @@
         id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!-- Define a traditional camel context here -->
     <camelContext id="camel"
-        xmlns="http://camel.apache.org/schema/spring" xmlns:com="http://com.tml.IRN" streamCache="true">
+        xmlns="http://camel.apache.org/schema/spring" xmlns:com="http://com.tml.IRN/" streamCache="true">
         <dataFormats>
             <jaxb contextPath="com.tml.IRN" id="xml"
                 objectFactory="true" prettyPrint="true"/>
@@ -29,24 +29,542 @@
             <from id="_from1" uri="cxf:bean:GenIRN"/>
             <log id="_log1" message="Request Received from CRM____${body}"/>
             
-               <setHeader headerName="User">
-                    <xpath resultType="java.lang.String">//com:IRNInput/User/text()</xpath>
+               <setHeader headerName="User_GSTIN">
+                    <xpath resultType="java.lang.String">//com:IRNInput/User_GSTIN/text()</xpath>
                 </setHeader>
+				<log id="_log1" message="User_GSTIN__${header.User_GSTIN}"/>
 				
-				<log id="_log1" message="User_GSTIN__${header.User}"/>
-                
-                <!-- <setHeader headerName="TaxSch" id="_setHeader2">
+				<setHeader headerName="TaxSch">
                     <xpath resultType="java.lang.String">//com:IRNInput/TaxSch/text()</xpath>
                 </setHeader>
-                <setHeader headerName="pIrn" id="_setHeader3">
+				<log id="_log1" message="User_GSTIN__${header.TaxSch}"/>
+				
+				<setHeader headerName="is_irn">
                     <xpath resultType="java.lang.String">//com:IRNInput/is_irn/text()</xpath>
                 </setHeader>
-                <setHeader headerName="pCnlRsn" id="_setHeader4">
+				<log id="_log1" message="User_GSTIN__${header.is_irn}"/>
+				
+				<setHeader headerName="catg">
                     <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/catg/text()</xpath>
                 </setHeader>
-                <setHeader headerName="pCnlRem" id="_setHeader5">
+                <log message="User_GSTIN__${header.catg}"/>
+                
+               <setHeader headerName="claimingRefund" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/claimingRefund/text()</xpath>
-                </setHeader> -->
+                </setHeader>
+				<setHeader headerName="diffPercentage" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/diffPercentage/text()</xpath>
+                </setHeader>
+				<setHeader headerName="ecmGstin" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/ecmGstin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="ecmTrn" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/ecmTrn/text()</xpath>
+                </setHeader>
+				<setHeader headerName="ecmTrnSel" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/ecmTrnSel/text()</xpath>
+                </setHeader>
+				<setHeader headerName="interIntra" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/interIntra/text()</xpath>
+                </setHeader>
+				<setHeader headerName="outwardInward" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/outwardInward/text()</xpath>
+                </setHeader>
+				<setHeader headerName="pos" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/pos/text()</xpath>
+                </setHeader>
+				<setHeader headerName="regRev" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/regRev/text()</xpath>
+                </setHeader>
+				<setHeader headerName="subType" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/subType/text()</xpath>
+                </setHeader>
+				<setHeader headerName="subTypeDescription" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/subTypeDescription/text()</xpath>
+                </setHeader>
+				<setHeader headerName="taxability" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/taxability/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TranDtls/typ/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/dt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/no/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/orgInvDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/orgInvNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/reasonForCnDn/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DocDtls/typ/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/cntCode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/expCat/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/forCur/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/invForCur/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/port/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/shipBDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/shipBNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ExpDtls/wthPay/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/bu/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/companyCode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/companyName/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/trackingNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/transactionCount/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/glAccount/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/ewbNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/returnPeriod/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/EwbNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/user/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/MisColumns/location/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/bno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/distanceKm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/transDocDate/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/transDocNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/transMode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/transporterId/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/transporterName/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/vehicleNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/TransportDtls/vehicleType/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/bnm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/bno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/dst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/em/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/flno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/gstin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/loc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/ph/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/pin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/stcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/supplierCode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/SellerDtls/trdNm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/trdNm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/bnm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/bno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/dst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/em/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/flno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/gstin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/loc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/ph/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/pin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/stcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/BuyerDtls/customerCode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/trdNm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/bnm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/bno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/dst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/em/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/flno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/gstin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/loc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/ph/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/pin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/stcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/trdNm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bnm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/dst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/em/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/flno/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/gstin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/loc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/ph/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/pin/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/stcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/contrRef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/extRef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invEndDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invRmk/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invStDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/PORef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/projRef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/recAdvRef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soNo/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/tendRef/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/vendorPoRefDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/acctDet/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/balAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/balAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/balAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crDay/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crTrn/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/dirDr/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/finInsBr/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/mode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/nam/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payDueDt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payInstr/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payTerm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/assAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/barCde/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/bcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/centralDxcise/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesNonAdVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesRt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessNonAdvolRt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstRt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/discount/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/eligibilityItc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/exportDuty/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/freeQty/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/goodsService/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/hsnCd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstRt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCess/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCgst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcIgst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcSgst/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itemCode/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/lineItem/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/natureOfExpense/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/othChrg/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdDesc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdNm/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/qty/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstRt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateCes/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateExcise/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totAmt/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totItemVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totalGstRate/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unit/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unitPrice/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/valueBeforeBcd/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/vat/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/assVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesNonAdVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cgstVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/disc/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/igstVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/othChrg/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/sgstVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/stCesVal/text()</xpath>
+                </setHeader>
+				<setHeader headerName="typ" id="_setHeader5">
+                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/totInvVal/text()</xpath>
+                </setHeader>
                
             <!-- <unmarshal id="_unmarshal1" ref="json"/>
              <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/> -->

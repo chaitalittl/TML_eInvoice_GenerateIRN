@@ -30,7 +30,7 @@ public class irpRespDataObj {
 	}
 	String message;
 	
-	@XmlElement(name="data")
+	/*@XmlElement(name="data")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<dataRespObj> data ;
+	protected List<dataRespObj> data ;*/
 }

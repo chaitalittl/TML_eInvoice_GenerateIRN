@@ -102,9 +102,9 @@ public class pwcRespDataObj {
 	String load_id;
 	String is_ewb;
 	
-	@XmlElement(name="validation_remarks")
+	/*@XmlElement(name="validation_remarks")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<validation_remarksObj> validation_remarks ;
+	protected List<validation_remarksObj> validation_remarks ;*/
 	
 	/*public ArrayList<validation_remarksObj>[] getValidation_remarks() {
 		return validation_remarks;

@@ -14,12 +14,12 @@ public class ResponseObj {
 	
 	
 	
-	@XmlElement(name="pwc_response")
+	/*@XmlElement(name="pwc_response")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<pwcRespDataObj> pwc_response ;
+	protected List<pwcRespDataObj> pwc_response ;*/
 	
-	@XmlElement(name="irp_response")
+	/*@XmlElement(name="irp_response")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<irpRespDataObj> irp_response ;
+	protected List<irpRespDataObj> irp_response ;*/
 
 }
