@@ -20,9 +20,9 @@ public class dataRespObj {
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<nic_response_dataObj> nic_response_data ;
 	
-	@XmlElement(name="nic_response_encoded")
+	/*@XmlElement(name="nic_response_encoded")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<nic_response_encodeObj> nic_response_encoded ;
+	protected List<nic_response_encodeObj> nic_response_encoded ;*/
 	
 
 	
@@ -31,6 +31,12 @@ public class dataRespObj {
 	
 	
 	String report_url;
+	String nic_document_status_created_date;
+	String nic_response_status;
+	String nic_status;
+	String nic_gen_mode;
+	String nic_response_created_date;
+	
 	public String getReport_url() {
 		return report_url;
 	}
@@ -79,13 +85,9 @@ public class dataRespObj {
 		this.nic_response_created_date = nic_response_created_date;
 	}
 
-	String nic_document_status_created_date;
-	String nic_response_status;
-	String nic_status;
-	String nic_gen_mode;
-	String nic_response_created_date;
+
 	
-	@XmlElement(name="nic_response_plaintext_json")
+	/*@XmlElement(name="nic_response_plaintext_json")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<nic_response_plaintextObj> nic_response_plaintext_json ;
 
@@ -95,7 +97,7 @@ public class dataRespObj {
 	
 	@XmlElement(name="qr_image")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<qr_imageObj> qr_image ;
+	protected List<qr_imageObj> qr_image ;*/
 	
 	
 	

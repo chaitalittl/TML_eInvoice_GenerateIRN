@@ -22,7 +22,7 @@ public class pwcRespDataObj {
 	public void setInvoice_number(String invoice_number) {
 		this.invoice_number = invoice_number;
 	}
-	public String getGstin() {
+	/*public String getGstin() {
 		return gstin;
 	}
 	public void setGstin(String gstin) {
@@ -39,14 +39,14 @@ public class pwcRespDataObj {
 	}
 	public void setDocument_type(String document_type) {
 		this.document_type = document_type;
-	}
-	public String getStatus() {
+	}*/
+	/*public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public String getMessage() {
+	}*/
+	/*public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
@@ -87,20 +87,20 @@ public class pwcRespDataObj {
 	}
 	public void setIs_ewb(String is_ewb) {
 		this.is_ewb = is_ewb;
-	}
+	}*/
 	String invoice_number;
-	String gstin;
+	/*String gstin;
 	String document_date;
-	String document_type;
-	String status;
-	String message;
+	String document_type;*/
+	//String status;
+	/*String message;
 	String validation_status;
 	
 	String udid;
 	String is_irn;
 	String is_exclude;
 	String load_id;
-	String is_ewb;
+	String is_ewb;*/
 	
 	/*@XmlElement(name="validation_remarks")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)

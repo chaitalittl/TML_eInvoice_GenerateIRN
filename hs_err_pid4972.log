@@ -1,0 +1,1188 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1047104 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=4972, tid=0x00000000000016f4
+#
+# JRE version: OpenJDK Runtime Environment (8.0_232-b09) (build 1.8.0_232-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.232-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001845a000):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=5876, stack(0x0000000019380000,0x0000000019480000)]
+
+Stack: [0x0000000019380000,0x0000000019480000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:   5942 5105       4       org.springframework.util.StringUtils::collectionToDelimitedString (84 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001acc2800 JavaThread "GC Daemon" daemon [_thread_blocked, id=21492, stack(0x0000000021300000,0x0000000021400000)]
+  0x000000001eec3800 JavaThread "main" [_thread_in_native, id=5032, stack(0x000000001e0a0000,0x000000001e1a0000)]
+  0x00000000184e4000 JavaThread "Service Thread" daemon [_thread_blocked, id=14184, stack(0x0000000019680000,0x0000000019780000)]
+  0x00000000184ad800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=21712, stack(0x0000000019580000,0x0000000019680000)]
+  0x00000000184a8800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=19328, stack(0x0000000019480000,0x0000000019580000)]
+=>0x000000001845a000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=5876, stack(0x0000000019380000,0x0000000019480000)]
+  0x0000000018458800 JavaThread "Attach Listener" daemon [_thread_blocked, id=15392, stack(0x0000000019280000,0x0000000019380000)]
+  0x0000000018458000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1116, stack(0x0000000019180000,0x0000000019280000)]
+  0x000000001796a800 JavaThread "Finalizer" daemon [_thread_blocked, id=23028, stack(0x0000000018f80000,0x0000000019080000)]
+  0x0000000017967000 JavaThread "Reference Handler" daemon [_thread_blocked, id=12344, stack(0x0000000018e80000,0x0000000018f80000)]
+  0x0000000002d27800 JavaThread "main" [_thread_blocked, id=22788, stack(0x0000000002ae0000,0x0000000002be0000)]
+
+Other Threads:
+  0x000000001795e800 VMThread [stack: 0x0000000018d80000,0x0000000018e80000] [id=15444]
+  0x00000000184e7000 WatcherThread [stack: 0x0000000019780000,0x0000000019880000] [id=10912]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000081c00000, size: 2020 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 248832K, used 83923K [0x00000000d5f00000, 0x00000000e7600000, 0x0000000100000000)
+  eden space 238592K, 35% used [0x00000000d5f00000,0x00000000db0f4d58,0x00000000e4800000)
+  from space 10240K, 0% used [0x00000000e5580000,0x00000000e5580000,0x00000000e5f80000)
+  to   space 23040K, 0% used [0x00000000e5f80000,0x00000000e5f80000,0x00000000e7600000)
+ ParOldGen       total 140288K, used 44963K [0x0000000081c00000, 0x000000008a500000, 0x00000000d5f00000)
+  object space 140288K, 32% used [0x0000000081c00000,0x00000000847e8e78,0x000000008a500000)
+ Metaspace       used 41466K, capacity 42280K, committed 42496K, reserved 1087488K
+  class space    used 4855K, capacity 5078K, committed 5120K, reserved 1048576K
+
+Card table byte_map: [0x00000000121a0000,0x00000000125a0000] byte_map_base: 0x0000000011d92000
+
+Marking Bits: (ParMarkBitMap*) 0x000000005789a170
+ Begin Bits: [0x0000000012c50000, 0x0000000014be0000)
+ End Bits:   [0x0000000014be0000, 0x0000000016b70000)
+
+Polling page: 0x0000000002a70000
+
+CodeCache: size=245760Kb used=17015Kb max_used=17023Kb free=228744Kb
+ bounds [0x0000000002de0000, 0x0000000003ea0000, 0x0000000011de0000]
+ total_blobs=5241 nmethods=4790 adapters=364
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 5.741 Thread 0x00000000184ad800 nmethod 5398 0x0000000003e40890 code [0x0000000003e409e0, 0x0000000003e40b30]
+Event: 5.741 Thread 0x00000000184ad800 5399       2       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::appendChild (81 bytes)
+Event: 5.741 Thread 0x00000000184ad800 nmethod 5399 0x0000000003e40b90 code [0x0000000003e40d20, 0x0000000003e40fc8]
+Event: 5.741 Thread 0x00000000184ad800 5400       2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::getEmptyAugs (38 bytes)
+Event: 5.741 Thread 0x00000000184ad800 nmethod 5400 0x0000000003e41290 code [0x0000000003e41420, 0x0000000003e41668]
+Event: 5.741 Thread 0x00000000184ad800 5401       2       com.sun.org.apache.xerces.internal.impl.xs.ElementPSVImpl::reset (72 bytes)
+Event: 5.741 Thread 0x00000000184ad800 nmethod 5401 0x0000000003e41810 code [0x0000000003e41960, 0x0000000003e41b70]
+Event: 5.741 Thread 0x00000000184ad800 5402       2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::characters (86 bytes)
+Event: 5.742 Thread 0x00000000184ad800 nmethod 5402 0x0000000003e41bd0 code [0x0000000003e41d60, 0x0000000003e41ff8]
+Event: 5.742 Thread 0x00000000184ad800 5403       2       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::createDeferredTextNode (57 bytes)
+Event: 5.742 Thread 0x00000000184ad800 nmethod 5403 0x0000000003e42110 code [0x0000000003e42280, 0x0000000003e424a8]
+Event: 5.742 Thread 0x00000000184ad800 5405       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::checkMinMaxBounds (175 bytes)
+Event: 5.743 Thread 0x00000000184ad800 nmethod 5405 0x0000000003e42590 code [0x0000000003e42840, 0x0000000003e43678]
+Event: 5.743 Thread 0x00000000184ad800 5406       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::startContentModel (37 bytes)
+Event: 5.743 Thread 0x00000000184ad800 nmethod 5406 0x0000000003e44650 code [0x0000000003e447c0, 0x0000000003e44a50]
+Event: 5.743 Thread 0x00000000184ad800 5407       2       com.sun.org.apache.xerces.internal.impl.xs.AttributePSVImpl::<init> (66 bytes)
+Event: 5.743 Thread 0x00000000184ad800 nmethod 5407 0x0000000003e44b90 code [0x0000000003e44ce0, 0x0000000003e44ef0]
+Event: 5.743 Thread 0x00000000184ad800 5408       2       com.sun.org.apache.xerces.internal.util.XMLAttributesImpl::isSpecified (10 bytes)
+Event: 5.743 Thread 0x00000000184ad800 nmethod 5408 0x0000000003e44f90 code [0x0000000003e450e0, 0x0000000003e45250]
+Event: 5.743 Thread 0x00000000184ad800 5409       2       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::setDeferredAttribute (227 bytes)
+Event: 5.744 Thread 0x00000000184ad800 nmethod 5409 0x0000000003e45350 code [0x0000000003e45540, 0x0000000003e45a68]
+Event: 5.744 Thread 0x00000000184ad800 5410       2       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::createDeferredAttribute (95 bytes)
+Event: 5.744 Thread 0x00000000184ad800 nmethod 5410 0x0000000003e46410 code [0x0000000003e465a0, 0x0000000003e46848]
+Event: 5.744 Thread 0x00000000184ad800 5413       2       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::clearChunkValue (69 bytes)
+Event: 5.744 Thread 0x00000000184ad800 nmethod 5413 0x0000000003e469d0 code [0x0000000003e46b40, 0x0000000003e46e30]
+Event: 5.744 Thread 0x00000000184ad800 5411   !   2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::processOneAttribute (564 bytes)
+Event: 5.746 Thread 0x00000000184ad800 nmethod 5411 0x0000000003e47150 code [0x0000000003e474c0, 0x0000000003e48ce8]
+Event: 5.746 Thread 0x00000000184ad800 5412       2       com.sun.org.apache.xerces.internal.util.XMLAttributesImpl::setValue (8 bytes)
+Event: 5.746 Thread 0x00000000184ad800 nmethod 5412 0x0000000003e4ab10 code [0x0000000003e4ac60, 0x0000000003e4ae10]
+Event: 5.746 Thread 0x00000000184ad800 5414       2       com.sun.org.apache.xerces.internal.parsers.AbstractDOMParser::ignorableWhitespace (142 bytes)
+Event: 5.746 Thread 0x00000000184ad800 nmethod 5414 0x0000000003e4af50 code [0x0000000003e4b160, 0x0000000003e4b7e8]
+Event: 5.746 Thread 0x00000000184ad800 5418 %     3       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::startContentModel @ 2 (37 bytes)
+Event: 5.746 Thread 0x00000000184ad800 nmethod 5418% 0x0000000003e4bcd0 code [0x0000000003e4be40, 0x0000000003e4c170]
+Event: 5.746 Thread 0x00000000184ad800 5433 %     3       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::union @ 45 (72 bytes)
+Event: 5.747 Thread 0x00000000184ad800 nmethod 5433% 0x0000000003e4c2d0 code [0x0000000003e4c440, 0x0000000003e4c770]
+Event: 5.747 Thread 0x00000000184ad800 5431       3       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::zeroBits (47 bytes)
+Event: 5.747 Thread 0x00000000184ad800 nmethod 5431 0x0000000003e4c990 code [0x0000000003e4cb00, 0x0000000003e4cd90]
+Event: 5.747 Thread 0x00000000184ad800 5427       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::setTo (79 bytes)
+Event: 5.747 Thread 0x00000000184ad800 nmethod 5427 0x0000000003e4ce90 code [0x0000000003e4d020, 0x0000000003e4d308]
+Event: 5.747 Thread 0x00000000184ad800 5424       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::calcFollowList (227 bytes)
+Event: 5.747 Thread 0x00000000184ad800 nmethod 5424 0x0000000003e4d510 code [0x0000000003e4d7c0, 0x0000000003e4e218]
+Event: 5.747 Thread 0x00000000184ad800 5430       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::isSameSet (86 bytes)
+Event: 5.748 Thread 0x00000000184ad800 nmethod 5430 0x0000000003e4ebd0 code [0x0000000003e4ed40, 0x0000000003e4efd0]
+Event: 5.748 Thread 0x00000000184ad800 5421       2       com.sun.org.apache.xerces.internal.impl.xs.models.CMBuilder::buildSyntaxTree (273 bytes)
+Event: 5.748 Thread 0x00000000184ad800 nmethod 5421 0x0000000003e4f190 code [0x0000000003e4f360, 0x0000000003e4fa08]
+Event: 5.748 Thread 0x00000000184ad800 5436       3       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::union (72 bytes)
+Event: 5.748 Thread 0x00000000184ad800 nmethod 5436 0x0000000003e4ff90 code [0x0000000003e50100, 0x0000000003e503d0]
+Event: 5.748 Thread 0x00000000184ad800 5426       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMNode::firstPos (35 bytes)
+Event: 5.748 Thread 0x00000000184ad800 nmethod 5426 0x0000000003e50590 code [0x0000000003e50700, 0x0000000003e50938]
+Event: 5.748 Thread 0x00000000184ad800 5420       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMNode::<init> (35 bytes)
+Event: 5.748 Thread 0x00000000184ad800 nmethod 5420 0x0000000003e50a10 code [0x0000000003e50b60, 0x0000000003e50d10]
+Event: 5.748 Thread 0x00000000184ad800 5422       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::postTreeBuildInit (175 bytes)
+Event: 5.749 Thread 0x00000000184ad800 nmethod 5422 0x0000000003e50d90 code [0x0000000003e50f60, 0x0000000003e514f8]
+Event: 5.749 Thread 0x00000000184ad800 5423       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMNode::setMaxStates (6 bytes)
+Event: 5.749 Thread 0x00000000184ad800 nmethod 5423 0x0000000003e51a50 code [0x0000000003e51ba0, 0x0000000003e51cf0]
+Event: 5.749 Thread 0x00000000184ad800 5429       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMNode::lastPos (35 bytes)
+Event: 5.749 Thread 0x00000000184ad800 nmethod 5429 0x0000000003e51d50 code [0x0000000003e51ec0, 0x0000000003e520f8]
+Event: 5.749 Thread 0x00000000184ad800 5428       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::setBit (127 bytes)
+Event: 5.749 Thread 0x00000000184ad800 nmethod 5428 0x0000000003e521d0 code [0x0000000003e52340, 0x0000000003e52648]
+Event: 5.749 Thread 0x00000000184ad800 5432       2       com.sun.org.apache.xerces.internal.impl.dtd.models.CMStateSet::equals (18 bytes)
+Event: 5.749 Thread 0x00000000184ad800 nmethod 5432 0x0000000003e527d0 code [0x0000000003e52940, 0x0000000003e52b28]
+Event: 5.749 Thread 0x00000000184ad800 5416       2       java.lang.AbstractStringBuilder::setLength (45 bytes)
+Event: 5.750 Thread 0x00000000184ad800 nmethod 5416 0x0000000003e52bd0 code [0x0000000003e52d80, 0x0000000003e53258]
+Event: 5.750 Thread 0x00000000184ad800 5419  s    2       java.lang.StringBuffer::setLength (11 bytes)
+Event: 5.750 Thread 0x00000000184ad800 nmethod 5419 0x0000000003e53550 code [0x0000000003e536c0, 0x0000000003e539a8]
+Event: 5.750 Thread 0x00000000184ad800 5435       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMUniOp::isNullable (19 bytes)
+Event: 5.750 Thread 0x00000000184ad800 nmethod 5435 0x0000000003e53a90 code [0x0000000003e53c00, 0x0000000003e53da8]
+Event: 5.750 Thread 0x00000000184ad800 5425       1       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMUniOp::getChild (5 bytes)
+Event: 5.750 Thread 0x00000000184ad800 nmethod 5425 0x0000000003e53e50 code [0x0000000003e53fa0, 0x0000000003e540b0]
+Event: 5.753 Thread 0x00000000184ad800 5437       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMBinOp::calcFirstPos (89 bytes)
+Event: 5.753 Thread 0x00000000184ad800 nmethod 5437 0x0000000003e54110 code [0x0000000003e54340, 0x0000000003e54a18]
+Event: 5.754 Thread 0x00000000184ad800 5438       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMLeaf::calcFirstPos (24 bytes)
+Event: 5.754 Thread 0x00000000184ad800 nmethod 5438 0x0000000003e54ed0 code [0x0000000003e55040, 0x0000000003e551f8]
+Event: 5.754 Thread 0x00000000184ad800 5439       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMLeaf::calcLastPos (24 bytes)
+Event: 5.754 Thread 0x00000000184ad800 nmethod 5439 0x0000000003e55310 code [0x0000000003e55480, 0x0000000003e55638]
+Event: 5.754 Thread 0x00000000184ad800 5440 %     3       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::buildDFA @ 230 (1085 bytes)
+Event: 5.756 Thread 0x00000000184ad800 nmethod 5440% 0x0000000003e55750 code [0x0000000003e55d00, 0x0000000003e5a548]
+Event: 5.756 Thread 0x00000000184ad800 5441       3       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::buildDFA (1085 bytes)
+Event: 5.759 Thread 0x00000000184ad800 nmethod 5441 0x0000000003e5eb10 code [0x0000000003e5f100, 0x0000000003e63ce8]
+Event: 5.760 Thread 0x00000000184ad800 5442 %     3       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::checkMinMaxBounds @ 4 (175 bytes)
+Event: 5.762 Thread 0x00000000184ad800 nmethod 5442% 0x0000000003e69850 code [0x0000000003e69ce0, 0x0000000003e6cd18]
+Event: 5.762 Thread 0x00000000184ad800 5443       3       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::checkMinMaxBounds (175 bytes)
+Event: 5.763 Thread 0x00000000184a8800 nmethod 5232 0x0000000003e73810 code [0x0000000003e73b20, 0x0000000003e77020]
+Event: 5.763 Thread 0x00000000184a8800 5434 %     4       com.sun.org.apache.xerces.internal.impl.XMLEntityScanner::scanData @ 721 (1108 bytes)
+Event: 5.763 Thread 0x00000000184ad800 nmethod 5443 0x0000000003e7acd0 code [0x0000000003e7b160, 0x0000000003e7e0f8]
+Event: 5.763 Thread 0x00000000184ad800 5444       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMBinOp::<init> (44 bytes)
+Event: 5.763 Thread 0x00000000184ad800 nmethod 5444 0x0000000003e69350 code [0x0000000003e694c0, 0x0000000003e69748]
+Event: 5.764 Thread 0x00000000184ad800 5445       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSCMBinOp::calcLastPos (89 bytes)
+Event: 5.764 Thread 0x00000000184ad800 nmethod 5445 0x0000000003e68590 code [0x0000000003e687c0, 0x0000000003e68e98]
+Event: 5.764 Thread 0x00000000184ad800 5447       2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::startElement (30 bytes)
+Event: 5.764 Thread 0x00000000184ad800 nmethod 5447 0x0000000003e73410 code [0x0000000003e73580, 0x0000000003e73758]
+Event: 5.765 Thread 0x00000000184ad800 5448       2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::endElement (73 bytes)
+Event: 5.765 Thread 0x00000000184ad800 nmethod 5448 0x0000000003e72f10 code [0x0000000003e730a0, 0x0000000003e73318]
+Event: 5.765 Thread 0x00000000184ad800 5449       2       com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator::addDefaultAttributes (410 bytes)
+Event: 5.766 Thread 0x00000000184ad800 nmethod 5449 0x0000000003e70fd0 code [0x0000000003e71220, 0x0000000003e71ec8]
+Event: 5.767 Thread 0x00000000184ad800 5450       2       com.sun.org.apache.xerces.internal.impl.xs.models.XSDFACM::endContentModel (47 bytes)
+Event: 5.767 Thread 0x00000000184ad800 nmethod 5450 0x0000000003e70990 code [0x0000000003e70b00, 0x0000000003e70d70]
+Event: 5.779 Thread 0x00000000184ad800 5451       2       org.springframework.util.StringUtils::hasText (20 bytes)
+Event: 5.780 Thread 0x00000000184ad800 nmethod 5451 0x0000000003e70550 code [0x0000000003e706c0, 0x0000000003e70888]
+Event: 5.780 Thread 0x00000000184ad800 5452       2       com.sun.org.apache.xerces.internal.dom.NodeImpl::needsSyncData (15 bytes)
+Event: 5.780 Thread 0x00000000184ad800 nmethod 5452 0x0000000002f98cd0 code [0x0000000002f98e20, 0x0000000002f98f90]
+Event: 5.786 Thread 0x00000000184a8800 nmethod 5434% 0x0000000002f8dad0 code [0x0000000002f8dca0, 0x0000000002f8f008]
+Event: 5.786 Thread 0x00000000184a8800 5351       4       com.sun.org.apache.xerces.internal.util.NamespaceSupport::getURI (38 bytes)
+Event: 5.787 Thread 0x00000000184a8800 nmethod 5351 0x0000000002f9c990 code [0x0000000002f9cac0, 0x0000000002f9cbb8]
+Event: 5.788 Thread 0x00000000184a8800 5415       4       com.sun.org.apache.xerces.internal.impl.XMLEntityScanner::skipString (122 bytes)
+Event: 5.793 Thread 0x00000000184a8800 nmethod 5415 0x0000000002fd5910 code [0x0000000002fd5aa0, 0x0000000002fd60e8]
+Event: 5.793 Thread 0x00000000184a8800 5238   !   4       com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver::next (2346 bytes)
+Event: 5.795 Thread 0x00000000184ad800 5453       2       java.util.HashMap::put (13 bytes)
+Event: 5.795 Thread 0x00000000184ad800 nmethod 5453 0x0000000002fbd250 code [0x0000000002fbd3c0, 0x0000000002fbd5b8]
+Event: 5.797 Thread 0x00000000184ad800 5454       2       com.sun.org.apache.xerces.internal.xni.XMLString::<init> (5 bytes)
+Event: 5.797 Thread 0x00000000184ad800 nmethod 5454 0x0000000002f6b290 code [0x0000000002f6b3e0, 0x0000000002f6b530]
+Event: 5.799 Thread 0x00000000184ad800 5455       1       java.util.Locale::getDefault (4 bytes)
+Event: 5.799 Thread 0x00000000184ad800 nmethod 5455 0x0000000002f8d850 code [0x0000000002f8d9a0, 0x0000000002f8da90]
+Event: 5.804 Thread 0x00000000184ad800 5456       2       sun.nio.fs.WindowsPathParser::isSlash (18 bytes)
+Event: 5.804 Thread 0x00000000184ad800 nmethod 5456 0x0000000002fb3390 code [0x0000000002fb34e0, 0x0000000002fb3630]
+Event: 5.804 Thread 0x00000000184ad800 5457       3       sun.nio.fs.WindowsPathParser::normalize (233 bytes)
+Event: 5.806 Thread 0x00000000184ad800 nmethod 5457 0x00000000032f8a90 code [0x00000000032f9040, 0x00000000032fcf28]
+Event: 5.811 Thread 0x00000000184ad800 5458       2       java.math.BigInteger::destructiveMulAdd (150 bytes)
+Event: 5.811 Thread 0x00000000184ad800 nmethod 5458 0x00000000034c1cd0 code [0x00000000034c1e40, 0x00000000034c2110]
+Event: 5.812 Thread 0x00000000184ad800 5459  s    2       java.io.ByteArrayOutputStream::toByteArray (12 bytes)
+Event: 5.812 Thread 0x00000000184ad800 nmethod 5459 0x0000000002fb70d0 code [0x0000000002fb7240, 0x0000000002fb7628]
+Event: 5.813 Thread 0x00000000184ad800 5460  s    2       java.security.Provider::put (90 bytes)
+Event: 5.813 Thread 0x00000000184ad800 nmethod 5460 0x00000000030087d0 code [0x0000000003008980, 0x0000000003008f58]
+Event: 5.813 Thread 0x00000000184ad800 5461       2       java.security.Provider::checkLegacy (41 bytes)
+Event: 5.813 Thread 0x00000000184ad800 nmethod 5461 0x0000000002f5f550 code [0x0000000002f5f6c0, 0x0000000002f5f948]
+Event: 5.819 Thread 0x00000000184ad800 5462       2       java.security.Provider::implPut (49 bytes)
+Event: 5.819 Thread 0x00000000184ad800 nmethod 5462 0x0000000003461110 code [0x00000000034612a0, 0x00000000034615a8]
+Event: 5.821 Thread 0x00000000184ad800 5464   !   2       java.io.FilePermission$1::run (116 bytes)
+Event: 5.821 Thread 0x00000000184ad800 nmethod 5464 0x0000000003e6eb10 code [0x0000000003e6edc0, 0x0000000003e6f908]
+Event: 5.823 Thread 0x00000000184ad800 5465       2       java.nio.ByteBuffer::allocate (22 bytes)
+Event: 5.823 Thread 0x00000000184ad800 nmethod 5465 0x0000000003035b10 code [0x0000000003035c80, 0x0000000003035f78]
+Event: 5.823 Thread 0x00000000184ad800 5466       2       java.nio.HeapByteBuffer::<init> (13 bytes)
+Event: 5.823 Thread 0x00000000184ad800 nmethod 5466 0x0000000002f1cbd0 code [0x0000000002f1cd40, 0x0000000002f1cf68]
+Event: 5.839 Thread 0x00000000184ad800 5468       2       java.security.PermissionCollection::<init> (5 bytes)
+Event: 5.839 Thread 0x00000000184ad800 nmethod 5468 0x0000000003b27b10 code [0x0000000003b27c60, 0x0000000003b27db0]
+Event: 5.846 Thread 0x00000000184ad800 5469       2       java.net.URLStreamHandler::setURL (73 bytes)
+Event: 5.846 Thread 0x00000000184ad800 nmethod 5469 0x00000000031af810 code [0x00000000031af9c0, 0x00000000031afe58]
+Event: 5.853 Thread 0x00000000184ad800 5470       2       java.lang.Class$MethodArray::remove (39 bytes)
+Event: 5.853 Thread 0x00000000184ad800 nmethod 5470 0x000000000315cd50 code [0x000000000315cec0, 0x000000000315d128]
+Event: 5.853 Thread 0x00000000184ad800 5471       2       java.lang.Class$MethodArray::compactAndTrim (69 bytes)
+Event: 5.853 Thread 0x00000000184ad800 nmethod 5471 0x000000000305b2d0 code [0x000000000305b440, 0x000000000305b788]
+Event: 5.861 Thread 0x00000000184a8800 nmethod 5238 0x0000000003e844d0 code [0x0000000003e84d40, 0x0000000003e888b0]
+Event: 5.861 Thread 0x00000000184a8800 5141  s    4       java.lang.StringBuffer::append (13 bytes)
+Event: 5.866 Thread 0x00000000184a8800 nmethod 5141 0x0000000003060710 code [0x0000000003060880, 0x0000000003060fa8]
+Event: 5.866 Thread 0x00000000184a8800 5472       4       java.util.jar.JarFile::getEntry (22 bytes)
+Event: 5.872 Thread 0x00000000184ad800 5475       1       com.sun.org.apache.xerces.internal.dom.ParentNode::ownerDocument (5 bytes)
+Event: 5.872 Thread 0x00000000184ad800 nmethod 5475 0x0000000003034350 code [0x00000000030344a0, 0x00000000030345b0]
+Event: 5.872 Thread 0x00000000184ad800 5476       3       com.sun.org.apache.xerces.internal.dom.AttrImpl::getNodeName (16 bytes)
+Event: 5.872 Thread 0x00000000184ad800 nmethod 5476 0x00000000031a2890 code [0x00000000031a2a00, 0x00000000031a2da8]
+Event: 5.873 Thread 0x00000000184a8800 nmethod 5472 0x000000000315a950 code [0x000000000315ab20, 0x000000000315b8e0]
+Event: 5.873 Thread 0x00000000184a8800 5474   !   4       sun.misc.URLClassPath$JarLoader::ensureOpen (36 bytes)
+Event: 5.874 Thread 0x00000000184a8800 nmethod 5474 0x0000000003519790 code [0x0000000003519900, 0x0000000003519a28]
+Event: 5.874 Thread 0x00000000184a8800 5473   !   4       java.util.zip.ZipFile::getEntry (101 bytes)
+Event: 5.875 Thread 0x00000000184ad800 5477       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::needsSyncData (26 bytes)
+Event: 5.875 Thread 0x00000000184ad800 nmethod 5477 0x00000000030a5c90 code [0x00000000030a5de0, 0x00000000030a5f90]
+Event: 5.875 Thread 0x00000000184ad800 5481       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeObject (510 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5481 0x0000000003e8ced0 code [0x0000000003e8d380, 0x0000000003e8ff08]
+Event: 5.877 Thread 0x00000000184ad800 5485       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getChunkIndex (16 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5485 0x0000000002ff7dd0 code [0x0000000002ff7f40, 0x0000000002ff8130]
+Event: 5.877 Thread 0x00000000184ad800 5483       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::isOwned (16 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5483 0x00000000034d4310 code [0x00000000034d4460, 0x00000000034d4610]
+Event: 5.877 Thread 0x00000000184ad800 5478       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getPrevSibling (7 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5478 0x00000000030602d0 code [0x0000000003060440, 0x00000000030605c8]
+Event: 5.877 Thread 0x00000000184ad800 5479       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getPrevSibling (106 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5479 0x0000000003116490 code [0x0000000003116660, 0x0000000003116d70]
+Event: 5.877 Thread 0x00000000184ad800 5482       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::isOwned (27 bytes)
+Event: 5.877 Thread 0x00000000184ad800 nmethod 5482 0x00000000031e3210 code [0x00000000031e3360, 0x00000000031e3510]
+Event: 5.877 Thread 0x00000000184ad800 5491       3       com.sun.org.apache.xerces.internal.dom.ParentNode::nodeListGetLength (130 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5491 0x00000000033035d0 code [0x0000000003303760, 0x0000000003303d48]
+Event: 5.878 Thread 0x00000000184ad800 5494       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::clearChunkIndex (57 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5494 0x0000000002f0bdd0 code [0x0000000002f0bf60, 0x0000000002f0c370]
+Event: 5.878 Thread 0x00000000184ad800 5480       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::<init> (10 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5480 0x00000000031ae490 code [0x00000000031ae5e0, 0x00000000031ae7b0]
+Event: 5.878 Thread 0x00000000184ad800 5490       3       com.sun.org.apache.xerces.internal.dom.ParentNode::getLength (5 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5490 0x0000000003562ed0 code [0x0000000003563040, 0x00000000035631c8]
+Event: 5.878 Thread 0x00000000184ad800 5489       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::needsSyncChildren (26 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5489 0x00000000036395d0 code [0x0000000003639720, 0x00000000036398d0]
+Event: 5.878 Thread 0x00000000184ad800 5486       1       com.sun.org.apache.xerces.internal.dom.TextImpl::getNodeType (2 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5486 0x000000000347f6d0 code [0x000000000347f820, 0x000000000347f930]
+Event: 5.878 Thread 0x00000000184ad800 5487       1       com.sun.org.apache.xerces.internal.dom.CharacterDataImpl$1::getLength (2 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5487 0x0000000002f09610 code [0x0000000002f09760, 0x0000000002f09870]
+Event: 5.878 Thread 0x00000000184ad800 5484       1       com.sun.org.apache.xerces.internal.dom.AttrImpl::getNodeType (2 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5484 0x0000000003a21290 code [0x0000000003a213e0, 0x0000000003a214f0]
+Event: 5.878 Thread 0x00000000184ad800 5495       3       com.sun.org.apache.xerces.internal.dom.ParentNode::lastChild (19 bytes)
+Event: 5.878 Thread 0x00000000184ad800 nmethod 5495 0x000000000347d0d0 code [0x000000000347d240, 0x000000000347d410]
+Event: 5.878 Thread 0x00000000184ad800 5500       3       com.sun.org.apache.xerces.internal.dom.ParentNode::nodeListItem (226 bytes)
+Event: 5.879 Thread 0x00000000184ad800 nmethod 5500 0x0000000002f13e10 code [0x0000000002f14020, 0x0000000002f14ea8]
+Event: 5.879 Thread 0x00000000184ad800 5501       3       org.apache.camel.spring.handler.CamelNamespaceHandler::doBeforeParse (261 bytes)
+Event: 5.880 Thread 0x00000000184ad800 nmethod 5501 0x0000000003e91ad0 code [0x0000000003e91fa0, 0x0000000003e94ff8]
+Event: 5.880 Thread 0x00000000184ad800 5513       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::needsSyncData (15 bytes)
+Event: 5.880 Thread 0x00000000184ad800 nmethod 5513 0x000000000315a5d0 code [0x000000000315a720, 0x000000000315a8d0]
+Event: 5.880 Thread 0x00000000184ad800 5510       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::clearChunkValue (69 bytes)
+Event: 5.880 Thread 0x00000000184ad800 nmethod 5510 0x00000000035f1ad0 code [0x00000000035f1c80, 0x00000000035f23b0]
+Event: 5.880 Thread 0x00000000184ad800 5497       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::isSpecified (27 bytes)
+Event: 5.880 Thread 0x00000000184a8800 nmethod 5473 0x0000000003a592d0 code [0x0000000003a594a0, 0x0000000003a5a0a0]
+Event: 5.880 Thread 0x00000000184a8800 5212       4       com.sun.org.apache.xerces.internal.util.XMLChar::isValid (34 bytes)
+Event: 5.880 Thread 0x00000000184ad800 nmethod 5497 0x000000000315a190 code [0x000000000315a2e0, 0x000000000315a490]
+Event: 5.880 Thread 0x00000000184ad800 5498       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::isNormalized (17 bytes)
+Event: 5.880 Thread 0x00000000184ad800 nmethod 5498 0x00000000035f1750 code [0x00000000035f18a0, 0x00000000035f1a50]
+Event: 5.880 Thread 0x00000000184ad800 5499       3       com.sun.org.apache.xerces.internal.dom.ParentNode::item (6 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5499 0x0000000003501f10 code [0x0000000003502080, 0x0000000003502208]
+Event: 5.881 Thread 0x00000000184ad800 5506       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeURI (7 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5506 0x0000000003501ad0 code [0x0000000003501c40, 0x0000000003501dc8]
+Event: 5.881 Thread 0x00000000184ad800 5507       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeURI (49 bytes)
+Event: 5.881 Thread 0x00000000184a8800 nmethod 5212 0x0000000002f09390 code [0x0000000002f094c0, 0x0000000002f09558]
+Event: 5.881 Thread 0x00000000184a8800 5136       4       com.sun.org.apache.xerces.internal.util.XMLChar::isSpace (22 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5507 0x000000000337be10 code [0x000000000337bfa0, 0x000000000337c3e8]
+Event: 5.881 Thread 0x00000000184ad800 5502       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getLastChild (7 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5502 0x0000000003636090 code [0x0000000003636200, 0x0000000003636388]
+Event: 5.881 Thread 0x00000000184ad800 5515       3       com.sun.org.apache.xerces.internal.dom.NamedNodeMapImpl::findNamePoint (108 bytes)
+Event: 5.881 Thread 0x00000000184a8800 nmethod 5136 0x0000000003a21010 code [0x0000000003a21140, 0x0000000003a211d8]
+Event: 5.881 Thread 0x00000000184a8800 5463       4       java.util.Hashtable::addEntry (87 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5515 0x000000000321c850 code [0x000000000321ca20, 0x000000000321d1b8]
+Event: 5.881 Thread 0x00000000184ad800 5503       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getLastChild (49 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5503 0x000000000360df10 code [0x000000000360e0a0, 0x000000000360e3e8]
+Event: 5.881 Thread 0x00000000184ad800 5496       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeName (7 bytes)
+Event: 5.881 Thread 0x00000000184ad800 nmethod 5496 0x0000000003635d10 code [0x0000000003635e80, 0x0000000003636008]
+Event: 5.881 Thread 0x00000000184ad800 5504       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeName (49 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5504 0x0000000003422b90 code [0x0000000003422d20, 0x0000000003423168]
+Event: 5.882 Thread 0x00000000184ad800 5509       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeExtra (7 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5509 0x00000000038c2650 code [0x00000000038c27c0, 0x00000000038c2948]
+Event: 5.882 Thread 0x00000000184ad800 5511       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getNodeExtra (49 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5511 0x000000000306bc10 code [0x000000000306bda0, 0x000000000306c0e8]
+Event: 5.882 Thread 0x00000000184ad800 5508       3       com.sun.org.apache.xerces.internal.dom.DeferredDocumentImpl::getTypeInfo (99 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5508 0x0000000003a586d0 code [0x0000000003a58880, 0x0000000003a58f30]
+Event: 5.882 Thread 0x00000000184ad800 5512       3       com.sun.org.apache.xerces.internal.dom.NamedNodeMapImpl::getLength (21 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5512 0x00000000038c2110 code [0x00000000038c2280, 0x00000000038c2508]
+Event: 5.882 Thread 0x00000000184ad800 5505       3       com.sun.org.apache.xerces.internal.dom.NodeImpl::needsSyncChildren (15 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5505 0x0000000003a58350 code [0x0000000003a584a0, 0x0000000003a58650]
+Event: 5.882 Thread 0x00000000184ad800 5514       3       com.sun.org.apache.xerces.internal.dom.ElementImpl::getAttributes (36 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5514 0x00000000032e8150 code [0x00000000032e82e0, 0x00000000032e8868]
+Event: 5.882 Thread 0x00000000184ad800 5488       1       com.sun.org.apache.xerces.internal.dom.DocumentImpl::getMutationEvents (5 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5488 0x000000000306b950 code [0x000000000306baa0, 0x000000000306bbb0]
+Event: 5.882 Thread 0x00000000184ad800 5492       1       com.sun.org.apache.xerces.internal.dom.ElementImpl::getNodeType (2 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5492 0x000000000347cdd0 code [0x000000000347cf20, 0x000000000347d030]
+Event: 5.882 Thread 0x00000000184ad800 5493       1       com.sun.org.apache.xerces.internal.dom.ParentNode::getOwnerDocument (5 bytes)
+Event: 5.882 Thread 0x00000000184ad800 nmethod 5493 0x00000000036be4d0 code [0x00000000036be620, 0x00000000036be730]
+Event: 5.882 Thread 0x00000000184ad800 5516       3       com.sun.org.apache.xerces.internal.dom.CharacterDataImpl::getChildNodes (4 bytes)
+Event: 5.883 Thread 0x00000000184ad800 nmethod 5516 0x00000000036be1d0 code [0x00000000036be320, 0x00000000036be470]
+Event: 5.883 Thread 0x00000000184ad800 5518       3       java.util.zip.ZipFile$ZipEntryIterator::nextElement (5 bytes)
+Event: 5.883 Thread 0x00000000184ad800 nmethod 5518 0x00000000036bdd90 code [0x00000000036bdf00, 0x00000000036be0e8]
+Event: 5.889 Thread 0x00000000184ad800 5519   !   3       java.util.zip.ZipFile$ZipEntryIterator::hasNext (41 bytes)
+Event: 5.890 Thread 0x00000000184ad800 nmethod 5519 0x00000000032f8310 code [0x00000000032f8480, 0x00000000032f8888]
+Event: 5.890 Thread 0x00000000184a8800 nmethod 5463 0x0000000002f8a210 code [0x0000000002f8a3e0, 0x0000000002f8ae98]
+Event: 5.890 Thread 0x00000000184a8800 5517   !   4       sun.misc.URLClassPath$JarLoader::getResource (85 bytes)
+Event: 5.900 Thread 0x00000000184a8800 nmethod 5517 0x0000000003019ed0 code [0x000000000301a0e0, 0x000000000301aa50]
+Event: 5.900 Thread 0x00000000184a8800 5467       4       java.nio.Buffer::flip (20 bytes)
+Event: 5.900 Thread 0x00000000184a8800 nmethod 5467 0x0000000003673b10 code [0x0000000003673c40, 0x0000000003673cb8]
+Event: 5.901 Thread 0x00000000184ad800 5520       3       java.net.URLClassLoader$1::run (5 bytes)
+Event: 5.901 Thread 0x00000000184ad800 nmethod 5520 0x00000000033225d0 code [0x0000000003322740, 0x00000000033228c8]
+
+GC Heap History (22 events):
+Event: 0.736 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 33280K [0x00000000d5f00000, 0x00000000d8980000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5f00000,0x00000000d7f80000,0x00000000d7f80000)
+  from space 5120K, 0% used [0x00000000d8480000,0x00000000d8480000,0x00000000d8980000)
+  to   space 5120K, 0% used [0x00000000d7f80000,0x00000000d7f80000,0x00000000d8480000)
+ ParOldGen       total 87552K, used 0K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 0% used [0x0000000081c00000,0x0000000081c00000,0x0000000087180000)
+ Metaspace       used 9093K, capacity 9244K, committed 9344K, reserved 1056768K
+  class space    used 1006K, capacity 1080K, committed 1152K, reserved 1048576K
+Event: 0.740 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 5113K [0x00000000d5f00000, 0x00000000d8980000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d7f80000,0x00000000d847e7a0,0x00000000d8480000)
+  to   space 5120K, 0% used [0x00000000d8480000,0x00000000d8480000,0x00000000d8980000)
+ ParOldGen       total 87552K, used 40K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 0% used [0x0000000081c00000,0x0000000081c0a098,0x0000000087180000)
+ Metaspace       used 9093K, capacity 9244K, committed 9344K, reserved 1056768K
+  class space    used 1006K, capacity 1080K, committed 1152K, reserved 1048576K
+}
+Event: 1.025 GC heap before
+{Heap before GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 38393K [0x00000000d5f00000, 0x00000000d8980000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5f00000,0x00000000d7f80000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d7f80000,0x00000000d847e7a0,0x00000000d8480000)
+  to   space 5120K, 0% used [0x00000000d8480000,0x00000000d8480000,0x00000000d8980000)
+ ParOldGen       total 87552K, used 40K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 0% used [0x0000000081c00000,0x0000000081c0a098,0x0000000087180000)
+ Metaspace       used 12797K, capacity 13012K, committed 13440K, reserved 1060864K
+  class space    used 1472K, capacity 1542K, committed 1664K, reserved 1048576K
+Event: 1.030 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 5097K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d8480000,0x00000000d897a5d8,0x00000000d8980000)
+  to   space 5120K, 0% used [0x00000000d7f80000,0x00000000d7f80000,0x00000000d8480000)
+ ParOldGen       total 87552K, used 2361K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 2% used [0x0000000081c00000,0x0000000081e4e7d8,0x0000000087180000)
+ Metaspace       used 12797K, capacity 13012K, committed 13440K, reserved 1060864K
+  class space    used 1472K, capacity 1542K, committed 1664K, reserved 1048576K
+}
+Event: 1.440 GC heap before
+{Heap before GC invocations=3 (full 0):
+ PSYoungGen      total 38400K, used 38377K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5f00000,0x00000000d7f80000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d8480000,0x00000000d897a5d8,0x00000000d8980000)
+  to   space 5120K, 0% used [0x00000000d7f80000,0x00000000d7f80000,0x00000000d8480000)
+ ParOldGen       total 87552K, used 2361K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 2% used [0x0000000081c00000,0x0000000081e4e7d8,0x0000000087180000)
+ Metaspace       used 15840K, capacity 16040K, committed 16256K, reserved 1062912K
+  class space    used 1787K, capacity 1876K, committed 1920K, reserved 1048576K
+Event: 1.446 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 38400K, used 5088K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d7f80000,0x00000000d8478060,0x00000000d8480000)
+  to   space 5120K, 0% used [0x00000000da500000,0x00000000da500000,0x00000000daa00000)
+ ParOldGen       total 87552K, used 6216K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 7% used [0x0000000081c00000,0x0000000082212130,0x0000000087180000)
+ Metaspace       used 15840K, capacity 16040K, committed 16256K, reserved 1062912K
+  class space    used 1787K, capacity 1876K, committed 1920K, reserved 1048576K
+}
+Event: 1.715 GC heap before
+{Heap before GC invocations=4 (full 0):
+ PSYoungGen      total 38400K, used 38368K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5f00000,0x00000000d7f80000,0x00000000d7f80000)
+  from space 5120K, 99% used [0x00000000d7f80000,0x00000000d8478060,0x00000000d8480000)
+  to   space 5120K, 0% used [0x00000000da500000,0x00000000da500000,0x00000000daa00000)
+ ParOldGen       total 87552K, used 6216K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 7% used [0x0000000081c00000,0x0000000082212130,0x0000000087180000)
+ Metaspace       used 16136K, capacity 16410K, committed 16768K, reserved 1064960K
+  class space    used 1812K, capacity 1911K, committed 1920K, reserved 1048576K
+Event: 1.726 GC heap after
+Heap after GC invocations=4 (full 0):
+ PSYoungGen      total 71680K, used 5104K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 66560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000da000000)
+  from space 5120K, 99% used [0x00000000da500000,0x00000000da9fc030,0x00000000daa00000)
+  to   space 5120K, 0% used [0x00000000da000000,0x00000000da000000,0x00000000da500000)
+ ParOldGen       total 87552K, used 11961K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 13% used [0x0000000081c00000,0x00000000827ae5b8,0x0000000087180000)
+ Metaspace       used 16136K, capacity 16410K, committed 16768K, reserved 1064960K
+  class space    used 1812K, capacity 1911K, committed 1920K, reserved 1048576K
+}
+Event: 2.156 GC heap before
+{Heap before GC invocations=5 (full 0):
+ PSYoungGen      total 71680K, used 71664K [0x00000000d5f00000, 0x00000000daa00000, 0x0000000100000000)
+  eden space 66560K, 100% used [0x00000000d5f00000,0x00000000da000000,0x00000000da000000)
+  from space 5120K, 99% used [0x00000000da500000,0x00000000da9fc030,0x00000000daa00000)
+  to   space 5120K, 0% used [0x00000000da000000,0x00000000da000000,0x00000000da500000)
+ ParOldGen       total 87552K, used 11961K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 13% used [0x0000000081c00000,0x00000000827ae5b8,0x0000000087180000)
+ Metaspace       used 16488K, capacity 16754K, committed 17024K, reserved 1064960K
+  class space    used 1815K, capacity 1915K, committed 1920K, reserved 1048576K
+Event: 2.170 GC heap after
+Heap after GC invocations=5 (full 0):
+ PSYoungGen      total 71680K, used 5104K [0x00000000d5f00000, 0x00000000dff00000, 0x0000000100000000)
+  eden space 66560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000da000000)
+  from space 5120K, 99% used [0x00000000da000000,0x00000000da4fc030,0x00000000da500000)
+  to   space 15360K, 0% used [0x00000000df000000,0x00000000df000000,0x00000000dff00000)
+ ParOldGen       total 87552K, used 20561K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 23% used [0x0000000081c00000,0x0000000083014530,0x0000000087180000)
+ Metaspace       used 16488K, capacity 16754K, committed 17024K, reserved 1064960K
+  class space    used 1815K, capacity 1915K, committed 1920K, reserved 1048576K
+}
+Event: 2.588 GC heap before
+{Heap before GC invocations=6 (full 0):
+ PSYoungGen      total 71680K, used 71664K [0x00000000d5f00000, 0x00000000dff00000, 0x0000000100000000)
+  eden space 66560K, 100% used [0x00000000d5f00000,0x00000000da000000,0x00000000da000000)
+  from space 5120K, 99% used [0x00000000da000000,0x00000000da4fc030,0x00000000da500000)
+  to   space 15360K, 0% used [0x00000000df000000,0x00000000df000000,0x00000000dff00000)
+ ParOldGen       total 87552K, used 20561K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 23% used [0x0000000081c00000,0x0000000083014530,0x0000000087180000)
+ Metaspace       used 16770K, capacity 17028K, committed 17280K, reserved 1064960K
+  class space    used 1817K, capacity 1918K, committed 1920K, reserved 1048576K
+Event: 2.600 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 145920K, used 14688K [0x00000000d5f00000, 0x00000000e0400000, 0x0000000100000000)
+  eden space 130560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000dde80000)
+  from space 15360K, 95% used [0x00000000df000000,0x00000000dfe58020,0x00000000dff00000)
+  to   space 17920K, 0% used [0x00000000dde80000,0x00000000dde80000,0x00000000df000000)
+ ParOldGen       total 87552K, used 20569K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 23% used [0x0000000081c00000,0x0000000083016530,0x0000000087180000)
+ Metaspace       used 16770K, capacity 17028K, committed 17280K, reserved 1064960K
+  class space    used 1817K, capacity 1918K, committed 1920K, reserved 1048576K
+}
+Event: 4.082 GC heap before
+{Heap before GC invocations=7 (full 0):
+ PSYoungGen      total 145920K, used 143962K [0x00000000d5f00000, 0x00000000e0400000, 0x0000000100000000)
+  eden space 130560K, 99% used [0x00000000d5f00000,0x00000000ddd3eba8,0x00000000dde80000)
+  from space 15360K, 95% used [0x00000000df000000,0x00000000dfe58020,0x00000000dff00000)
+  to   space 17920K, 0% used [0x00000000dde80000,0x00000000dde80000,0x00000000df000000)
+ ParOldGen       total 87552K, used 20569K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 23% used [0x0000000081c00000,0x0000000083016530,0x0000000087180000)
+ Metaspace       used 20555K, capacity 21148K, committed 21296K, reserved 1069056K
+  class space    used 2243K, capacity 2420K, committed 2432K, reserved 1048576K
+Event: 4.106 GC heap after
+Heap after GC invocations=7 (full 0):
+ PSYoungGen      total 148480K, used 17920K [0x00000000d5f00000, 0x00000000e8d00000, 0x0000000100000000)
+  eden space 130560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000dde80000)
+  from space 17920K, 100% used [0x00000000dde80000,0x00000000df000000,0x00000000df000000)
+  to   space 24064K, 0% used [0x00000000e7580000,0x00000000e7580000,0x00000000e8d00000)
+ ParOldGen       total 87552K, used 27416K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 31% used [0x0000000081c00000,0x00000000836c61a8,0x0000000087180000)
+ Metaspace       used 20555K, capacity 21148K, committed 21296K, reserved 1069056K
+  class space    used 2243K, capacity 2420K, committed 2432K, reserved 1048576K
+}
+Event: 4.106 GC heap before
+{Heap before GC invocations=8 (full 1):
+ PSYoungGen      total 148480K, used 17920K [0x00000000d5f00000, 0x00000000e8d00000, 0x0000000100000000)
+  eden space 130560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000dde80000)
+  from space 17920K, 100% used [0x00000000dde80000,0x00000000df000000,0x00000000df000000)
+  to   space 24064K, 0% used [0x00000000e7580000,0x00000000e7580000,0x00000000e8d00000)
+ ParOldGen       total 87552K, used 27416K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 31% used [0x0000000081c00000,0x00000000836c61a8,0x0000000087180000)
+ Metaspace       used 20555K, capacity 21148K, committed 21296K, reserved 1069056K
+  class space    used 2243K, capacity 2420K, committed 2432K, reserved 1048576K
+Event: 4.221 GC heap after
+Heap after GC invocations=8 (full 1):
+ PSYoungGen      total 148480K, used 0K [0x00000000d5f00000, 0x00000000e8d00000, 0x0000000100000000)
+  eden space 130560K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000dde80000)
+  from space 17920K, 0% used [0x00000000dde80000,0x00000000dde80000,0x00000000df000000)
+  to   space 24064K, 0% used [0x00000000e7580000,0x00000000e7580000,0x00000000e8d00000)
+ ParOldGen       total 101888K, used 38508K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x000000008419b308,0x0000000087f80000)
+ Metaspace       used 20555K, capacity 21148K, committed 21296K, reserved 1069056K
+  class space    used 2243K, capacity 2420K, committed 2432K, reserved 1048576K
+}
+Event: 5.131 GC heap before
+{Heap before GC invocations=9 (full 1):
+ PSYoungGen      total 148480K, used 130560K [0x00000000d5f00000, 0x00000000e8d00000, 0x0000000100000000)
+  eden space 130560K, 100% used [0x00000000d5f00000,0x00000000dde80000,0x00000000dde80000)
+  from space 17920K, 0% used [0x00000000dde80000,0x00000000dde80000,0x00000000df000000)
+  to   space 24064K, 0% used [0x00000000e7580000,0x00000000e7580000,0x00000000e8d00000)
+ ParOldGen       total 101888K, used 38508K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x000000008419b308,0x0000000087f80000)
+ Metaspace       used 32470K, capacity 33224K, committed 33664K, reserved 1079296K
+  class space    used 3675K, capacity 3880K, committed 3968K, reserved 1048576K
+Event: 5.144 GC heap after
+Heap after GC invocations=9 (full 1):
+ PSYoungGen      total 200704K, used 16085K [0x00000000d5f00000, 0x00000000e8580000, 0x0000000100000000)
+  eden space 184320K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000e1300000)
+  from space 16384K, 98% used [0x00000000e7580000,0x00000000e85357f8,0x00000000e8580000)
+  to   space 24576K, 0% used [0x00000000e5580000,0x00000000e5580000,0x00000000e6d80000)
+ ParOldGen       total 101888K, used 38580K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x00000000841ad318,0x0000000087f80000)
+ Metaspace       used 32470K, capacity 33224K, committed 33664K, reserved 1079296K
+  class space    used 3675K, capacity 3880K, committed 3968K, reserved 1048576K
+}
+Event: 5.332 GC heap before
+{Heap before GC invocations=10 (full 1):
+ PSYoungGen      total 200704K, used 68196K [0x00000000d5f00000, 0x00000000e8580000, 0x0000000100000000)
+  eden space 184320K, 28% used [0x00000000d5f00000,0x00000000d91e3868,0x00000000e1300000)
+  from space 16384K, 98% used [0x00000000e7580000,0x00000000e85357f8,0x00000000e8580000)
+  to   space 24576K, 0% used [0x00000000e5580000,0x00000000e5580000,0x00000000e6d80000)
+ ParOldGen       total 101888K, used 38580K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x00000000841ad318,0x0000000087f80000)
+ Metaspace       used 34656K, capacity 35334K, committed 35496K, reserved 1081344K
+  class space    used 3917K, capacity 4093K, committed 4096K, reserved 1048576K
+Event: 5.342 GC heap after
+Heap after GC invocations=10 (full 1):
+ PSYoungGen      total 248832K, used 10234K [0x00000000d5f00000, 0x00000000e7600000, 0x0000000100000000)
+  eden space 238592K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000e4800000)
+  from space 10240K, 99% used [0x00000000e5580000,0x00000000e5f7ebc0,0x00000000e5f80000)
+  to   space 23040K, 0% used [0x00000000e5f80000,0x00000000e5f80000,0x00000000e7600000)
+ ParOldGen       total 101888K, used 38580K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x00000000841ad318,0x0000000087f80000)
+ Metaspace       used 34656K, capacity 35334K, committed 35496K, reserved 1081344K
+  class space    used 3917K, capacity 4093K, committed 4096K, reserved 1048576K
+}
+Event: 5.342 GC heap before
+{Heap before GC invocations=11 (full 2):
+ PSYoungGen      total 248832K, used 10234K [0x00000000d5f00000, 0x00000000e7600000, 0x0000000100000000)
+  eden space 238592K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000e4800000)
+  from space 10240K, 99% used [0x00000000e5580000,0x00000000e5f7ebc0,0x00000000e5f80000)
+  to   space 23040K, 0% used [0x00000000e5f80000,0x00000000e5f80000,0x00000000e7600000)
+ ParOldGen       total 101888K, used 38580K [0x0000000081c00000, 0x0000000087f80000, 0x00000000d5f00000)
+  object space 101888K, 37% used [0x0000000081c00000,0x00000000841ad318,0x0000000087f80000)
+ Metaspace       used 34656K, capacity 35334K, committed 35496K, reserved 1081344K
+  class space    used 3917K, capacity 4093K, committed 4096K, reserved 1048576K
+Event: 5.407 GC heap after
+Heap after GC invocations=11 (full 2):
+ PSYoungGen      total 248832K, used 0K [0x00000000d5f00000, 0x00000000e7600000, 0x0000000100000000)
+  eden space 238592K, 0% used [0x00000000d5f00000,0x00000000d5f00000,0x00000000e4800000)
+  from space 10240K, 0% used [0x00000000e5580000,0x00000000e5580000,0x00000000e5f80000)
+  to   space 23040K, 0% used [0x00000000e5f80000,0x00000000e5f80000,0x00000000e7600000)
+ ParOldGen       total 140288K, used 44963K [0x0000000081c00000, 0x000000008a500000, 0x00000000d5f00000)
+  object space 140288K, 32% used [0x0000000081c00000,0x00000000847e8e78,0x000000008a500000)
+ Metaspace       used 34656K, capacity 35334K, committed 35496K, reserved 1081344K
+  class space    used 3917K, capacity 4093K, committed 4096K, reserved 1048576K
+}
+
+Deoptimization events (184 events):
+Event: 0.651 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003061b10 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.680 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030c8d94 method=java.nio.charset.CoderResult.isOverflow()Z @ 5
+Event: 0.698 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030c25a8 method=sun.nio.cs.StreamDecoder.implRead([CII)I @ 197
+Event: 0.702 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030d9f40 method=sun.nio.cs.StreamDecoder.implRead([CII)I @ 197
+Event: 0.710 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030e0ce0 method=sun.nio.cs.StreamDecoder.read([CII)I @ 136
+Event: 0.753 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003069180 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.760 Thread 0x0000000002d27800 Uncommon trap: reason=range_check action=make_not_entrant pc=0x00000000031208e0 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 0.848 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000313b0b4 method=java.lang.String.lastIndexOf([CII[CIII)I @ 118
+Event: 1.207 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000332a508 method=java.lang.Character.codePointAt(Ljava/lang/CharSequence;I)I @ 2
+Event: 1.207 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000332a508 method=java.lang.Character.codePointAt(Ljava/lang/CharSequence;I)I @ 2
+Event: 1.207 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000332a508 method=java.lang.Character.codePointAt(Ljava/lang/CharSequence;I)I @ 2
+Event: 1.207 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000332a508 method=java.lang.Character.codePointAt(Ljava/lang/CharSequence;I)I @ 2
+Event: 1.211 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030e5c30 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 972
+Event: 1.214 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000306be8c method=java.lang.AbstractStringBuilder.append(Ljava/lang/String;)Ljava/lang/AbstractStringBuilder; @ 1
+Event: 1.214 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002fcb000 method=java.lang.AbstractStringBuilder.append(Ljava/lang/String;)Ljava/lang/AbstractStringBuilder; @ 1
+Event: 1.232 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002fa0c44 method=java.lang.String.replace(CC)Ljava/lang/String; @ 2
+Event: 1.241 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031993a4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 1.258 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031993a4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 1.260 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031993a4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 1.260 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000031993a4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 1.260 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003197f6c method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 1.283 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003037d10 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 1.291 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f93068 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 1.301 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000332d9f8 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 1.302 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000332d9f8 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 1.307 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003378b04 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 835
+Event: 1.308 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000332d9f8 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 1.308 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000332d9f8 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 1.311 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000312b97c method=sun.nio.cs.UTF_8$Decoder.decode([BII[C)I @ 30
+Event: 1.311 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000030cbf50 method=sun.nio.cs.UTF_8$Decoder.decodeArrayLoop(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;)Ljava/nio/charset/CoderResult; @ 84
+Event: 1.313 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033cbf88 method=sun.nio.cs.StreamDecoder.implRead([CII)I @ 36
+Event: 1.353 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003406378 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 1161
+Event: 1.369 Thread 0x0000000002d27800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x000000000345205c method=org.apache.maven.model.io.xpp3.MavenXpp3Reader.checkFieldWithDuplicate(Lorg/codehaus/plexus/util/xml/pull/XmlPullParser;Ljava/lang/String;Ljava/lang/String;Ljava/util/Se
+Event: 1.415 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000346364c method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 280
+Event: 1.417 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000345e2f8 method=java.util.regex.Pattern$7.isSatisfiedBy(I)Z @ 16
+Event: 1.417 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000345e2f8 method=java.util.regex.Pattern$7.isSatisfiedBy(I)Z @ 16
+Event: 1.417 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000345e2f8 method=java.util.regex.Pattern$7.isSatisfiedBy(I)Z @ 16
+Event: 1.417 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000345e2f8 method=java.util.regex.Pattern$7.isSatisfiedBy(I)Z @ 16
+Event: 1.425 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034a48ec method=java.lang.String.trim()Ljava/lang/String; @ 63
+Event: 1.467 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000314a944 method=java.lang.String.regionMatches(ZILjava/lang/String;II)Z @ 25
+Event: 1.485 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033190a8 method=org.eclipse.sisu.inject.InjectorBindings.isAssignableFrom(Lcom/google/inject/TypeLiteral;Lcom/google/inject/Binding;)Z @ 14
+Event: 1.516 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003494c74 method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.516 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003450a6c method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.516 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000319a97c method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.516 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000338b56c method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 1.533 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000343dffc method=java.lang.String.trim()Ljava/lang/String; @ 63
+Event: 1.749 Thread 0x0000000002d27800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00000000035cde74 method=org.apache.maven.model.validation.DefaultModelValidator.validateEffectiveDependency(Lorg/apache/maven/model/building/ModelProblemCollector;Lorg/apache/maven/model/Depend
+Event: 1.785 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003110c70 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 1.785 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003110c70 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 1.786 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003110c70 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 1.786 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003110c70 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 57
+Event: 1.930 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000347cc9c method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 18
+Event: 2.034 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000352e648 method=java.util.regex.Pattern$Curly.match0(Ljava/util/regex/Matcher;IILjava/lang/CharSequence;)Z @ 5
+Event: 2.341 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000377b62c method=org.apache.maven.model.merge.ModelMerger$DependencyKeyComputer.key(Lorg/apache/maven/model/Dependency;)Ljava/lang/Object; @ 5
+Event: 2.473 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000356cca4 method=org.codehaus.plexus.util.xml.pull.MXParser.parseAttribute()C @ 995
+Event: 2.642 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000037aa7e8 method=org.apache.maven.model.Plugin.clone()Lorg/apache/maven/model/Plugin; @ 140
+Event: 2.642 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000377b62c method=org.apache.maven.model.merge.ModelMerger$DependencyKeyComputer.key(Lorg/apache/maven/model/Dependency;)Ljava/lang/Object; @ 5
+Event: 2.652 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000035ac38c method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 53
+Event: 2.652 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003421e28 method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 2.652 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000319ba04 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 53
+Event: 2.759 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038828f0 method=java.util.AbstractCollection.toArray()[Ljava/lang/Object; @ 1
+Event: 2.759 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038828f0 method=java.util.AbstractCollection.toArray()[Ljava/lang/Object; @ 1
+Event: 2.759 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038828f0 method=java.util.AbstractCollection.toArray()[Ljava/lang/Object; @ 1
+Event: 2.759 Thread 0x0000000002d27800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038828f0 method=java.util.AbstractCollection.toArray()[Ljava/lang/Object; @ 1
+Event: 2.763 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000384cc68 method=org.eclipse.aether.graph.Dependency$Exclusions.copy(Ljava/util/Collection;)Ljava/util/Set; @ 1
+Event: 2.926 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000333ca88 method=sun.net.www.protocol.jar.Handler.parseURL(Ljava/net/URL;Ljava/lang/String;II)V @ 116
+Event: 2.929 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000031119b4 method=java.io.Reader.read()I @ 12
+Event: 2.934 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003123d00 method=java.io.Reader.read()I @ 12
+Event: 2.977 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003889ad0 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.next()Ljava/lang/Object; @ 4
+Event: 2.990 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003889ad0 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.next()Ljava/lang/Object; @ 4
+Event: 3.309 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003889ad0 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.next()Ljava/lang/Object; @ 4
+Event: 3.346 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000003889ad0 method=org.eclipse.sisu.wire.EntryListAdapter$ValueIterator.next()Ljava/lang/Object; @ 4
+Event: 3.347 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000031a12f8 method=java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; @ 206
+Event: 3.510 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000395e3f4 method=java.util.regex.Pattern$Curly.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 45
+Event: 3.510 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036be120 method=org.codehaus.plexus.interpolation.MapBasedValueSource.getValue(Ljava/lang/String;)Ljava/lang/Object; @ 16
+Event: 3.510 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036be120 method=org.codehaus.plexus.interpolation.MapBasedValueSource.getValue(Ljava/lang/String;)Ljava/lang/Object; @ 16
+Event: 3.510 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036be120 method=org.codehaus.plexus.interpolation.MapBasedValueSource.getValue(Ljava/lang/String;)Ljava/lang/Object; @ 16
+Event: 3.513 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003643264 method=org.apache.maven.model.validation.DefaultModelValidator.validateEffectiveDependency(Lorg/apache/maven/model/building/ModelProblemCollector;Lorg/apache/maven/model/Dependency
+Event: 3.513 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000037edf54 method=org.apache.maven.repository.internal.ArtifactDescriptorReaderDelegate.convert(Lorg/apache/maven/model/Dependency;Lorg/eclipse/aether/artifact/ArtifactTypeRegistry;)Lorg/ecli
+Event: 3.513 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036bfe20 method=org.eclipse.aether.artifact.DefaultArtifact.merge(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map; @ 1
+Event: 3.544 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036be120 method=org.codehaus.plexus.interpolation.MapBasedValueSource.getValue(Ljava/lang/String;)Ljava/lang/Object; @ 16
+Event: 3.547 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036c2830 method=org.eclipse.aether.artifact.DefaultArtifact.merge(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map; @ 1
+Event: 3.608 Thread 0x0000000002d27800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x0000000003ab59a8 method=org.codehaus.plexus.util.xml.Xpp3Dom.mergeIntoXpp3Dom(Lorg/codehaus/plexus/util/xml/Xpp3Dom;Lorg/codehaus/plexus/util/xml/Xpp3Dom;Ljava/lang/Boolean;)V @ 19
+Event: 3.670 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003923f04 method=org.eclipse.aether.util.graph.transformer.ConflictResolver$State.deriveOptional(Lorg/eclipse/aether/graph/DependencyNode;Ljava/lang/Object;)Z @ 15
+Event: 3.736 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000319a244 method=java.util.jar.Manifest$FastInputStream.readLine([BII)I @ 87
+Event: 3.887 Thread 0x0000000002d27800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000000003b4b808 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 37
+Event: 3.898 Thread 0x0000000002d27800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000003b4d510 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 193
+Event: 3.899 Thread 0x0000000002d27800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000003b4d5d8 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 183
+Event: 3.899 Thread 0x0000000002d27800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000003b4d510 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 193
+Event: 3.899 Thread 0x0000000002d27800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000003b4d510 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 193
+Event: 3.908 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003324e9c method=com.google.inject.internal.MoreTypes.canonicalize(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type; @ 16
+Event: 3.908 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000032fff6c method=com.google.inject.internal.MoreTypes.getRawType(Ljava/lang/reflect/Type;)Ljava/lang/Class; @ 13
+Event: 3.908 Thread 0x0000000002d27800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003303528 method=com.google.inject.internal.MoreTypes.canonicalize(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type; @ 16
+Event: 3.908 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000032fff6c method=com.google.inject.internal.MoreTypes.getRawType(Ljava/lang/reflect/Type;)Ljava/lang/Class; @ 13
+Event: 3.908 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000032fff6c method=com.google.inject.internal.MoreTypes.getRawType(Ljava/lang/reflect/Type;)Ljava/lang/Class; @ 13
+Event: 3.909 Thread 0x0000000002d27800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000032fff6c method=com.google.inject.internal.MoreTypes.getRawType(Ljava/lang/reflect/Type;)Ljava/lang/Class; @ 13
+Event: 4.241 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003ae8dac method=java.io.WinNTFileSystem.parentOrNull(Ljava/lang/String;)Ljava/lang/String; @ 96
+Event: 4.247 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038141ec method=java.lang.ThreadLocal.get()Ljava/lang/Object; @ 11
+Event: 4.297 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034d7380 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.350 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002f13c88 method=java.net.URI.match(CJJ)Z @ 19
+Event: 4.351 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003645848 method=java.nio.charset.CharsetDecoder.decode(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;Z)Ljava/nio/charset/CoderResult; @ 1
+Event: 4.352 Thread 0x000000001eec3800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000000003039528 method=sun.net.www.ParseUtil.encodePath(Ljava/lang/String;Z)Ljava/lang/String; @ 36
+Event: 4.355 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000323c1ac method=java.lang.String.lastIndexOf([CII[CIII)I @ 17
+Event: 4.389 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003810e1c method=java.lang.ThreadLocal$ThreadLocalMap.getEntry(Ljava/lang/ThreadLocal;)Ljava/lang/ThreadLocal$ThreadLocalMap$Entry; @ 29
+Event: 4.458 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034d7380 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.463 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038aa9cc method=java.util.Properties$LineReader.readLine()I @ 81
+Event: 4.463 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038aeab8 method=java.util.Properties$LineReader.readLine()I @ 246
+Event: 4.465 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038e2010 method=java.util.Properties.loadConvert([CII[C)Ljava/lang/String; @ 4
+Event: 4.469 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034d7380 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.475 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034d7380 method=java.util.Hashtable.get(Ljava/lang/Object;)Ljava/lang/Object; @ 6
+Event: 4.537 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036ad0fc method=java.util.Collections$UnmodifiableMap.entrySet()Ljava/util/Set; @ 16
+Event: 4.537 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036aca48 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.<init>(Ljava/util/Collections$UnmodifiableMap$UnmodifiableEntrySet;)V @ 17
+Event: 4.537 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000350184c method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.hasNext()Z @ 4
+Event: 4.537 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034e9eb0 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.next()Ljava/util/Map$Entry; @ 8
+Event: 4.537 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000035015c0 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry.getKey()Ljava/lang/Object; @ 4
+Event: 4.538 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000352de00 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry.getValue()Ljava/lang/Object; @ 4
+Event: 4.604 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000311bddc method=java.net.URLStreamHandler.parseURL(Ljava/net/URL;Ljava/lang/String;II)V @ 717
+Event: 4.624 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034de768 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 40
+Event: 4.720 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036ad0fc method=java.util.Collections$UnmodifiableMap.entrySet()Ljava/util/Set; @ 16
+Event: 4.720 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036aca48 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.<init>(Ljava/util/Collections$UnmodifiableMap$UnmodifiableEntrySet;)V @ 17
+Event: 4.720 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000350184c method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.hasNext()Z @ 4
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000370f584 method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 15
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036ac48c method=java.util.Collections$UnmodifiableMap.isEmpty()Z @ 4
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000369e100 method=java.util.Collections$UnmodifiableMap.size()I @ 4
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036ad0fc method=java.util.Collections$UnmodifiableMap.entrySet()Ljava/util/Set; @ 16
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036aca48 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.<init>(Ljava/util/Collections$UnmodifiableMap$UnmodifiableEntrySet;)V @ 17
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000350184c method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.hasNext()Z @ 4
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000034e9eb0 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.next()Ljava/util/Map$Entry; @ 8
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000035015c0 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry.getKey()Ljava/lang/Object; @ 4
+Event: 4.740 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000352de00 method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry.getValue()Ljava/lang/Object; @ 4
+Event: 4.741 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000370f584 method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 15
+Event: 4.741 Thread 0x000000001adc4800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000350184c method=java.util.Collections$UnmodifiableMap$UnmodifiableEntrySet$1.hasNext()Z @ 4
+Event: 4.745 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003c12414 method=java.util.concurrent.ConcurrentHashMap.addCount(JI)V @ 168
+Event: 4.749 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033603cc method=java.util.jar.JarFile.maybeInstantiateVerifier()V @ 75
+Event: 4.774 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000337d1e8 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 236
+Event: 4.795 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000317b07c method=java.lang.CharacterDataLatin1.isWhitespace(I)Z @ 14
+Event: 4.837 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000365eb1c method=java.util.jar.JarFile.maybeInstantiateVerifier()V @ 75
+Event: 4.847 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034609a8 method=java.util.LinkedHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 20
+Event: 4.941 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000370f584 method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 15
+Event: 4.941 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000370f584 method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 15
+Event: 4.942 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000352ff1c method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 4.942 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000352ff1c method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 253
+Event: 5.006 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038c2528 method=java.util.regex.Matcher.match(II)Z @ 86
+Event: 5.006 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038c2528 method=java.util.regex.Matcher.match(II)Z @ 86
+Event: 5.006 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038c2528 method=java.util.regex.Matcher.match(II)Z @ 86
+Event: 5.006 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000038c2528 method=java.util.regex.Matcher.match(II)Z @ 86
+Event: 5.130 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000036ac48c method=java.util.Collections$UnmodifiableMap.isEmpty()Z @ 4
+Event: 5.172 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000032f7fd0 method=sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; @ 9
+Event: 5.242 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000034d2b70 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 5.244 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000034d2b70 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 5.244 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000034d2b70 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 5.252 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00000000034d2b70 method=java.util.Hashtable.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 18
+Event: 5.274 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000344b4c8 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanLiteral(ILcom/sun/org/apache/xerces/internal/xni/XMLString;Z)I @ 570
+Event: 5.283 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000033c2bf4 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.checkBeforeLoad(Lcom/sun/xml/internal/stream/Entity$ScannedEntity;II)I @ 18
+Event: 5.302 Thread 0x000000001eec3800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x00000000030955ac method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 49
+Event: 5.309 Thread 0x000000001eec3800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000000000348582c method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 119
+Event: 5.310 Thread 0x000000001eec3800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000000000348582c method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 119
+Event: 5.310 Thread 0x000000001eec3800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000000000348582c method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 119
+Event: 5.310 Thread 0x000000001eec3800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000000000348582c method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 119
+Event: 5.317 Thread 0x000000001adc4800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003921fc8 method=com.sun.org.apache.xerces.internal.util.SymbolTable.addSymbol([CII)Ljava/lang/String; @ 38
+Event: 5.410 Thread 0x000000001eec3800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x000000000369e100 method=java.util.Collections$UnmodifiableMap.size()I @ 4
+Event: 5.416 Thread 0x000000001adc4800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000002f1ee64 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 215
+Event: 5.427 Thread 0x000000001adc4800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000000002f1ee64 method=java.util.TimSort.binarySort([Ljava/lang/Object;IIILjava/util/Comparator;)V @ 215
+Event: 5.449 Thread 0x000000001adc4800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00000000034de700 method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 119
+Event: 5.481 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x000000000332a7f0 method=java.util.regex.Matcher.search(I)Z @ 86
+Event: 5.493 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003cbfe90 method=org.springframework.util.ObjectUtils.containsElement([Ljava/lang/Object;Ljava/lang/Object;)Z @ 32
+Event: 5.500 Thread 0x000000001adc4800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003c52f18 method=java.lang.Throwable.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V @ 24
+Event: 5.613 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ff3224 method=sun.misc.MetaIndex.mayContain(Ljava/lang/String;)Z @ 38
+Event: 5.614 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000315dbb0 method=java.util.Properties$LineReader.readLine()I @ 328
+Event: 5.625 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ffabb0 method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.skipSpaces()Z @ 14
+Event: 5.626 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003544eac method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.scanLiteral(ILcom/sun/org/apache/xerces/internal/xni/XMLString;Z)I @ 660
+Event: 5.627 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003880ae4 method=java.util.Properties.load0(Ljava/util/Properties$LineReader;)V @ 115
+Event: 5.661 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000034850ec method=com.sun.org.apache.xerces.internal.impl.XMLEntityScanner.peekChar()I @ 51
+Event: 5.730 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002fd4df4 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 162
+Event: 5.730 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038a839c method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 84
+Event: 5.730 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000038a386c method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 84
+Event: 5.804 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003d300e4 method=sun.nio.fs.WindowsPathParser.isSlash(C)Z @ 9
+Event: 5.804 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000311fb78 method=sun.nio.fs.WindowsPathParser.isSlash(C)Z @ 9
+Event: 5.807 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003cd2398 method=sun.nio.fs.WindowsPathParser.isSlash(C)Z @ 9
+Event: 5.825 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003bdb538 method=sun.net.util.IPAddressUtil.scan(Ljava/lang/String;JJ[C)I @ 14
+Event: 5.832 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003c52f18 method=java.lang.Throwable.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V @ 24
+Event: 5.832 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003c52f18 method=java.lang.Throwable.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V @ 24
+Event: 5.832 Thread 0x000000001eec3800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000003c52f18 method=java.lang.Throwable.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V @ 24
+Event: 5.884 Thread 0x000000001eec3800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003c638c8 method=java.util.jar.JarFile.maybeInstantiateVerifier()V @ 4
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (71 events):
+Event: 0.029 Thread 0x0000000002d27800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d5f07cb8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\sh
+Event: 0.029 Thread 0x0000000002d27800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d5f07fa0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.c
+Event: 0.166 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a2538) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.166 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a2748) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.167 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a6958) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.167 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a6b68) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.167 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a8398) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.167 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a85a8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.643 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d74b2f08) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.646 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d74d5a38) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.650 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d75181b0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.714 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d7e2c738) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.714 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d7e2e2c8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.760 Thread 0x0000000002d27800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 66> (0x00000000d60ecb58) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 1.109 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': com/google/inject/servlet/ServletModuleTargetVisitor> (0x00000000d65c2760) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 1.109 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError'> (0x00000000d65c2760) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1505]
+Event: 1.109 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': javax/annotation/Priority> (0x00000000d65c92d8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 1.193 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ac5900) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.193 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ac5b18) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.193 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ac5d30) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.194 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ad01c0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.194 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ad03d8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.194 Thread 0x0000000002d27800 Exception <a 'java/lang/NullPointerException'> (0x00000000d6ad05f0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+Event: 1.214 Thread 0x0000000002d27800 Implicit null exception at 0x000000000306bad6 to 0x000000000306be71
+Event: 1.214 Thread 0x0000000002d27800 Implicit null exception at 0x0000000002fcac56 to 0x0000000002fcafe5
+Event: 1.369 Thread 0x0000000002d27800 Implicit null exception at 0x0000000003451df7 to 0x0000000003452041
+Event: 1.516 Thread 0x0000000002d27800 Implicit null exception at 0x00000000034949d9 to 0x0000000003494c5d
+Event: 1.516 Thread 0x0000000002d27800 Implicit null exception at 0x0000000003450198 to 0x0000000003450a59
+Event: 1.516 Thread 0x0000000002d27800 Implicit null exception at 0x000000000319a795 to 0x000000000319a96d
+Event: 1.516 Thread 0x0000000002d27800 Implicit null exception at 0x000000000338b0db to 0x000000000338b551
+Event: 1.749 Thread 0x0000000002d27800 Implicit null exception at 0x00000000035cd8a0 to 0x00000000035cde51
+Event: 2.652 Thread 0x0000000002d27800 Implicit null exception at 0x0000000003421daf to 0x0000000003421e19
+Event: 2.763 Thread 0x0000000002d27800 Implicit null exception at 0x000000000384c3e8 to 0x000000000384cc45
+Event: 3.608 Thread 0x0000000002d27800 Implicit null exception at 0x0000000003ab0e0b to 0x0000000003ab5999
+Event: 3.831 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/deployment/DeploymentException> (0x00000000dcd01198) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.840 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/collection/DependencyCollectionException> (0x00000000dce0e6c8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 1
+Event: 3.851 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/metadata/Metadata> (0x00000000dcf84170) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.864 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/metadata/Metadata> (0x00000000dd137b08) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.870 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/installation/InstallationException> (0x00000000dd204e80) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.874 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/resolution/ArtifactResolutionException> (0x00000000dd26b948) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199
+Event: 3.878 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/resolution/ArtifactDescriptorException> (0x00000000dd302d80) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199
+Event: 3.900 Thread 0x0000000002d27800 Exception <a 'java/lang/NoClassDefFoundError': org/sonatype/aether/graph/Dependency> (0x00000000dd58f7b8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 3.936 Thread 0x0000000002d27800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000dd78db50) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 3.937 Thread 0x0000000002d27800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000dd79b210) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 3.951 Thread 0x0000000002d27800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$comparing$77a9974f$1(Ljava/util/function/Function;Ljava/lang/Object;Ljava/lang/Object;)I> (0x00000000dd82a708) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\sr
+Event: 3.995 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ddaa1558) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 3.995 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ddaa1950) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 3.996 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ddae24f0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 3.996 Thread 0x0000000002d27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ddae28e8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 4.247 Thread 0x000000001eec3800 Implicit null exception at 0x0000000003814109 to 0x00000000038141d5
+Event: 4.247 Thread 0x000000001eec3800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6285288) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 4.247 Thread 0x000000001eec3800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6285498) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 4.248 Thread 0x000000001eec3800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62c5bb8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 4.248 Thread 0x000000001eec3800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62c5dc8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 4.354 Thread 0x000000001eec3800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d68d8ad8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.552 Thread 0x000000001eec3800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d8230250) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 4.604 Thread 0x000000001eec3800 Implicit null exception at 0x0000000003118683 to 0x000000000311bd99
+Event: 4.662 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': java/lang/ObjectCustomizer> (0x00000000d8c9c1b8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 4.664 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/boot/SpringApplicationCustomizer> (0x00000000d8cbe3c0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 4.905 Thread 0x000000001eec3800 Exception <a 'java/lang/NoSuchMethodError': org.slf4j.impl.StaticMDCBinder.getSingleton()Lorg/slf4j/impl/StaticMDCBinder;> (0x00000000dae6fee0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver
+Event: 4.985 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': java/lang/ObjectCustomizer> (0x00000000dbac1050) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 4.985 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/annotation/ConfigurationClassPostProcessorCustomizer> (0x00000000dbaea180) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\system
+Event: 4.986 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/beans/factory/support/BeanDefinitionRegistryPostProcessorCustomizer> (0x00000000dbb241e8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile
+Event: 4.986 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/core/PriorityOrderedCustomizer> (0x00000000dbb3f8f8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 4.987 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/ResourceLoaderAwareCustomizer> (0x00000000dbb5cbd0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 21
+Event: 4.987 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/beans/factory/BeanClassLoaderAwareCustomizer> (0x00000000dbb7dd98) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, 
+Event: 4.987 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/EnvironmentAwareCustomizer> (0x00000000dbb9b3c8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 5.449 Thread 0x000000001adc4800 Implicit null exception at 0x00000000034de5cd to 0x00000000034de6f5
+Event: 5.832 Thread 0x000000001eec3800 Exception <a 'java/lang/reflect/InvocationTargetException'> (0x00000000da71fdd8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\reflection.cpp, line 1092]
+Event: 5.850 Thread 0x000000001eec3800 Exception <a 'java/lang/reflect/InvocationTargetException'> (0x00000000da91e540) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\reflection.cpp, line 1092]
+Event: 5.884 Thread 0x000000001eec3800 Exception <a 'java/lang/ClassNotFoundException': com/sun/org/glassfish/hk2/osgiresourcelocator/ServiceLoader> (0x00000000dac77588) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 
+
+Events (250 events):
+Event: 5.872 loading class org/apache/camel/util/ObjectHelper done
+Event: 5.873 loading class org/apache/camel/RuntimeCamelException
+Event: 5.873 loading class org/apache/camel/RuntimeCamelException done
+Event: 5.874 loading class org/apache/camel/util/StringHelper
+Event: 5.874 loading class org/apache/camel/util/StringHelper done
+Event: 5.881 loading class org/apache/camel/spring/SpringModelJAXBContextFactory
+Event: 5.881 loading class org/apache/camel/spring/SpringModelJAXBContextFactory done
+Event: 5.881 loading class org/apache/camel/impl/DefaultModelJAXBContextFactory
+Event: 5.881 loading class org/apache/camel/impl/DefaultModelJAXBContextFactory done
+Event: 5.881 loading class org/apache/camel/spi/ModelJAXBContextFactory
+Event: 5.881 loading class org/apache/camel/spi/ModelJAXBContextFactory done
+Event: 5.882 loading class javax/xml/bind/JAXBContext
+Event: 5.882 loading class javax/xml/bind/JAXBContext done
+Event: 5.882 loading class javax/xml/bind/ContextFinder
+Event: 5.882 loading class javax/xml/bind/ContextFinder done
+Event: 5.882 loading class javax/xml/bind/GetPropertyAction
+Event: 5.882 loading class javax/xml/bind/GetPropertyAction done
+Event: 5.884 loading class com/sun/org/glassfish/hk2/osgiresourcelocator/ServiceLoader
+Event: 5.884 loading class com/sun/org/glassfish/hk2/osgiresourcelocator/ServiceLoader done
+Event: 5.884 loading class com/sun/xml/bind/v2/ContextFactory
+Event: 5.884 loading class com/sun/xml/bind/v2/ContextFactory done
+Event: 5.884 Thread 0x000000001eec3800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000003c638c8
+Event: 5.884 Thread 0x000000001eec3800 DEOPT PACKING pc=0x0000000003c638c8 sp=0x000000001e19c880
+Event: 5.884 Thread 0x000000001eec3800 DEOPT UNPACKING pc=0x0000000002e2807b sp=0x000000001e19c610 mode 2
+Event: 5.886 loading class com/sun/xml/bind/api/JAXBRIContext
+Event: 5.886 loading class com/sun/xml/bind/api/JAXBRIContext done
+Event: 5.886 loading class com/sun/xml/bind/v2/runtime/JAXBContextImpl
+Event: 5.886 loading class com/sun/xml/bind/v2/runtime/JAXBContextImpl done
+Event: 5.887 loading class com/sun/xml/bind/v2/model/annotation/RuntimeAnnotationReader
+Event: 5.888 loading class com/sun/xml/bind/v2/model/annotation/RuntimeAnnotationReader done
+Event: 5.888 loading class com/sun/xml/bind/v2/model/annotation/AnnotationReader
+Event: 5.888 loading class com/sun/xml/bind/v2/model/annotation/AnnotationReader done
+Event: 5.889 loading class com/sun/istack/FinalArrayList
+Event: 5.889 loading class com/sun/istack/FinalArrayList done
+Event: 5.889 loading class org/apache/camel/ObjectFactory
+Event: 5.889 loading class org/apache/camel/ObjectFactory done
+Event: 5.890 loading class org/apache/camel/ExchangePattern
+Event: 5.890 loading class org/apache/camel/ExchangePattern done
+Event: 5.890 loading class org/apache/camel/LoggingLevel
+Event: 5.890 loading class org/apache/camel/LoggingLevel done
+Event: 5.890 loading class org/apache/camel/ManagementStatisticsLevel
+Event: 5.890 loading class org/apache/camel/ManagementStatisticsLevel done
+Event: 5.891 loading class org/apache/camel/ThreadPoolRejectedPolicy
+Event: 5.891 loading class org/apache/camel/ThreadPoolRejectedPolicy done
+Event: 5.891 loading class org/apache/camel/TypeConverterExists
+Event: 5.891 loading class org/apache/camel/TypeConverterExists done
+Event: 5.891 loading class org/apache/camel/ShutdownRoute
+Event: 5.891 loading class org/apache/camel/ShutdownRoute done
+Event: 5.891 loading class org/apache/camel/ShutdownRunningTask
+Event: 5.891 loading class org/apache/camel/ShutdownRunningTask done
+Event: 5.891 loading class org/apache/camel/model/ObjectFactory
+Event: 5.891 loading class org/apache/camel/model/ObjectFactory done
+Event: 5.892 loading class org/apache/camel/model/AggregateDefinition
+Event: 5.892 loading class org/apache/camel/model/AggregateDefinition done
+Event: 5.892 loading class org/apache/camel/model/ExecutorServiceAwareDefinition
+Event: 5.892 loading class org/apache/camel/model/ExecutorServiceAwareDefinition done
+Event: 5.893 loading class org/apache/camel/ExecutorServiceAware
+Event: 5.893 loading class org/apache/camel/ExecutorServiceAware done
+Event: 5.893 loading class org/apache/camel/model/ProcessorDefinition
+Event: 5.893 loading class org/apache/camel/model/ProcessorDefinition done
+Event: 5.894 loading class org/apache/camel/model/Block
+Event: 5.894 loading class org/apache/camel/model/Block done
+Event: 5.895 loading class org/apache/camel/model/OtherAttributesAware
+Event: 5.895 loading class org/apache/camel/model/OtherAttributesAware done
+Event: 5.895 loading class org/apache/camel/model/OptionalIdentifiedDefinition
+Event: 5.895 loading class org/apache/camel/model/OptionalIdentifiedDefinition done
+Event: 5.896 loading class org/apache/camel/NamedNode
+Event: 5.896 loading class org/apache/camel/NamedNode done
+Event: 5.896 loading class org/apache/camel/model/AOPDefinition
+Event: 5.896 loading class org/apache/camel/model/AOPDefinition done
+Event: 5.896 loading class org/apache/camel/model/OutputDefinition
+Event: 5.896 loading class org/apache/camel/model/OutputDefinition done
+Event: 5.897 loading class org/apache/camel/model/BeanDefinition
+Event: 5.897 loading class org/apache/camel/model/BeanDefinition done
+Event: 5.897 loading class org/apache/camel/model/NoOutputDefinition
+Event: 5.897 loading class org/apache/camel/model/NoOutputDefinition done
+Event: 5.897 loading class org/apache/camel/model/CatchDefinition
+Event: 5.897 loading class org/apache/camel/model/CatchDefinition done
+Event: 5.897 loading class org/apache/camel/model/ChoiceDefinition
+Event: 5.897 loading class org/apache/camel/model/ChoiceDefinition done
+Event: 5.898 loading class org/apache/camel/model/ClaimCheckDefinition
+Event: 5.898 loading class org/apache/camel/model/ClaimCheckDefinition done
+Event: 5.898 loading class org/apache/camel/model/ClaimCheckOperation
+Event: 5.898 loading class org/apache/camel/model/ClaimCheckOperation done
+Event: 5.898 loading class org/apache/camel/model/ConvertBodyDefinition
+Event: 5.898 loading class org/apache/camel/model/ConvertBodyDefinition done
+Event: 5.898 loading class org/apache/camel/model/ContextScanDefinition
+Event: 5.898 loading class org/apache/camel/model/ContextScanDefinition done
+Event: 5.899 loading class org/apache/camel/model/DataFormatDefinition
+Event: 5.899 loading class org/apache/camel/model/DataFormatDefinition done
+Event: 5.899 loading class org/apache/camel/model/DelayDefinition
+Event: 5.899 loading class org/apache/camel/model/DelayDefinition done
+Event: 5.899 loading class org/apache/camel/model/ExpressionNode
+Event: 5.899 loading class org/apache/camel/model/ExpressionNode done
+Event: 5.899 loading class org/apache/camel/model/DescriptionDefinition
+Event: 5.899 loading class org/apache/camel/model/DescriptionDefinition done
+Event: 5.900 loading class org/apache/camel/model/DynamicRouterDefinition
+Event: 5.900 loading class org/apache/camel/model/DynamicRouterDefinition done
+Event: 5.900 loading class org/apache/camel/model/NoOutputExpressionNode
+Event: 5.900 loading class org/apache/camel/model/NoOutputExpressionNode done
+Event: 5.900 loading class org/apache/camel/model/EnrichDefinition
+Event: 5.900 loading class org/apache/camel/model/EnrichDefinition done
+Event: 5.900 loading class org/apache/camel/model/ExpressionSubElementDefinition
+Event: 5.900 loading class org/apache/camel/model/ExpressionSubElementDefinition done
+Event: 5.901 loading class org/apache/camel/model/FilterDefinition
+Event: 5.901 loading class org/apache/camel/model/FilterDefinition done
+Event: 5.901 loading class org/apache/camel/model/FinallyDefinition
+Event: 5.901 loading class org/apache/camel/model/FinallyDefinition done
+Event: 5.901 loading class org/apache/camel/model/FromDefinition
+Event: 5.901 loading class org/apache/camel/model/FromDefinition done
+Event: 5.901 loading class org/apache/camel/model/EndpointRequiredDefinition
+Event: 5.901 loading class org/apache/camel/model/EndpointRequiredDefinition done
+Event: 5.901 loading class org/apache/camel/model/GlobalOptionsDefinition
+Event: 5.901 loading class org/apache/camel/model/GlobalOptionsDefinition done
+Event: 5.902 loading class org/apache/camel/model/GlobalOptionDefinition
+Event: 5.902 loading class org/apache/camel/model/GlobalOptionDefinition done
+Event: 5.902 loading class org/apache/camel/model/HystrixDefinition
+Event: 5.902 loading class org/apache/camel/model/HystrixDefinition done
+Event: 5.902 loading class org/apache/camel/model/HystrixConfigurationDefinition
+Event: 5.902 loading class org/apache/camel/model/HystrixConfigurationDefinition done
+Event: 5.902 loading class org/apache/camel/model/HystrixConfigurationCommon
+Event: 5.902 loading class org/apache/camel/model/HystrixConfigurationCommon done
+Event: 5.903 loading class org/apache/camel/model/IdempotentConsumerDefinition
+Event: 5.903 loading class org/apache/camel/model/IdempotentConsumerDefinition done
+Event: 5.903 loading class org/apache/camel/model/InOnlyDefinition
+Event: 5.903 loading class org/apache/camel/model/InOnlyDefinition done
+Event: 5.903 loading class org/apache/camel/model/SendDefinition
+Event: 5.903 loading class org/apache/camel/model/SendDefinition done
+Event: 5.903 loading class org/apache/camel/model/InOutDefinition
+Event: 5.903 loading class org/apache/camel/model/InOutDefinition done
+Event: 5.903 loading class org/apache/camel/model/InputTypeDefinition
+Event: 5.903 loading class org/apache/camel/model/InputTypeDefinition done
+Event: 5.904 loading class org/apache/camel/model/InterceptDefinition
+Event: 5.904 loading class org/apache/camel/model/InterceptDefinition done
+Event: 5.904 loading class org/apache/camel/model/InterceptFromDefinition
+Event: 5.904 loading class org/apache/camel/model/InterceptFromDefinition done
+Event: 5.904 loading class org/apache/camel/model/InterceptSendToEndpointDefinition
+Event: 5.904 loading class org/apache/camel/model/InterceptSendToEndpointDefinition done
+Event: 5.904 loading class org/apache/camel/model/LoadBalanceDefinition
+Event: 5.904 loading class org/apache/camel/model/LoadBalanceDefinition done
+Event: 5.905 loading class org/apache/camel/model/LoadBalancerDefinition
+Event: 5.905 loading class org/apache/camel/model/LoadBalancerDefinition done
+Event: 5.905 loading class org/apache/camel/model/LogDefinition
+Event: 5.905 loading class org/apache/camel/model/LogDefinition done
+Event: 5.905 loading class org/apache/camel/model/LoopDefinition
+Event: 5.905 loading class org/apache/camel/model/LoopDefinition done
+Event: 5.905 loading class org/apache/camel/model/MarshalDefinition
+Event: 5.905 loading class org/apache/camel/model/MarshalDefinition done
+Event: 5.906 loading class org/apache/camel/model/MulticastDefinition
+Event: 5.906 loading class org/apache/camel/model/MulticastDefinition done
+Event: 5.906 loading class org/apache/camel/model/OnCompletionDefinition
+Event: 5.906 loading class org/apache/camel/model/OnCompletionDefinition done
+Event: 5.906 loading class org/apache/camel/model/OnCompletionMode
+Event: 5.906 loading class org/apache/camel/model/OnCompletionMode done
+Event: 5.907 loading class org/apache/camel/model/OnExceptionDefinition
+Event: 5.907 loading class org/apache/camel/model/OnExceptionDefinition done
+Event: 5.907 loading class org/apache/camel/model/OnFallbackDefinition
+Event: 5.907 loading class org/apache/camel/model/OnFallbackDefinition done
+Event: 5.907 loading class org/apache/camel/model/OptimisticLockRetryPolicyDefinition
+Event: 5.907 loading class org/apache/camel/model/OptimisticLockRetryPolicyDefinition done
+Event: 5.908 loading class org/apache/camel/model/OtherwiseDefinition
+Event: 5.908 loading class org/apache/camel/model/OtherwiseDefinition done
+Event: 5.908 loading class org/apache/camel/model/OutputTypeDefinition
+Event: 5.908 loading class org/apache/camel/model/OutputTypeDefinition done
+Event: 5.908 loading class org/apache/camel/model/PackageScanDefinition
+Event: 5.908 loading class org/apache/camel/model/PackageScanDefinition done
+Event: 5.908 loading class org/apache/camel/model/PipelineDefinition
+Event: 5.908 loading class org/apache/camel/model/PipelineDefinition done
+Event: 5.908 loading class org/apache/camel/model/PolicyDefinition
+Event: 5.908 loading class org/apache/camel/model/PolicyDefinition done
+Event: 5.908 loading class org/apache/camel/model/PollEnrichDefinition
+Event: 5.908 loading class org/apache/camel/model/PollEnrichDefinition done
+Event: 5.909 loading class org/apache/camel/model/ProcessDefinition
+Event: 5.909 loading class org/apache/camel/model/ProcessDefinition done
+Event: 5.909 loading class org/apache/camel/model/PropertiesDefinition
+Event: 5.909 loading class org/apache/camel/model/PropertiesDefinition done
+Event: 5.909 loading class org/apache/camel/model/PropertyDefinition
+Event: 5.909 loading class org/apache/camel/model/PropertyDefinition done
+Event: 5.910 loading class org/apache/camel/model/RecipientListDefinition
+Event: 5.910 loading class org/apache/camel/model/RecipientListDefinition done
+Event: 5.910 loading class org/apache/camel/model/RedeliveryPolicyDefinition
+Event: 5.910 loading class org/apache/camel/model/RedeliveryPolicyDefinition done
+Event: 5.911 loading class org/apache/camel/model/RemoveHeaderDefinition
+Event: 5.911 loading class org/apache/camel/model/RemoveHeaderDefinition done
+Event: 5.911 loading class org/apache/camel/model/RemoveHeadersDefinition
+Event: 5.911 loading class org/apache/camel/model/RemoveHeadersDefinition done
+Event: 5.911 loading class org/apache/camel/model/RemovePropertyDefinition
+Event: 5.911 loading class org/apache/camel/model/RemovePropertyDefinition done
+Event: 5.911 loading class org/apache/camel/model/RemovePropertiesDefinition
+Event: 5.911 loading class org/apache/camel/model/RemovePropertiesDefinition done
+Event: 5.911 loading class org/apache/camel/model/ResequenceDefinition
+Event: 5.911 loading class org/apache/camel/model/ResequenceDefinition done
+Event: 5.912 loading class org/apache/camel/model/RestContextRefDefinition
+Event: 5.912 loading class org/apache/camel/model/RestContextRefDefinition done
+Event: 5.912 loading class org/apache/camel/model/RollbackDefinition
+Event: 5.912 loading class org/apache/camel/model/RollbackDefinition done
+Event: 5.912 loading class org/apache/camel/model/RouteBuilderDefinition
+Event: 5.912 loading class org/apache/camel/model/RouteBuilderDefinition done
+Event: 5.912 loading class org/apache/camel/model/RouteDefinition
+Event: 5.912 loading class org/apache/camel/model/RouteDefinition done
+Event: 5.913 loading class org/apache/camel/model/RouteContextRefDefinition
+Event: 5.913 loading class org/apache/camel/model/RouteContextRefDefinition done
+Event: 5.913 loading class org/apache/camel/model/RoutesDefinition
+Event: 5.913 loading class org/apache/camel/model/RoutesDefinition done
+Event: 5.914 loading class org/apache/camel/model/RoutingSlipDefinition
+Event: 5.914 loading class org/apache/camel/model/RoutingSlipDefinition done
+Event: 5.914 loading class org/apache/camel/model/SagaDefinition
+Event: 5.914 loading class org/apache/camel/model/SagaDefinition done
+Event: 5.914 loading class org/apache/camel/model/SamplingDefinition
+Event: 5.914 loading class org/apache/camel/model/SamplingDefinition done
+Event: 5.915 loading class org/apache/camel/model/ScriptDefinition
+Event: 5.915 loading class org/apache/camel/model/ScriptDefinition done
+Event: 5.915 loading class org/apache/camel/model/SetBodyDefinition
+Event: 5.915 loading class org/apache/camel/model/SetBodyDefinition done
+Event: 5.915 loading class org/apache/camel/model/SetExchangePatternDefinition
+Event: 5.915 loading class org/apache/camel/model/SetExchangePatternDefinition done
+Event: 5.915 loading class org/apache/camel/model/SetFaultBodyDefinition
+Event: 5.915 loading class org/apache/camel/model/SetFaultBodyDefinition done
+Event: 5.915 loading class org/apache/camel/model/SetHeaderDefinition
+Event: 5.915 loading class org/apache/camel/model/SetHeaderDefinition done
+Event: 5.915 loading class org/apache/camel/model/SetOutHeaderDefinition
+Event: 5.915 loading class org/apache/camel/model/SetOutHeaderDefinition done
+Event: 5.916 loading class org/apache/camel/model/SetPropertyDefinition
+Event: 5.916 loading class org/apache/camel/model/SetPropertyDefinition done
+Event: 5.916 loading class org/apache/camel/model/SortDefinition
+Event: 5.916 loading class org/apache/camel/model/SortDefinition done
+Event: 5.916 loading class org/apache/camel/model/SplitDefinition
+Event: 5.916 loading class org/apache/camel/model/SplitDefinition done
+Event: 5.916 loading class org/apache/camel/model/StopDefinition
+Event: 5.916 loading class org/apache/camel/model/StopDefinition done
+Event: 5.917 loading class org/apache/camel/model/ThreadPoolProfileDefinition
+Event: 5.917 loading class org/apache/camel/model/ThreadPoolProfileDefinition done
+Event: 5.917 loading class org/apache/camel/model/ThreadsDefinition
+Event: 5.917 loading class org/apache/camel/model/ThreadsDefinition done
+Event: 5.917 loading class org/apache/camel/model/ThrottleDefinition
+Event: 5.917 loading class org/apache/camel/model/ThrottleDefinition done
+Event: 5.918 loading class org/apache/camel/model/ThrowExceptionDefinition
+Event: 5.918 loading class org/apache/camel/model/ThrowExceptionDefinition done
+Event: 5.918 loading class org/apache/camel/model/ToDefinition
+Event: 5.918 loading class org/apache/camel/model/ToDefinition done
+Event: 5.918 loading class org/apache/camel/model/ToDynamicDefinition
+Event: 5.918 loading class org/apache/camel/model/ToDynamicDefinition done
+Event: 5.918 loading class org/apache/camel/model/TransactedDefinition
+Event: 5.918 loading class org/apache/camel/model/TransactedDefinition done
+Event: 5.919 loading class org/apache/camel/model/TransformDefinition
+Event: 5.919 loading class org/apache/camel/model/TransformDefinition done
+Event: 5.919 loading class org/apache/camel/model/TryDefinition
+Event: 5.919 loading class org/apache/camel/model/TryDefinition done
+Event: 5.919 loading class org/apache/camel/model/UnmarshalDefinition
+Event: 5.919 loading class org/apache/camel/model/UnmarshalDefinition done
+
+
+Dynamic libraries:
+0x00007ff6c3b10000 - 0x00007ff6c3b9b000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\bin\javaw.exe
+0x00007fff24bc0000 - 0x00007fff24dad000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff22020000 - 0x00007fff220d3000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007fff20c80000 - 0x00007fff20f13000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007fff220e0000 - 0x00007fff22183000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007fff221b0000 - 0x00007fff2224e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007fff247f0000 - 0x00007fff2488e000 	C:\WINDOWS\System32\sechost.dll
+0x00007fff242e0000 - 0x00007fff24402000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007fff23e10000 - 0x00007fff23fa7000 	C:\WINDOWS\System32\USER32.dll
+0x00007fff21be0000 - 0x00007fff21c00000 	C:\WINDOWS\System32\win32u.dll
+0x00007fff24410000 - 0x00007fff24439000 	C:\WINDOWS\System32\GDI32.dll
+0x00007fff219f0000 - 0x00007fff21b89000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007fff20f20000 - 0x00007fff20fc0000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007fff218f0000 - 0x00007fff219ea000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fff0a8d0000 - 0x00007fff0ab49000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.1039_none_de701650534c7021\COMCTL32.dll
+0x00007fff23fb0000 - 0x00007fff242dc000 	C:\WINDOWS\System32\combase.dll
+0x00007fff21c80000 - 0x00007fff21cfe000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fff238f0000 - 0x00007fff2391e000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007fff04b20000 - 0x00007fff04bd2000 	C:\Program Files\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPApi.dll
+0x00007fff21c00000 - 0x00007fff21c59000 	C:\WINDOWS\System32\WINTRUST.dll
+0x00007fff20bd0000 - 0x00007fff20be2000 	C:\WINDOWS\System32\MSASN1.dll
+0x00007fff21710000 - 0x00007fff218ec000 	C:\WINDOWS\System32\CRYPT32.dll
+0x0000000058ac0000 - 0x0000000058acc000 	C:\Program Files\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPThe.dll
+0x00000000581b0000 - 0x0000000058282000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\msvcr100.dll
+0x0000000057060000 - 0x000000005791d000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\server\jvm.dll
+0x00007fff22250000 - 0x00007fff22258000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007fff1a540000 - 0x00007fff1a564000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff1a700000 - 0x00007fff1a709000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff16da0000 - 0x00007fff16daa000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007fff23920000 - 0x00007fff2398d000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007fff1a510000 - 0x00007fff1a53d000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x00007fff21b90000 - 0x00007fff21bda000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007fff03f40000 - 0x00007fff03f4f000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\verify.dll
+0x00007ffef27f0000 - 0x00007ffef2819000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\java.dll
+0x00007ffef3820000 - 0x00007ffef3836000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\zip.dll
+0x00007fff22390000 - 0x00007fff23884000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007fff24440000 - 0x00007fff244e8000 	C:\WINDOWS\System32\shcore.dll
+0x00007fff20fc0000 - 0x00007fff2170d000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007fff20c50000 - 0x00007fff20c74000 	C:\WINDOWS\System32\profapi.dll
+0x00007fff20bf0000 - 0x00007fff20c4d000 	C:\WINDOWS\System32\powrprof.dll
+0x00007fff244f0000 - 0x00007fff24542000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007fff20bb0000 - 0x00007fff20bc1000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007fff21c60000 - 0x00007fff21c77000 	C:\WINDOWS\System32\cryptsp.dll
+0x00007fff1ff40000 - 0x00007fff1ff73000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007fff21db0000 - 0x00007fff21dd6000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007fff20ab0000 - 0x00007fff20ad8000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007fff20590000 - 0x00007fff2059c000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ffef3530000 - 0x00007ffef354a000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\net.dll
+0x00007fff203c0000 - 0x00007fff20427000 	C:\WINDOWS\system32\mswsock.dll
+0x00007fff200e0000 - 0x00007fff2011d000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007fff24ad0000 - 0x00007fff24ad8000 	C:\WINDOWS\System32\NSI.dll
+0x00007fff1e890000 - 0x00007fff1e8a6000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007fff1e870000 - 0x00007fff1e88c000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x00007fff20130000 - 0x00007fff201f6000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x00007ffef2e00000 - 0x00007ffef2e12000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\nio.dll
+0x00007fff1de00000 - 0x00007fff1de0a000 	C:\Users\chaitalishah.ttl\AppData\Local\Temp\jansi-1.17.1-7722639680490496368.dll
+0x00007fff1aa00000 - 0x00007fff1aa0a000 	C:\Users\chaitalishah.ttl\AppData\Local\Temp\jansi-1.17.1-6559281484243427821.dll
+0x00007fff1e040000 - 0x00007fff1e04d000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\management.dll
+0x00007fff12350000 - 0x00007fff12366000 	C:\WINDOWS\system32\napinsp.dll
+0x00007fff128a0000 - 0x00007fff128ba000 	C:\WINDOWS\system32\pnrpnsp.dll
+0x00007fff12890000 - 0x00007fff1289e000 	C:\WINDOWS\System32\winrnr.dll
+0x00007fff1dcf0000 - 0x00007fff1dd0b000 	C:\WINDOWS\system32\NLAapi.dll
+0x00007fff13220000 - 0x00007fff13235000 	C:\WINDOWS\system32\wshbth.dll
+0x00007fff1ecc0000 - 0x00007fff1ecca000 	C:\Windows\System32\rasadhlp.dll
+0x00007fff1e8c0000 - 0x00007fff1e939000 	C:\WINDOWS\System32\fwpuclnt.dll
+0x00007fff09680000 - 0x00007fff09694000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\sunec.dll
+0x00007fff1de50000 - 0x00007fff1de5b000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\sunmscapi.dll
+
+VM Arguments:
+jvm_args: -Dmaven.home=EMBEDDED -Dclassworlds.conf=D:\ESB2\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf234366721706192610.tmp -Dmaven.multiModuleProjectDirectory=D:\ESB2\TML_eInvoice_GenerateIRN -Dfile.encoding=Cp1252 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -B -Dmaven.test.skip=true -DskipTests spring-boot:run
+java_class_path (initial): D:\ESB\studio\plugins\org.eclipse.m2e.maven.runtime_1.14.0.20191209-1923\jars\plexus-classworlds-2.6.0.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=D:\ORACLE\product\11.1.0\client_1\bin;C:\Users\chaitalishah.ttl\product\12.2.0\client_1\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Windows\CCM;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\bin;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin;D:\ESB\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\chaitalishah.ttl\AppData\Local\Microsoft\WindowsApps;C:\Users\chaitalishah.ttl\AppData\Roaming\npm;C:\Users\chaitalishah.ttl\AppData\Local\Programs\Git\cmd
+USERNAME=ChaitaliShah.ttl
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 11, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17763 (10.0.17763.475)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 158 stepping 11, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8270196k(877804k free), swap 14414196k(5224k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.232-b09) for windows-amd64 JRE (1.8.0_232-b09), built on Oct 20 2019 23:15:08 by "build" with MS VC++ 10.0 (VS2010)
+
+time: Tue Feb 25 12:59:24 2020
+timezone: India Standard Time
+elapsed time: 5 seconds (0d 0h 0m 5s)
+

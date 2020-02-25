@@ -18,5 +18,24 @@ public class LogAggregator {
 	  public void request(String message, Exchange exchange){		
 		  logger.info("request", value("request",message + "\n" + exchange.getIn().getBody(String.class)));
 	  }
+	  
+	  public void response(String message, Exchange exchange) {		  
+		  logger.info("response", value("response","INVOICE-NO-"+(String)exchange.getIn().getHeader("User_GSTIN",String.class)+","+message + "," + exchange.getIn().getBody(String.class)));
+	  }
+	  
+	  public void responseCode(String message, Exchange exchange) {		  
+		  logger.info("responseCode", value("responseCode","INVOICE-NO-"+(String)exchange.getIn().getHeader("User_GSTIN",String.class)));
+}
+	  public void marshal(String message, Exchange exchange) {
+		  logger.info("marshal", value("marshal",message + "\n" + exchange.getIn().getBody(String.class)));
+	  }
+	  
+	  public void unmarshal(String message, Exchange exchange) {
+		  logger.info("unmarshal", value("unmarshal",message + "\n" + exchange.getIn().getBody(String.class)));
+	  }
+	  
+	  public void exception(String message, Exchange exchange) {
+		  logger.info("exception", value("exception",message + "\n" + exchange.getIn().getBody(String.class)));
+	  }
 
 }
