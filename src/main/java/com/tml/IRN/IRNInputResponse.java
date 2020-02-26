@@ -18,11 +18,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlType(name = "IRNOutput")
+@XmlType(name = "IRNInputResponse")
 
-@XmlRootElement(name = "IRNOutput")
+@XmlRootElement(name = "IRNInputResponse")
 
-public class IRNOutput {
+public class IRNInputResponse {
 	
 	String status;
 	public String getStatus() {
@@ -94,15 +94,5 @@ public class IRNOutput {
 	public void setInvoice_number(String status) {
 		this.status = status;
 	}
-
-	
-	/*
-	 * @XmlElement(name="response")
-	 * 
-	 * @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY) protected
-	 * List<ResponseObj> response ;
-	 */
-
-		
 
 }

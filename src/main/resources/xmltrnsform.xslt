@@ -4,15 +4,15 @@
 	xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 
 
-	<xsl:template match="/IRNOutput">
+	<xsl:template match="/IRNInputResponse">
 		 <soap:Envelope>			
 			<soap:Body>
-				<IRNOutput>
+				<IRNInputResponse>
 					
 						<xsl:copy-of select="*" />
 					
 					
-				</IRNOutput>
+				</IRNInputResponse>
 			</soap:Body>
 		</soap:Envelope> 
 		

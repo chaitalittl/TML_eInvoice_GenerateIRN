@@ -20,7 +20,7 @@
         <dataFormats>
             <jaxb contextPath="com.tml.IRN" id="xml"
                 objectFactory="true" prettyPrint="true"/>
-            <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNOutput"/>
+            <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
             <json id="gson" library="Gson"/>
             <!-- <soapjaxb contextPath="com.tml.crm" id="soapxml" namespacePrefixRef="myMap"/>-->
         </dataFormats>
@@ -607,47 +607,43 @@
                 method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/>
             <log id="_log3" message=" after bean response________${body}"/>
             <setHeader headerName="message" id="_setHeader9">
-                        <jsonpath>$.pwc_response.message</jsonpath>
-                    </setHeader>
-                    <setHeader headerName="status" id="_setHeader9">
-                        <jsonpath>$.pwc_response.status</jsonpath>
-                    </setHeader>
-                    
-                    <setHeader headerName="error" id="_setHeader9">
-                        <jsonpath>$.pwc_response.message</jsonpath>
-                    </setHeader>
+                <jsonpath>$.pwc_response.message</jsonpath>
+            </setHeader>
+            <setHeader headerName="status" id="_setHeader9">
+                <jsonpath>$.pwc_response.status</jsonpath>
+            </setHeader>
+            <setHeader headerName="error" id="_setHeader9">
+                <jsonpath>$.pwc_response.message</jsonpath>
+            </setHeader>
             <choice id="_choice1">
                 <when id="_when1">
                     <simple>${header.CamelHttpResponseCode} == '200'</simple>
-                    
                     <when id="_when1">
-                    <simple>${header.status} == '700'</simple>
-                    <!--<setHeader headerName="message" id="_setHeader9">
+                        <simple>${header.status} == '700'</simple>
+                        <!--<setHeader headerName="message" id="_setHeader9">
                         <jsonpath>$.pwc_response.message</jsonpath>
                     </setHeader>-->
-                    
-                    <setHeader headerName="report_url" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.report_url</jsonpath>
-                    </setHeader>
-                    
-                    <setHeader headerName="irnstatus" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_status</jsonpath>
-                    </setHeader>
-                    <setHeader headerName="ackDt" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_response_data.AckDt</jsonpath>
-                    </setHeader>
-                     <setHeader headerName="ackNo" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_response_data.ackNo</jsonpath>
-                    </setHeader>
-                    <setHeader headerName="irn" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_response_data.irn</jsonpath>
-                    </setHeader>
-                    <setHeader headerName="signedInvoice" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_response_data.SignedInvoice</jsonpath>
-                    </setHeader>
-                    <setHeader headerName="signedQRCode" id="_setHeader9">
-                        <jsonpath>$.irp_response.data.nic_response_data.SignedQRCode</jsonpath>
-                    </setHeader>
+                        <setHeader headerName="report_url" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.report_url</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="irnstatus" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_status</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="ackDt" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_response_data.AckDt</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="ackNo" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_response_data.ackNo</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="irn" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_response_data.irn</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="signedInvoice" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_response_data.SignedInvoice</jsonpath>
+                        </setHeader>
+                        <setHeader headerName="signedQRCode" id="_setHeader9">
+                            <jsonpath>$.irp_response.data.nic_response_data.SignedQRCode</jsonpath>
+                        </setHeader>
                     </when>
                     <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
                     <unmarshal id="_unmarshal1" ref="json"/>

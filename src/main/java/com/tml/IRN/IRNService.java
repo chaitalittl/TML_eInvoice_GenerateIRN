@@ -16,8 +16,8 @@ public interface IRNService {
 		
 		 @WebMethod
 		    @RequestWrapper(localName = "", targetNamespace = "http://com.tml.IRN/", className = "com.tml.IRN.IRNInput")
-		    @ResponseWrapper(localName = "", targetNamespace = "http://com.tml.IRN/", className = "com.tml.IRN.IRNOutput")
+		    @ResponseWrapper(localName = "", targetNamespace = "http://com.tml.IRN/", className = "com.tml.IRN.IRNInputResponse")
 		    //@WebResult(name = "status", targetNamespace = "")
-			public IRNOutput IRNInput(IRNInput input);
+			public IRNInputResponse IRNInput(IRNInput input);
 
 }
