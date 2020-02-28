@@ -13,7 +13,7 @@
     </cxf:cxfEndpoint>
     <!-- <cxf:rsClient
         address="http://dev-irn-api-1287737966.ap-south-1.elb.amazonaws.com/v1/en/push" id="rsGenIRN" loggingFeatureEnabled="true"/>-->
-     <cxf:rsClient
+    <cxf:rsClient
         address="https://einvoice-dev-3scale-apicast-production.api.tatamotors.com:443/v1/en/push?user_key=0a7bda06306c8c2d50680ac9c876bc34"
         id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!-- Define a traditional camel context here -->
@@ -277,7 +277,6 @@
                 <setHeader headerName="DispDtlsgstin" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/gstin/text()</xpath>
                 </setHeader>
-               
                 <setHeader headerName="DispDtlsloc" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/loc/text()</xpath>
                 </setHeader>
@@ -290,6 +289,13 @@
                 <setHeader headerName="DispDtlsstcd" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/stcd/text()</xpath>
                 </setHeader>
+                <choice id="_choice5">
+                    <when id="_when10">
+                        <simple>${header.DispDtlsgstin} != '' or ${header.DispDtlstrdNm} != '' or ${header.DispDtlsloc} != '' or ${header.DispDtlspin} != '' or ${header.DispDtlsstcd} != ''</simple>
+                        <choice id="_choice5">
+                            <when id="_when5">
+                                <simple>${header.DispDtlsgstin} != '' or ${header.DispDtlstrdNm} != '' and ${header.DispDtlsloc} != '' and ${header.DispDtlspin} != '' and ${header.DispDtlsstcd} != ''</simple>
+                           
                 <setHeader headerName="ShipDtlstrdNm" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/trdNm/text()</xpath>
                 </setHeader>
@@ -558,6 +564,25 @@
                 <bean id="_bean2"
                     method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
                 <bean id="_bean3" method="responseCode" ref="logger"/>
+                </when>
+                            <otherwise id="_otherwise44">
+                                <setBody id="_setBody2">
+                                    <simple>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.tml.IRN/"&gt;
+						   &lt;soapenv:Header/&gt;
+						   &lt;soapenv:Body&gt;
+						      &lt;ser:IRNInputResponse&gt;
+						         
+						         	&lt;statusCode&gt;GSTIN of dispatcher,Dispatcher Trade Name,Dispatcher Location,Dispatcher Pincode and Dispatcher State code are mandatory&lt;/statusCode&gt;
+																	
+						      &lt;/ser:IRNInputResponse&gt;
+						   &lt;/soapenv:Body&gt;
+						&lt;/soapenv:Envelope&gt;
+				</simple>
+                                </setBody>
+                            </otherwise>
+                        </choice>
+                    </when>
+                </choice>
                 <doCatch id="_doCatch1">
                     <exception>java.lang.Exception</exception>
                     <log id="_log1" message="stacktrace :: ******************** ${exception.stacktrace}"/>
@@ -609,9 +634,9 @@
                 <jsonpath>$.pwc_response.message</jsonpath>
             </setHeader>
             <choice id="_choice1">
-                <when id="_when1">
+                <when id="_when2">
                     <simple>${header.CamelHttpResponseCode} == '200'</simple>
-                    <when id="_when1">
+                    <when id="_when3">
                         <simple>${header.status} == '700'</simple>
                         <!--<setHeader headerName="message" id="_setHeader9">
                         <jsonpath>$.pwc_response.message</jsonpath>
@@ -742,5 +767,6 @@
             <unmarshal id="_unmarshal2" ref="json"/>
             <to id="_to9" uri="xslt:classpath:xmltrnsform.xslt"/>
         </route>
+         
     </camelContext>
 </beans>

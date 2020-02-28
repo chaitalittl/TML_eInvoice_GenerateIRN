@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mycompany</groupId>
 	<artifactId>generateirn-api</artifactId>
-	<version>${version}</version>
+	<version>1.0.0</version>
 	<name>Fabric8 :: Quickstarts :: Spring-Boot :: Camel XML</name>
 	<description>Spring Boot example running a Camel route defined in XML</description>
 	<properties>
@@ -175,7 +175,7 @@
        
        
        
-          <!-- <repositories>
+          <repositories>
               <repository>
                      <id>red-hat-ga-repository</id>
                      <url>https://maven.repository.redhat.com/ga</url>
@@ -202,7 +202,7 @@
                      <id>jboss-early-access-repository</id>
                      <url>https://repository.jboss.org/nexus/content/groups/ea</url>
               </pluginRepository>
-       </pluginRepositories>-->
+       </pluginRepositories>
        
        
        
