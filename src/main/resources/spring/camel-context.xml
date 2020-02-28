@@ -622,10 +622,10 @@
                             <jsonpath>$.irp_response.data.nic_response_data.AckDt</jsonpath>
                         </setHeader>
                         <setHeader headerName="ackNo" id="_setHeader9">
-                            <jsonpath>$.irp_response.data.nic_response_data.ackNo</jsonpath>
+                            <jsonpath>$.irp_response.data.nic_response_data.AckNo</jsonpath>
                         </setHeader>
                         <setHeader headerName="irn" id="_setHeader9">
-                            <jsonpath>$.irp_response.data.nic_response_data.irn</jsonpath>
+                            <jsonpath>$.irp_response.data.nic_response_data.Irn</jsonpath>
                         </setHeader>
                         <setHeader headerName="signedInvoice" id="_setHeader9">
                             <jsonpath>$.irp_response.data.nic_response_data.SignedInvoice</jsonpath>
