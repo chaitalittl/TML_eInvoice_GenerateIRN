@@ -11,11 +11,11 @@
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
     </cxf:cxfEndpoint>
-    <cxf:rsClient
-        address="http://dev-irn-api-1287737966.ap-south-1.elb.amazonaws.com/v1/en/push" id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!-- <cxf:rsClient
+        address="http://dev-irn-api-1287737966.ap-south-1.elb.amazonaws.com/v1/en/push" id="rsGenIRN" loggingFeatureEnabled="true"/>-->
+     <cxf:rsClient
         address="https://einvoice-dev-3scale-apicast-production.api.tatamotors.com:443/v1/en/push?user_key=0a7bda06306c8c2d50680ac9c876bc34"
-        id="rsGenIRN" loggingFeatureEnabled="true"/> -->
+        id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!-- Define a traditional camel context here -->
     <camelContext id="camel" streamCache="true"
         xmlns="http://camel.apache.org/schema/spring" xmlns:com="http://com.tml.IRN/">
@@ -277,6 +277,7 @@
                 <setHeader headerName="DispDtlsgstin" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/gstin/text()</xpath>
                 </setHeader>
+               
                 <setHeader headerName="DispDtlsloc" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/loc/text()</xpath>
                 </setHeader>
