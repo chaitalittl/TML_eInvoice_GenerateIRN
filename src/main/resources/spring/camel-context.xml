@@ -31,6 +31,7 @@
             <from id="_from1" uri="cxf:bean:GenIRN"/>
             <doTry id="_doTry1">
                 <log id="_log1" message="Request Received from CRM____${body}"/>
+				<removeHeaders id="_removeHeaders1" pattern="*"/>
                 <setHeader headerName="User_GSTIN" id="_setHeader1">
                     <xpath resultType="java.lang.String">//com:IRNInput/User_GSTIN/text()</xpath>
                 </setHeader>
@@ -289,284 +290,648 @@
                 <setHeader headerName="DispDtlsstcd" id="_setHeader5">
                     <xpath resultType="java.lang.String">//com:IRNInput/DispDtls/stcd/text()</xpath>
                 </setHeader>
-                <choice id="_choice5">
+                 <setHeader
+                                    headerName="ShipDtlstrdNm" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/trdNm/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsbnm" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bnm/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsbno" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bno/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsdst" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/dst/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsem" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/em/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsflno" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/flno/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsgstin" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/gstin/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsloc" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/loc/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="ShipDtlsph" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/ph/text()</xpath>
+                                    </setHeader>
+                                    
+
+                                    <setHeader
+                                    headerName="ShipDtlspin" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/pin/text()</xpath>
+                                    </setHeader>
+                                    
+
+                                    <setHeader
+                                    headerName="ShipDtlsstcd" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/stcd/text()</xpath>
+                                    </setHeader>
+                                   
+									<setHeader
+                                    headerName="accountingDocDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="accountingDocNo" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocNo/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="contrRef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/contrRef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="extRef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/extRef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="invEndDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invEndDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="invRmk" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invRmk/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="invStDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invStDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="PORef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/PORef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="precInvDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="precInvNo" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvNo/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="projRef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/projRef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="recAdvRef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/recAdvRef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="soDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="soNo" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soNo/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="tendRef" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/tendRef/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="vendorPoRefDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/vendorPoRefDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="acctDet" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/acctDet/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="balAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/balAmt/text()</xpath>
+                                    </setHeader>
+                                    <choice id="_choice55">
+
+                                    <when id="_when55">
+                                    <simple>${header.balAmt} == ''</simple>
+
+                                    <setHeader
+                                    headerName="balAmt" id="_setHeader5">
+                                    <constant>null</constant>
+                                    </setHeader>
+                                    </when>
+                                    </choice>
+
+                                    <setHeader
+                                    headerName="crDay" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crDay/text()</xpath>
+                                    </setHeader>
+                                    <choice id="_choice54">
+
+                                    <when id="_when53">
+                                    <simple>${header.crDay} == ''</simple>
+
+                                    <setHeader
+                                    headerName="crDay" id="_setHeader5">
+                                    <constant>null</constant>
+                                    </setHeader>
+                                    </when>
+                                    </choice>
+
+                                    <setHeader
+                                    headerName="crTrn" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crTrn/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="dirDr" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/dirDr/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="finInsBr" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/finInsBr/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="mode" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/mode/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="nam" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/nam/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="payDueDt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payDueDt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="payInstr" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payInstr/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="payTerm" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payTerm/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="assAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/assAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="barCde" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/barCde/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="bcd" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/bcd/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="centralDxcise" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/centralDxcise/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cesNonAdVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesNonAdVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cesRt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesRt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cessAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cessNonAdvolRt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessNonAdvolRt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cgstAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cgstRt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstRt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="discount" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/discount/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="eligibilityItc" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/eligibilityItc/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="exportDuty" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/exportDuty/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="freeQty" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/freeQty/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="goodsService" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/goodsService/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="hsnCd" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/hsnCd/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="igstAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="igstRt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstRt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="itcCess" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCess/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="itcCgst" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCgst/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="itcIgst" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcIgst/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="itcSgst" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcSgst/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="itemCode" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itemCode/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="lineItem" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/lineItem/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="natureOfExpense" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/natureOfExpense/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="othChrg" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/othChrg/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="prdDesc" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdDesc/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="prdNm" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdNm/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="qty" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/qty/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="sgstAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="sgstRt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstRt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="stateCes" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateCes/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="stateExcise" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateExcise/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="totAmt" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totAmt/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="totItemVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totItemVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="totalGstRate" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totalGstRate/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="unit" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unit/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="unitPrice" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unitPrice/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="valueBeforeBcd" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/valueBeforeBcd/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="vat" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/vat/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="assVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/assVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cesNonAdVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesNonAdVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cesVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="cgstVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cgstVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="disc" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/disc/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="igstVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/igstVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="othChrg" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/othChrg/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="sgstVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/sgstVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="stCesVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/stCesVal/text()</xpath>
+                                    </setHeader>
+
+                                    <setHeader
+                                    headerName="totInvVal" id="_setHeader5">
+
+                                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/totInvVal/text()</xpath>
+                                    </setHeader>
+									
+                <!--<choice id="_choice5">
                     <when id="_when10">
                         <simple>${header.DispDtlsgstin} != '' or ${header.DispDtlstrdNm} != '' or ${header.DispDtlsloc} != '' or ${header.DispDtlspin} != '' or ${header.DispDtlsstcd} != ''</simple>
+                        <log id="_log1" message="after OR check"/>
                         <choice id="_choice5">
                             <when id="_when5">
-                                <simple>${header.DispDtlsgstin} != '' or ${header.DispDtlstrdNm} != '' and ${header.DispDtlsloc} != '' and ${header.DispDtlspin} != '' and ${header.DispDtlsstcd} != ''</simple>
-                           
-                <setHeader headerName="ShipDtlstrdNm" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/trdNm/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsbnm" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bnm/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsbno" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/bno/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsdst" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/dst/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsem" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/em/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsflno" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/flno/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsgstin" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/gstin/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsloc" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/loc/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsph" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/ph/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlspin" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/pin/text()</xpath>
-                </setHeader>
-                <setHeader headerName="ShipDtlsstcd" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ShipDtls/stcd/text()</xpath>
-                </setHeader>
-                <setHeader headerName="accountingDocDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="accountingDocNo" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/accountingDocNo/text()</xpath>
-                </setHeader>
-                <setHeader headerName="contrRef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/contrRef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="extRef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/extRef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="invEndDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invEndDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="invRmk" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invRmk/text()</xpath>
-                </setHeader>
-                <setHeader headerName="invStDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/invStDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="PORef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/PORef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="precInvDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="precInvNo" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/precInvNo/text()</xpath>
-                </setHeader>
-                <setHeader headerName="projRef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/projRef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="recAdvRef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/recAdvRef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="soDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="soNo" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/soNo/text()</xpath>
-                </setHeader>
-                <setHeader headerName="tendRef" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/tendRef/text()</xpath>
-                </setHeader>
-                <setHeader headerName="vendorPoRefDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/RefDtls/vendorPoRefDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="acctDet" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/acctDet/text()</xpath>
-                </setHeader>
-                <setHeader headerName="balAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/balAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="crDay" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crDay/text()</xpath>
-                </setHeader>
-                <setHeader headerName="crTrn" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/crTrn/text()</xpath>
-                </setHeader>
-                <setHeader headerName="dirDr" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/dirDr/text()</xpath>
-                </setHeader>
-                <setHeader headerName="finInsBr" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/finInsBr/text()</xpath>
-                </setHeader>
-                <setHeader headerName="mode" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/mode/text()</xpath>
-                </setHeader>
-                <setHeader headerName="nam" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/nam/text()</xpath>
-                </setHeader>
-                <setHeader headerName="payDueDt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payDueDt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="payInstr" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payInstr/text()</xpath>
-                </setHeader>
-                <setHeader headerName="payTerm" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/PayDtls/payTerm/text()</xpath>
-                </setHeader>
-                <setHeader headerName="assAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/assAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="barCde" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/barCde/text()</xpath>
-                </setHeader>
-                <setHeader headerName="bcd" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/bcd/text()</xpath>
-                </setHeader>
-                <setHeader headerName="centralDxcise" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/centralDxcise/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cesNonAdVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesNonAdVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cesRt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cesRt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cessAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cessNonAdvolRt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cessNonAdvolRt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cgstAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cgstRt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/cgstRt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="discount" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/discount/text()</xpath>
-                </setHeader>
-                <setHeader headerName="eligibilityItc" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/eligibilityItc/text()</xpath>
-                </setHeader>
-                <setHeader headerName="exportDuty" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/exportDuty/text()</xpath>
-                </setHeader>
-                <setHeader headerName="freeQty" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/freeQty/text()</xpath>
-                </setHeader>
-                <setHeader headerName="goodsService" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/goodsService/text()</xpath>
-                </setHeader>
-                <setHeader headerName="hsnCd" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/hsnCd/text()</xpath>
-                </setHeader>
-                <setHeader headerName="igstAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="igstRt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/igstRt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="itcCess" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCess/text()</xpath>
-                </setHeader>
-                <setHeader headerName="itcCgst" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcCgst/text()</xpath>
-                </setHeader>
-                <setHeader headerName="itcIgst" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcIgst/text()</xpath>
-                </setHeader>
-                <setHeader headerName="itcSgst" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itcSgst/text()</xpath>
-                </setHeader>
-                <setHeader headerName="itemCode" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/itemCode/text()</xpath>
-                </setHeader>
-                <setHeader headerName="lineItem" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/lineItem/text()</xpath>
-                </setHeader>
-                <setHeader headerName="natureOfExpense" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/natureOfExpense/text()</xpath>
-                </setHeader>
-                <setHeader headerName="othChrg" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/othChrg/text()</xpath>
-                </setHeader>
-                <setHeader headerName="prdDesc" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdDesc/text()</xpath>
-                </setHeader>
-                <setHeader headerName="prdNm" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/prdNm/text()</xpath>
-                </setHeader>
-                <setHeader headerName="qty" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/qty/text()</xpath>
-                </setHeader>
-                <setHeader headerName="sgstAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="sgstRt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/sgstRt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="stateCes" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateCes/text()</xpath>
-                </setHeader>
-                <setHeader headerName="stateExcise" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/stateExcise/text()</xpath>
-                </setHeader>
-                <setHeader headerName="totAmt" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totAmt/text()</xpath>
-                </setHeader>
-                <setHeader headerName="totItemVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totItemVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="totalGstRate" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/totalGstRate/text()</xpath>
-                </setHeader>
-                <setHeader headerName="unit" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unit/text()</xpath>
-                </setHeader>
-                <setHeader headerName="unitPrice" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/unitPrice/text()</xpath>
-                </setHeader>
-                <setHeader headerName="valueBeforeBcd" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/valueBeforeBcd/text()</xpath>
-                </setHeader>
-                <setHeader headerName="vat" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ItemList/element/vat/text()</xpath>
-                </setHeader>
-                <setHeader headerName="assVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/assVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cesNonAdVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesNonAdVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cesVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cesVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="cgstVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/cgstVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="disc" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/disc/text()</xpath>
-                </setHeader>
-                <setHeader headerName="igstVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/igstVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="othChrg" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/othChrg/text()</xpath>
-                </setHeader>
-                <setHeader headerName="sgstVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/sgstVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="stCesVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/stCesVal/text()</xpath>
-                </setHeader>
-                <setHeader headerName="totInvVal" id="_setHeader5">
-                    <xpath resultType="java.lang.String">//com:IRNInput/ValDtls/totInvVal/text()</xpath>
-                </setHeader>
-                <to id="_to1" uri="direct:GenIRNAPICall"/>
-                <bean id="_bean2"
-                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
-                <bean id="_bean3" method="responseCode" ref="logger"/>
-                </when>
-                            <otherwise id="_otherwise44">
-                                <setBody id="_setBody2">
+                                <simple>${header.DispDtlsgstin} != '' and ${header.DispDtlstrdNm} != '' and ${header.DispDtlsloc} != '' and ${header.DispDtlspin} != '' and ${header.DispDtlsstcd} != ''</simple>-->
+                                <!--Check ExpDtls Validations -->
+                                		
+									
+									<log id="_log1" message="after OR check export1________${header.expCat}"/>
+									<!--Export Details -->
+									<choice id="_choice51">
+                                    <when id="_when51">
+                                     <simple>${header.expCat} == '' and ${header.invForCur} == '' and ${header.forCur} == '' and ${header.cntCode} == '' and ${header.wthPay} == '' and ${header.port} == '' and ${header.shipBDt} == '' and ${header.shipBNo} == ''</simple>
+									 <choice id="_choice59">
+
+                                    <when id="_when59">
+                                    <simple>${header.invForCur} == ''</simple>
+
+                                    <setHeader
+                                    headerName="invForCur" id="_setHeader5">
+                                    <constant>null</constant>
+                                    </setHeader>
+                                    </when>
+                                    </choice>
+									 <log id="_log1" message="after and check exportdetails"/>
+                                     <to
+                                    id="_to1" uri="direct:GenIRNAPICall"/>
+                                    <bean
+                                    id="_bean2"
+                                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
+                                    <bean
+                                    id="_bean3"
+                                    method="responseCode" ref="logger"/>
+                                     </when>
+                                     <otherwise>
+                                     <choice id="_choice58">
+                                      <when id="_when52">
+                                    <simple>${header.expCat} == '' or ${header.invForCur} == '' or ${header.forCur} == '' or ${header.cntCode} == '' or ${header.wthPay} == '' or ${header.invForCur} == null</simple>
+									<log id="_log1" message="after OR check export________${header.expCat}"/>
+                                    <setHeader
+                                    headerName="status" id="_setHeader5">
+                                    <constant>Export Category,Export Payment,Total Invoice value in Foreign Currency,Foreign Currency and Country are mandatory</constant>
+                                    </setHeader>
+                                    <bean
+                                    id="_bean53"
+                                    method="selectedParamProcess" ref="resProcessor"/>
+
+                                    <unmarshal
+                                    id="_unmarshal52" ref="json"/>
+                                    <to
+                                    id="_to42" uri="xslt:classpath:xmltrnsform.xslt"/>
+                                    </when>
+									<otherwise>
+									<choice id="_choice59">
+
+                                    <when id="_when59">
+                                    <simple>${header.invForCur} == ''</simple>
+
+                                    <setHeader
+                                    headerName="invForCur" id="_setHeader5">
+                                    <constant>null</constant>
+                                    </setHeader>
+                                    </when>
+                                    </choice>
+									<log id="_log1" message="after OR check toexport"/>
+                                    <to
+                                    id="_to1" uri="direct:GenIRNAPICall"/>
+                                    <bean
+                                    id="_bean2"
+                                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
+                                    <bean
+                                    id="_bean3"
+                                    method="responseCode" ref="logger"/>
+                                    </otherwise>
+                                    </choice>
+                                     </otherwise>
+                                     </choice>
+									
+									
+									 
+									 
+                                    
+                                    
+                                    <!--</when>
+                                </choice>
+                            </when>
+                            <otherwise id="_otherwise44">-->
+                                <!-- <setBody id="_setBody25">
                                     <simple>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.tml.IRN/"&gt;
 						   &lt;soapenv:Header/&gt;
 						   &lt;soapenv:Body&gt;
@@ -578,11 +943,21 @@
 						   &lt;/soapenv:Body&gt;
 						&lt;/soapenv:Envelope&gt;
 				</simple>
-                                </setBody>
+                                </setBody> -->
+                                <!--<setHeader headerName="status" id="_setHeader5">
+                                    <constant>GSTIN of dispatcher,Dispatcher Trade Name,Dispatcher Location,Dispatcher Pincode and Dispatcher State code are mandatory</constant>
+                                </setHeader>
+                                <bean id="_bean51"
+                                    method="selectedParamProcess" ref="resProcessor"/>
+                                <unmarshal id="_unmarshal51" ref="json"/>
+                                
+                                <to id="_to41" uri="xslt:classpath:xmltrnsform.xslt"/>
+                                <bean id="_bean52"
+                                    method="response(XSLT API RESPONSE :: *****)" ref="logger"/>
                             </otherwise>
                         </choice>
                     </when>
-                </choice>
+                </choice>-->
                 <doCatch id="_doCatch1">
                     <exception>java.lang.Exception</exception>
                     <log id="_log1" message="stacktrace :: ******************** ${exception.stacktrace}"/>
@@ -604,7 +979,7 @@
                 <!--<simple>[{"User_GSTIN":"${header.User_GSTIN}","TaxSch":"${header.TaxSch}","Version":"1.0","TranDtls":{"Catg":"${header.catg}","RegRev":"${header.regRev}","Typ":"${header.typ}","EcmTrnSel":"${header.ecmTrnSel}","EcmTrn":"${header.ecmTrn}","EcmGstin":"${header.ecmGstin}","OutwardInward":"${header.outwardInward}","SubType":"${header.subType}","SubTypeDescription":"${header.subTypeDescription}","Pos":${header.pos},"ClaimingRefund":"${header.claimingRefund}","DiffPercentage":"${header.diffPercentage}","Taxability":"${header.taxability}","InterIntra":"${header.interIntra}"},"DocDtls":{"Typ":"${header.DocDtlstyp}","No":"${header.no}","Dt":"${header.dt}","OrgInvNo":"${header.orgInvNo}","OrgInvDt":"${header.orgInvDt}","ReasonForCnDn":"${header.reasonForCnDn}"},"ExpDtls":{"ExpCat":"${header.expCat}","WthPay":"${header.wthPay}","ShipBNo":"${header.shipBNo}","ShipBDt":"${header.shipBDt}","Port":"${header.port}","InvForCur":${header.invForCur},"ForCur":"${header.forCur}","CntCode":"${header.cntCode}"},"MisColumns": {"Bu": "${header.bu}","Sbu": "${header.sbu}","Location": "${header.location}","User": "${header.user}","CompanyCode": "${header.companyCode}","CompanyName": "${header.companyName}","TrackingNo": "${header.trackingNo}","TransactionCount":"${header.transactionCount}","GlAccount":"${header.glAccount}","EwbNo": ${header.ewbNo},"ReturnPeriod":"${header.returnPeriod}","Mis11":"","Mis12":"","Mis13":"","Mis14":"","Mis15":"","Mis16":"","Mis17":"","Mis18":"","Mis19":"","Mis20":"","Mis21":"","Mis22":"","Mis23":"","Mis24":"","Mis25":"","Mis26":"","Mis27":"","Mis28":"","Mis29":"","Mis30":""},"TransportDtls":{"TransporterId":"${header.transporterId}","DistanceKm":${header.distanceKm},"TransporterName":"${header.transporterName}","TransMode":"${header.transMode}","TransDocNo":"${header.transDocNo}","TransDocDate":"${header.transDocDate}","VehicleNo":"${header.vehicleNo}","VehicleType":"${header.vehicleType}"},"SellerDtls":{"Gstin":"${header.gstin}","TrdNm":"${header.trdNm}","Bno":"${header.SellerDtlsbno}","Bnm":"${header.bnm}","Flno":"${header.flno}","Loc":"${header.loc}","Dst":"${header.dst}","Pin":${header.pin},"Stcd":${header.stcd},"Ph":${header.ph},"Em":"${header.em}","SupplierCode":"${header.supplierCode}"},"BuyerDtls":{"Gstin":"${header.BuyerDtlsgstin}","TrdNm":"${header.BuyerDtlstrdNm}","Bno":"${header.BuyerDtlsbno}","Bnm":"${header.BuyerDtlsbnm}","Flno":"${header.BuyerDtlsflno}","Loc":"${header.BuyerDtlsloc}","Dst":"${header.BuyerDtlsdst}","Pin":${header.BuyerDtlspin},"Stcd":${header.BuyerDtlsstcd},"Ph":${header.BuyerDtlsph},"Em":"${header.BuyerDtlsem}","CustomerCode":"${header.BuyerDtlscustomerCode}"},"DispDtls":{"Gstin":"${header.DispDtlsgstin}","TrdNm":"${header.DispDtlstrdNm}","Bno":"${header.DispDtlsbno}","Bnm":"${header.DispDtlsbnm}","Flno":"${header.DispDtlsflno}","Loc":"${header.DispDtlsloc}","Dst":"${header.DispDtlsdst}","Pin":${header.DispDtlspin},"Stcd":${header.DispDtlsstcd},"Ph":${header.DispDtlsph},"Em":"${header.DispDtlsem}"},"ShipDtls":{"Gstin":"${header.ShipDtlsgstin}","TrdNm":"${header.ShipDtlstrdNm}","Bno":"${header.ShipDtlsbno}","Bnm":"${header.ShipDtlsbnm}","Flno":"${header.ShipDtlsflno}","Loc":"${header.ShipDtlsloc}","Dst":"${header.ShipDtlsdst}","Pin":${header.ShipDtlspin},"Stcd":${header.ShipDtlsstcd},"Ph":${header.ShipDtlsph},"Em":"${header.ShipDtlsem}"},"ValDtls":{"AssVal":${header.assVal},"CgstVal":${header.cgstVal},"SgstVal":${header.sgstVal},"IgstVal":${header.igstVal},"CesVal":${header.cesVal},"StCesVal":${header.stCesVal},"CesNonAdVal":${header.cesNonAdVal},"Disc":${header.disc},"OthChrg":${header.othChrg},"TotInvVal":${header.totInvVal}},"RefDtls":{"InvRmk":"${header.invRmk}","InvStDt":"${header.invStDt}","InvEndDt":"${header.invEndDt}","PrecInvNo":"${header.precInvNo}","PrecInvDt":"${header.precInvDt}","RecAdvRef":"${header.recAdvRef}","TendRef":"${header.tendRef}","ContrRef":"${header.contrRef}","ExtRef":"${header.extRef}","ProjRef":"${header.projRef}","PORef":"${header.PORef}","VendorPoRefDt":"${header.vendorPoRefDt}","AccountingDocNo":"${header.accountingDocNo}","AccountingDocDt":"${header.accountingDocDt}","SoNo":"${header.soNo}","SoDt":"${header.soDt}"},"PayDtls":{"Nam":"${header.nam}","Mode":"${header.mode}","FinInsBr":"${header.finInsBr}","PayTerm":"${header.payTerm}","PayInstr":"${header.payInstr}","CrTrn":"${header.crTrn}","DirDr":"${header.dirDr}","CrDay":${header.crDay},"BalAmt":${header.balAmt},"PayDueDt":"${header.payDueDt}","AcctDet":"${header.acctDet}"},"ItemList":[{"LineItem":"${header.lineItem}","ItemCode":"${header.itemCode}","PrdNm":"${header.prdNm}","PrdDesc":"${header.prdDesc}","HsnCd":"${header.hsnCd}","GoodsService":"${header.goodsService}","BarCde":"${header.barCde}","Qty":${header.qty},"FreeQty":${header.freeQty},"Unit":"${header.unit}","UnitPrice":${header.unitPrice},"TotAmt":${header.totAmt},"CgstRt":${header.cgstRt},"SgstRt":${header.sgstRt},"IgstRt":${header.igstRt},"CesRt":${header.cesRt},"CesNonAdVal":${header.cesNonAdVal},"StateCes":${header.stateCes},"TotItemVal":${header.totItemVal},"Discount":${header.discount},"OthChrg":${header.othChrg},"Vat":"${header.vat}","CentralDxcise":"${header.centralDxcise}","StateExcise":"${header.stateExcise}","ExportDuty":"${header.exportDuty}","ValueBeforeBcd":"${header.valueBeforeBcd}","Bcd":"${header.bcd}","AssAmt":${header.assAmt},"TotalGstRate":"${header.totalGstRate}","CessNonAdvolRt":${header.cessNonAdvolRt},"IgstAmt":"${header.igstAmt}","CgstAmt":"${header.cgstAmt}","SgstAmt":"${header.sgstAmt}","CessAmt":"${header.cessAmt}","EligibilityItc":"${header.eligibilityItc}","ItcIgst":"${header.itcIgst}","ItcCgst":"${header.itcCgst}","ItcSgst":"${header.itcSgst}","ItcCess":"${header.itcCess}","NatureOfExpense":"${header.natureOfExpense}","Mis1":"","Mis2":"","Mis3":"","Mis4":"","Mis5":"","Mis6":"","Mis7":"","Mis8":"","Mis9":"","Mis10":"","Fu1":"","Fu2":"","Fu3":"","Fu4":"","Fu5":"","Fu6":"","Fu7":"","Fu8":"","Fu9":"","Fu10":""}],"is_irn":"${header.is_irn}"}]</simple>-->
                 <simple>[{"User_GSTIN":"${header.User_GSTIN}","TaxSch":"${header.TaxSch}","Version":"1.0","TranDtls":{"Catg":"${header.catg}","RegRev":"${header.regRev}","Typ":"${header.typ}","EcmTrnSel":"${header.ecmTrnSel}","EcmTrn":"${header.ecmTrn}","EcmGstin":"${header.ecmGstin}","OutwardInward":"${header.outwardInward}","SubType":"${header.subType}","SubTypeDescription":"${header.subTypeDescription}","Pos":${header.pos},"ClaimingRefund":"${header.claimingRefund}","DiffPercentage":"${header.diffPercentage}","Taxability":"${header.taxability}","InterIntra":"${header.interIntra}"},"DocDtls":{"Typ":"${header.DocDtlstyp}","No":"${header.no}","Dt":"${header.dt}","OrgInvNo":"${header.orgInvNo}","OrgInvDt":"${header.orgInvDt}","ReasonForCnDn":"${header.reasonForCnDn}"},"ExpDtls":{"ExpCat":"${header.expCat}","WthPay":"${header.wthPay}","ShipBNo":"${header.shipBNo}","ShipBDt":"${header.shipBDt}","Port":"${header.port}","InvForCur":${header.invForCur},"ForCur":"${header.forCur}","CntCode":"${header.cntCode}"},"TransportDtls":{"TransporterId":"${header.transporterId}","DistanceKm":${header.distanceKm},"TransporterName":"${header.transporterName}","TransMode":"${header.transMode}","TransDocNo":"${header.transDocNo}","TransDocDate":"${header.transDocDate}","VehicleNo":"${header.vehicleNo}","VehicleType":"${header.vehicleType}"},"SellerDtls":{"Gstin":"${header.gstin}","TrdNm":"${header.trdNm}","Bno":"${header.SellerDtlsbno}","Bnm":"${header.bnm}","Flno":"${header.flno}","Loc":"${header.loc}","Dst":"${header.dst}","Pin":${header.pin},"Stcd":${header.stcd},"Ph":${header.ph},"Em":"${header.em}","SupplierCode":"${header.supplierCode}"},"BuyerDtls":{"Gstin":"${header.BuyerDtlsgstin}","TrdNm":"${header.BuyerDtlstrdNm}","Bno":"${header.BuyerDtlsbno}","Bnm":"${header.BuyerDtlsbnm}","Flno":"${header.BuyerDtlsflno}","Loc":"${header.BuyerDtlsloc}","Dst":"${header.BuyerDtlsdst}","Pin":${header.BuyerDtlspin},"Stcd":${header.BuyerDtlsstcd},"Ph":${header.BuyerDtlsph},"Em":"${header.BuyerDtlsem}","CustomerCode":"${header.BuyerDtlscustomerCode}"},"DispDtls":{"Gstin":"${header.DispDtlsgstin}","TrdNm":"${header.DispDtlstrdNm}","Bno":"${header.DispDtlsbno}","Bnm":"${header.DispDtlsbnm}","Flno":"${header.DispDtlsflno}","Loc":"${header.DispDtlsloc}","Dst":"${header.DispDtlsdst}","Pin":${header.DispDtlspin},"Stcd":${header.DispDtlsstcd},"Ph":${header.DispDtlsph},"Em":"${header.DispDtlsem}"},"ShipDtls":{"Gstin":"${header.ShipDtlsgstin}","TrdNm":"${header.ShipDtlstrdNm}","Bno":"${header.ShipDtlsbno}","Bnm":"${header.ShipDtlsbnm}","Flno":"${header.ShipDtlsflno}","Loc":"${header.ShipDtlsloc}","Dst":"${header.ShipDtlsdst}","Pin":${header.ShipDtlspin},"Stcd":${header.ShipDtlsstcd},"Ph":${header.ShipDtlsph},"Em":"${header.ShipDtlsem}"},"ValDtls":{"AssVal":${header.assVal},"CgstVal":${header.cgstVal},"SgstVal":${header.sgstVal},"IgstVal":${header.igstVal},"CesVal":${header.cesVal},"StCesVal":${header.stCesVal},"CesNonAdVal":${header.cesNonAdVal},"Disc":${header.disc},"OthChrg":${header.othChrg},"TotInvVal":${header.totInvVal}},"RefDtls":{"InvRmk":"${header.invRmk}","InvStDt":"${header.invStDt}","InvEndDt":"${header.invEndDt}","PrecInvNo":"${header.precInvNo}","PrecInvDt":"${header.precInvDt}","RecAdvRef":"${header.recAdvRef}","TendRef":"${header.tendRef}","ContrRef":"${header.contrRef}","ExtRef":"${header.extRef}","ProjRef":"${header.projRef}","PORef":"${header.PORef}","VendorPoRefDt":"${header.vendorPoRefDt}","AccountingDocNo":"${header.accountingDocNo}","AccountingDocDt":"${header.accountingDocDt}","SoNo":"${header.soNo}","SoDt":"${header.soDt}"},"PayDtls":{"Nam":"${header.nam}","Mode":"${header.mode}","FinInsBr":"${header.finInsBr}","PayTerm":"${header.payTerm}","PayInstr":"${header.payInstr}","CrTrn":"${header.crTrn}","DirDr":"${header.dirDr}","CrDay":${header.crDay},"BalAmt":${header.balAmt},"PayDueDt":"${header.payDueDt}","AcctDet":"${header.acctDet}"},"ItemList":[{"LineItem":"${header.lineItem}","ItemCode":"${header.itemCode}","PrdNm":"${header.prdNm}","PrdDesc":"${header.prdDesc}","HsnCd":"${header.hsnCd}","GoodsService":"${header.goodsService}","BarCde":"${header.barCde}","Qty":${header.qty},"FreeQty":${header.freeQty},"Unit":"${header.unit}","UnitPrice":${header.unitPrice},"TotAmt":${header.totAmt},"CgstRt":${header.cgstRt},"SgstRt":${header.sgstRt},"IgstRt":${header.igstRt},"CesRt":${header.cesRt},"CesNonAdVal":${header.cesNonAdVal},"StateCes":${header.stateCes},"TotItemVal":${header.totItemVal},"Discount":${header.discount},"OthChrg":${header.othChrg},"Vat":"${header.vat}","CentralDxcise":"${header.centralDxcise}","StateExcise":"${header.stateExcise}","ExportDuty":"${header.exportDuty}","ValueBeforeBcd":"${header.valueBeforeBcd}","Bcd":"${header.bcd}","AssAmt":${header.assAmt},"TotalGstRate":"${header.totalGstRate}","CessNonAdvolRt":${header.cessNonAdvolRt},"IgstAmt":"${header.igstAmt}","CgstAmt":"${header.cgstAmt}","SgstAmt":"${header.sgstAmt}","CessAmt":"${header.cessAmt}","EligibilityItc":"${header.eligibilityItc}","ItcIgst":"${header.itcIgst}","ItcCgst":"${header.itcCgst}","ItcSgst":"${header.itcSgst}","ItcCess":"${header.itcCess}","NatureOfExpense":"${header.natureOfExpense}","Mis1":"","Mis2":"","Mis3":"","Mis4":"","Mis5":"","Mis6":"","Mis7":"","Mis8":"","Mis9":"","Mis10":"","Fu1":"","Fu2":"","Fu3":"","Fu4":"","Fu5":"","Fu6":"","Fu7":"","Fu8":"","Fu9":"","Fu10":""}],"is_irn":"${header.is_irn}"}]</simple>
             </setBody>
-            <removeHeaders excludePattern="gstin" id="_removeHeaders1" pattern="*"/>
+            <removeHeaders excludePattern="gstin" pattern="*"/>
             <setHeader headerName="Content-Type" id="_setHeader7">
                 <constant>application/json</constant>
             </setHeader>
@@ -709,7 +1084,7 @@
             <bean id="_bean8"
                 method="response(in Exception route :: *****)" ref="logger"/>
             <doTry id="_doTry3">
-                <when id="_when2">
+                <when id="_when30">
                     <simple>${header.CamelHttpResponseCode} == '400'</simple>
                     <setBody id="_setBody6">
                         <simple>{"message":"Bad Request"}</simple>
@@ -721,7 +1096,7 @@
                         <simple>{"message":"Authentication Required"}</simple>
                     </setBody>
                 </when>
-                <when id="_when5">
+                <when id="_when25">
                     <simple>${header.CamelHttpResponseCode} == '403'</simple>
                     <setBody id="_setBody8">
                         <simple>{"message":"403 Forbidden"}</simple>
@@ -767,6 +1142,5 @@
             <unmarshal id="_unmarshal2" ref="json"/>
             <to id="_to9" uri="xslt:classpath:xmltrnsform.xslt"/>
         </route>
-         
     </camelContext>
 </beans>
