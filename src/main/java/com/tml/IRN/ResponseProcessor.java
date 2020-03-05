@@ -90,7 +90,63 @@ public class ResponseProcessor {
 				}
 
 			} 
-		 
+	 public static String removeWord(String string, String word) 
+	    { 
+	  
+	        // Check if the word is present in string 
+	        // If found, remove it using removeAll() 
+	        if (string.contains(word)) { 
+	  
+	            // To cover the case 
+	            // if the word is at the 
+	            // beginning of the string 
+	            // or anywhere in the middle 
+	            String tempWord = word + " "; 
+	            string = string.replaceAll(tempWord, ""); 
+	  
+	            // To cover the edge case 
+	            // if the word is at the 
+	            // end of the string 
+	            tempWord = " " + word; 
+	            string = string.replaceAll(tempWord, ""); 
+	        } 
+	  
+	        // Return the resultant string 
+	        return string; 
+	    } 
+	public void processItemlist(Exchange exchange) throws Exception {
+		try {
+			
+			Message inMessage = exchange.getIn();
+			String ITEMLISTH = (String) inMessage.getHeader("ITEMLISTH", String.class);
+			System.out.println("ITEMLISTH :"+ITEMLISTH);
+			
+			ITEMLISTH = ITEMLISTH.replace("<element>","");
+			System.out.println("before ITEMLISTH :"+ITEMLISTH);
+			ITEMLISTH = removeWord(ITEMLISTH,"</element>");
+			System.out.println("after ITEMLISTH :"+ITEMLISTH);
+			
+			ITEMLISTH = ITEMLISTH.replaceAll("(?m)^[ \t]*\r?\n", "");
+			System.out.println("after removing spaces :"+ITEMLISTH);
+			/*String finalResponse = "{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
+					+ pAckDt + "\"}";*/
+			String finalResponse = "";
+						
+			/*String finalResponse ="{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
+			+ pAckDt + "\",\"ackNo\":\""+ pAckNo + "\",\"irn\":\""+ pIrn + "\",\"signedInvoice\":\""
+					+ pSignedInvoice + "\",\"signedQRCode\":\""+ pSignedQRCode + "\",\"irnstatus\":\""+ pIrnstatus + "\",\"report_url\" : \""+preport_url+"\"}";
+			//System.out.println("tentResponse :" + finalResponse);*/
+			inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
+			MessageContentsList req = new MessageContentsList();
+			req.add(finalResponse);
+			//System.out.println("bodyPara" + req);
+			inMessage.setBody(req);
+
+		} catch (Exception e) {
+			log.error("Exception in process()", e);
+		}
+
+	} 
 
 
 }
