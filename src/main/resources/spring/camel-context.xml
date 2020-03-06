@@ -26,6 +26,7 @@
             <jaxb contextPath="com.tml.IRN" id="xml"
                 objectFactory="true" prettyPrint="true"/>
             <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
+            <json id="jsonid" library="Jackson" unmarshalTypeName="com.tml.IRNItem.ItemListParent"/>
             <json id="gson" library="Gson"/>
             <!-- <soapjaxb contextPath="com.tml.crm" id="soapxml" namespacePrefixRef="myMap"/>-->
             <soapjaxb contextPath="com.tml.IRNItem" id="soapxml"/>
@@ -37,6 +38,24 @@
             <doTry id="_doTry1">
                 <log id="_log1" message="Request Received from CRM____${body}"/>
                 <removeHeaders id="_removeHeaders1" pattern="*"/>
+                <setHeader headerName="ITEMLISTH" id="_setHeader5">
+                    <xpath>//com:IRNInput/ItemList</xpath>
+                </setHeader>
+                <!-- <bean id="_bean53" method="processItemlistjson" ref="resProcessor"/>
+                 <bean
+                                    id="_bean2"
+                                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
+                <log id="_log1" message="Request Received from CRM____${body}"/>
+                <bean id="_bean53" method="processItemlist" ref="resProcessor"/>
+                <unmarshal id="_unmarshal11" ref="jsonid"/>-->
+                <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
+                <log id="_log4" message="Request________${body}"/>
+                <marshal id="_marshal1" ref="xmlJson"/>
+                <setHeader headerName="irnInput" id="_setHeader18">
+                    <jsonpath>$.com:IRNInput</jsonpath>
+                </setHeader>
+                <log id="_log7" message="UnRequest________${body}"/>
+                <log id="_log6" message="Irn________${header.irnInput}"/>
                 <setHeader headerName="User_GSTIN" id="_setHeader1">
                     <xpath resultType="java.lang.String">//com:IRNInput/User_GSTIN/text()</xpath>
                 </setHeader>
@@ -578,16 +597,17 @@
                 <setHeader headerName="ITEMLISTH" id="_setHeader5">
                     <xpath>//com:IRNInput/ItemList</xpath>
                 </setHeader>
-                 <bean id="_bean53" method="processItemlist" ref="resProcessor"/>
-                <log id="_log4" message="Request________${body}"/>
-                <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/> 
-                <log id="_log7" message="UnRequest________${body}"/>
+                <!--<bean id="_bean53" method="processItemlist" ref="resProcessor"/>
+                  <unmarshal id="_unmarshal11" ref="jsonid"/>-->
+                <!-- <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
+                <log id="_log4" message="Request________${body}"/> -->
+                <!-- <log id="_log7" message="UnRequest________${body}"/>
                     <marshal id="_marshal1" ref="xmlJson"/>
                     <setHeader headerName="ITEMjson" id="_setHeader5">
 					<simple>${body}</simple>
                  </setHeader>
                  <log id="_log8" message="UnRequest________${body}"/>
-					<log id="_log8" message="UnRequest JSON________${header.ITEMjson}"/>
+					<log id="_log8" message="UnRequest JSON________${header.ITEMjson}"/> -->
                 <!-- <split id="_split1" streaming="true">
                     <tokenize inheritNamespaceTagName="IRNInput"
                         token="ItemList" xml="true"/>
@@ -1487,7 +1507,6 @@
                     <to id="_to8" uri="direct:doCatchCall"/>
                 </doCatch>
             </doTry>-->
-            
         </route>
         <route id="RT_4_eXCEPTION_ROUTE">
             <from id="_from4" uri="direct:ExcetionRoute"/>

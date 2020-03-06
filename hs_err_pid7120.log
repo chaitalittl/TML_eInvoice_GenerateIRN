@@ -1,0 +1,700 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 323472 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=7120, tid=0x0000000000003468
+#
+# JRE version: OpenJDK Runtime Environment (8.0_232-b09) (build 1.8.0_232-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.232-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001824a000):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=13416, stack(0x0000000019160000,0x0000000019260000)]
+
+Stack: [0x0000000019160000,0x0000000019260000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:   4643  319       4       java.io.WinNTFileSystem::normalize (143 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00000000182f7000 JavaThread "Service Thread" daemon [_thread_blocked, id=4664, stack(0x0000000019460000,0x0000000019560000)]
+  0x00000000182a2000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=15884, stack(0x0000000019360000,0x0000000019460000)]
+  0x0000000018298800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17276, stack(0x0000000019260000,0x0000000019360000)]
+=>0x000000001824a000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=13416, stack(0x0000000019160000,0x0000000019260000)]
+  0x0000000018248800 JavaThread "Attach Listener" daemon [_thread_blocked, id=964, stack(0x0000000019060000,0x0000000019160000)]
+  0x0000000018248000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=15416, stack(0x0000000018f60000,0x0000000019060000)]
+  0x000000001776a800 JavaThread "Finalizer" daemon [_thread_blocked, id=21092, stack(0x0000000018d60000,0x0000000018e60000)]
+  0x0000000017767000 JavaThread "Reference Handler" daemon [_thread_blocked, id=25744, stack(0x0000000018c60000,0x0000000018d60000)]
+  0x0000000002b27800 JavaThread "main" [_thread_in_native, id=24464, stack(0x00000000028e0000,0x00000000029e0000)]
+
+Other Threads:
+  0x000000001775e800 VMThread [stack: 0x0000000018b60000,0x0000000018c60000] [id=23768]
+  0x00000000182f9000 WatcherThread [stack: 0x0000000019560000,0x0000000019660000] [id=17016]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000081c00000, size: 2020 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 38400K, used 7998K [0x00000000d5f00000, 0x00000000d8980000, 0x0000000100000000)
+  eden space 33280K, 24% used [0x00000000d5f00000,0x00000000d66cf8a0,0x00000000d7f80000)
+  from space 5120K, 0% used [0x00000000d8480000,0x00000000d8480000,0x00000000d8980000)
+  to   space 5120K, 0% used [0x00000000d7f80000,0x00000000d7f80000,0x00000000d8480000)
+ ParOldGen       total 87552K, used 0K [0x0000000081c00000, 0x0000000087180000, 0x00000000d5f00000)
+  object space 87552K, 0% used [0x0000000081c00000,0x0000000081c00000,0x0000000087180000)
+ Metaspace       used 5023K, capacity 5324K, committed 5504K, reserved 1056768K
+  class space    used 487K, capacity 568K, committed 640K, reserved 1048576K
+
+Card table byte_map: [0x0000000011fa0000,0x00000000123a0000] byte_map_base: 0x0000000011b92000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006d7ba170
+ Begin Bits: [0x0000000012a50000, 0x00000000149e0000)
+ End Bits:   [0x00000000149e0000, 0x0000000016970000)
+
+Polling page: 0x0000000000b00000
+
+CodeCache: size=245760Kb used=1948Kb max_used=1948Kb free=243812Kb
+ bounds [0x0000000002be0000, 0x0000000002e50000, 0x0000000011be0000]
+ total_blobs=605 nmethods=328 adapters=191
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 1.145 Thread 0x00000000182a2000 nmethod 189 0x0000000002d63a10 code [0x0000000002d63bc0, 0x0000000002d64148]
+Event: 1.145 Thread 0x00000000182a2000  190       3       java.util.ArrayList::ensureCapacityInternal (13 bytes)
+Event: 1.145 Thread 0x00000000182a2000 nmethod 190 0x0000000002d643d0 code [0x0000000002d64560, 0x0000000002d648e8]
+Event: 1.146 Thread 0x00000000182a2000  191       3       java.util.HashMap$Node::<init> (26 bytes)
+Event: 1.147 Thread 0x00000000182a2000 nmethod 191 0x0000000002d64a50 code [0x0000000002d64ba0, 0x0000000002d64d90]
+Event: 1.147 Thread 0x00000000182a2000  192  s    3       java.util.Hashtable::put (104 bytes)
+Event: 1.147 Thread 0x00000000182a2000 nmethod 192 0x0000000002d64e50 code [0x0000000002d65020, 0x0000000002d657b8]
+Event: 1.147 Thread 0x00000000182a2000  193       3       java.util.Hashtable::addEntry (87 bytes)
+Event: 1.147 Thread 0x00000000182a2000 nmethod 193 0x0000000002d65b10 code [0x0000000002d65cc0, 0x0000000002d66318]
+Event: 1.147 Thread 0x000000001824a000  196       4       java.lang.CharacterDataLatin1::toUpperCaseEx (71 bytes)
+Event: 1.147 Thread 0x00000000182a2000  195       1       java.util.LinkedHashMap::removeEldestEntry (2 bytes)
+Event: 1.148 Thread 0x00000000182a2000 nmethod 195 0x0000000002d66a10 code [0x0000000002d66b60, 0x0000000002d66c70]
+Event: 1.148 Thread 0x00000000182a2000  198       1       java.util.HashMap$Node::getValue (5 bytes)
+Event: 1.148 Thread 0x00000000182a2000 nmethod 198 0x0000000002d66cd0 code [0x0000000002d66e20, 0x0000000002d66f30]
+Event: 1.148 Thread 0x00000000182a2000  197       1       java.util.HashMap$Node::getKey (5 bytes)
+Event: 1.148 Thread 0x00000000182a2000 nmethod 197 0x0000000002d66f90 code [0x0000000002d670e0, 0x0000000002d671f0]
+Event: 1.148 Thread 0x000000001824a000 nmethod 196 0x0000000002d69f10 code [0x0000000002d6a040, 0x0000000002d6a118]
+Event: 1.186 Thread 0x00000000182a2000  199  s    3       java.util.Hashtable::get (69 bytes)
+Event: 1.186 Thread 0x00000000182a2000 nmethod 199 0x0000000002d694d0 code [0x0000000002d69660, 0x0000000002d69c98]
+Event: 1.186 Thread 0x00000000182a2000  201       3       sun.nio.cs.SingleByte$Encoder::encode (32 bytes)
+Event: 1.186 Thread 0x00000000182a2000 nmethod 201 0x0000000002d69010 code [0x0000000002d69180, 0x0000000002d69390]
+Event: 1.186 Thread 0x00000000182a2000  202       3       java.lang.ref.SoftReference::get (29 bytes)
+Event: 1.186 Thread 0x00000000182a2000 nmethod 202 0x0000000002d68890 code [0x0000000002d689e0, 0x0000000002d68bd0]
+Event: 1.186 Thread 0x00000000182a2000  200       1       java.nio.charset.Charset::name (5 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 200 0x0000000002d685d0 code [0x0000000002d68720, 0x0000000002d68830]
+Event: 1.187 Thread 0x00000000182a2000  204       3       java.lang.Integer::reverseBytes (26 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 204 0x0000000002d682d0 code [0x0000000002d68420, 0x0000000002d68570]
+Event: 1.187 Thread 0x00000000182a2000  205       3       java.lang.ThreadLocal::getMap (5 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 205 0x0000000002d67f90 code [0x0000000002d680e0, 0x0000000002d68230]
+Event: 1.187 Thread 0x00000000182a2000  206       3       java.lang.ThreadLocal::get (38 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 206 0x0000000002d678d0 code [0x0000000002d67a60, 0x0000000002d67de8]
+Event: 1.187 Thread 0x00000000182a2000  207       3       java.lang.StringCoding::deref (19 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 207 0x0000000002d6a1d0 code [0x0000000002d6a360, 0x0000000002d6a808]
+Event: 1.187 Thread 0x00000000182a2000  208       3       java.lang.StringCoding::access$000 (6 bytes)
+Event: 1.187 Thread 0x00000000182a2000 nmethod 208 0x0000000002d67510 code [0x0000000002d67680, 0x0000000002d67830]
+Event: 1.235 Thread 0x00000000182a2000  209       3       java.nio.charset.CharsetEncoder::maxBytesPerChar (5 bytes)
+Event: 1.235 Thread 0x00000000182a2000 nmethod 209 0x0000000002d6ad90 code [0x0000000002d6aee0, 0x0000000002d6b030]
+Event: 1.279 Thread 0x00000000182a2000  210       3       sun.nio.cs.SingleByte$Encoder::encode (114 bytes)
+Event: 1.280 Thread 0x00000000182a2000 nmethod 210 0x0000000002d6cd10 code [0x0000000002d6cee0, 0x0000000002d6d750]
+Event: 1.280 Thread 0x00000000182a2000  211       1       java.lang.StringCoding$StringEncoder::requestedCharsetName (5 bytes)
+Event: 1.281 Thread 0x00000000182a2000 nmethod 211 0x0000000002d6dc90 code [0x0000000002d6dde0, 0x0000000002d6def0]
+Event: 1.573 Thread 0x000000001824a000  213       4       java.lang.Integer::reverseBytes (26 bytes)
+Event: 1.573 Thread 0x00000000182a2000  214       1       sun.nio.fs.WindowsDirectoryStream::access$500 (5 bytes)
+Event: 1.573 Thread 0x000000001824a000 nmethod 213 0x0000000002d70f50 code [0x0000000002d71080, 0x0000000002d710f8]
+Event: 1.573 Thread 0x00000000182a2000 nmethod 214 0x0000000002d70c90 code [0x0000000002d70de0, 0x0000000002d70ed0]
+Event: 1.573 Thread 0x00000000182a2000  215       1       sun.nio.fs.WindowsPath::getFileSystem (5 bytes)
+Event: 1.573 Thread 0x00000000182a2000 nmethod 215 0x0000000002d709d0 code [0x0000000002d70b20, 0x0000000002d70c30]
+Event: 1.842 Thread 0x00000000182a2000  217       3       sun.security.provider.SHA::implCompress0 (482 bytes)
+Event: 1.843 Thread 0x00000000182a2000 nmethod 217 0x0000000002d6f3d0 code [0x0000000002d6f5a0, 0x0000000002d6fe30]
+Event: 1.843 Thread 0x00000000182a2000  218       3       java.lang.ThreadLocal$ThreadLocalMap::getEntry (42 bytes)
+Event: 1.843 Thread 0x00000000182a2000 nmethod 218 0x0000000002d6ee10 code [0x0000000002d6ef80, 0x0000000002d6f268]
+Event: 1.864 Thread 0x00000000182a2000  219       1       sun.nio.fs.WindowsPathParser$Result::type (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 219 0x0000000002d6eb50 code [0x0000000002d6eca0, 0x0000000002d6edb0]
+Event: 1.864 Thread 0x00000000182a2000  220       1       sun.nio.fs.WindowsPathParser$Result::root (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 220 0x0000000002d6e890 code [0x0000000002d6e9e0, 0x0000000002d6eaf0]
+Event: 1.864 Thread 0x00000000182a2000  221       1       sun.nio.fs.WindowsPathParser$Result::path (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 221 0x0000000002d6e5d0 code [0x0000000002d6e720, 0x0000000002d6e830]
+Event: 1.864 Thread 0x00000000182a2000  222       1       sun.nio.fs.WindowsDirectoryStream::access$000 (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 222 0x0000000002d6e2d0 code [0x0000000002d6e420, 0x0000000002d6e510]
+Event: 1.864 Thread 0x00000000182a2000  223       1       sun.nio.fs.WindowsDirectoryStream::access$200 (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 223 0x0000000002d71150 code [0x0000000002d712a0, 0x0000000002d71390]
+Event: 1.864 Thread 0x00000000182a2000  224       1       sun.nio.fs.WindowsDirectoryStream::access$300 (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 224 0x0000000002d71410 code [0x0000000002d71560, 0x0000000002d71650]
+Event: 1.864 Thread 0x00000000182a2000  225       1       sun.nio.fs.WindowsPath::toString (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 225 0x0000000002d716d0 code [0x0000000002d71820, 0x0000000002d71930]
+Event: 1.864 Thread 0x00000000182a2000  226       1       sun.nio.fs.WindowsDirectoryStream::access$100 (5 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 226 0x0000000002d71990 code [0x0000000002d71ae0, 0x0000000002d71bd0]
+Event: 1.864 Thread 0x00000000182a2000  227       1       java.nio.file.Files$AcceptAllFilter::accept (2 bytes)
+Event: 1.864 Thread 0x00000000182a2000 nmethod 227 0x0000000002d71c50 code [0x0000000002d71da0, 0x0000000002d71eb0]
+Event: 1.910 Thread 0x00000000182a2000  228   !   3       java.nio.charset.Charset::defaultCharset (65 bytes)
+Event: 1.911 Thread 0x00000000182a2000 nmethod 228 0x0000000002d71f10 code [0x0000000002d72100, 0x0000000002d728b8]
+Event: 1.911 Thread 0x00000000182a2000  229       3       sun.security.provider.DigestBase::engineUpdate (189 bytes)
+Event: 1.912 Thread 0x00000000182a2000 nmethod 229 0x0000000002d72cd0 code [0x0000000002d72f00, 0x0000000002d73ce8]
+Event: 2.022 Thread 0x00000000182a2000  230       3       sun.nio.fs.WindowsPath::<init> (26 bytes)
+Event: 2.023 Thread 0x00000000182a2000 nmethod 230 0x0000000002d741d0 code [0x0000000002d74340, 0x0000000002d745b0]
+Event: 2.023 Thread 0x00000000182a2000  231       3       sun.nio.fs.AbstractPath::<init> (5 bytes)
+Event: 2.023 Thread 0x00000000182a2000 nmethod 231 0x0000000002d746d0 code [0x0000000002d74820, 0x0000000002d749d0]
+Event: 2.023 Thread 0x00000000182a2000  232       3       sun.nio.fs.NativeBuffer::address (5 bytes)
+Event: 2.023 Thread 0x00000000182a2000 nmethod 232 0x0000000002d74a90 code [0x0000000002d74be0, 0x0000000002d74d30]
+Event: 2.089 Thread 0x0000000018298800  233       4       java.lang.String::lastIndexOf (52 bytes)
+Event: 2.091 Thread 0x0000000018298800 nmethod 233 0x0000000002d77ad0 code [0x0000000002d77c00, 0x0000000002d77d58]
+Event: 2.111 Thread 0x00000000182a2000  234       3       sun.nio.fs.WindowsPathParser::parse (384 bytes)
+Event: 2.116 Thread 0x00000000182a2000 nmethod 234 0x0000000002d77e50 code [0x0000000002d783c0, 0x0000000002d7bf48]
+Event: 2.116 Thread 0x00000000182a2000  235       3       sun.nio.fs.WindowsPathParser::isLetter (30 bytes)
+Event: 2.116 Thread 0x00000000182a2000 nmethod 235 0x0000000002d776d0 code [0x0000000002d77820, 0x0000000002d77a50]
+Event: 2.116 Thread 0x00000000182a2000  236       3       java.lang.ref.Reference::<init> (7 bytes)
+Event: 2.116 Thread 0x00000000182a2000 nmethod 236 0x0000000002d77210 code [0x0000000002d77380, 0x0000000002d775f0]
+Event: 2.127 Thread 0x00000000182a2000  237       3       sun.nio.fs.WindowsFileAttributes::fromFindData (127 bytes)
+Event: 2.127 Thread 0x00000000182a2000 nmethod 237 0x0000000002d76bd0 code [0x0000000002d76d40, 0x0000000002d770c8]
+Event: 2.127 Thread 0x00000000182a2000  240       3       java.security.MessageDigest::update (14 bytes)
+Event: 2.127 Thread 0x00000000182a2000 nmethod 240 0x0000000002d76750 code [0x0000000002d768c0, 0x0000000002d76b08]
+Event: 2.127 Thread 0x00000000182a2000  241       3       java.security.MessageDigest$Delegate::engineUpdate (11 bytes)
+Event: 2.127 Thread 0x00000000182a2000 nmethod 241 0x0000000002d762d0 code [0x0000000002d76440, 0x0000000002d76668]
+Event: 2.127 Thread 0x00000000182a2000  242       3       java.lang.String::getBytes (14 bytes)
+Event: 2.127 Thread 0x00000000182a2000 nmethod 242 0x0000000002d75f10 code [0x0000000002d76080, 0x0000000002d76228]
+Event: 2.127 Thread 0x00000000182a2000  238       3       sun.nio.fs.WindowsFileAttributes::isReparsePoint (14 bytes)
+Event: 2.127 Thread 0x00000000182a2000 nmethod 238 0x0000000002d75bd0 code [0x0000000002d75d20, 0x0000000002d75eb0]
+Event: 2.127 Thread 0x00000000182a2000  239       3       sun.nio.fs.WindowsPath$WindowsPathWithAttributes::<init> (24 bytes)
+Event: 2.128 Thread 0x00000000182a2000 nmethod 239 0x0000000002d75150 code [0x0000000002d75300, 0x0000000002d75870]
+Event: 2.343 Thread 0x00000000182a2000  243       3       java.util.Objects::requireNonNull (14 bytes)
+Event: 2.343 Thread 0x00000000182a2000 nmethod 243 0x0000000002d7e090 code [0x0000000002d7e200, 0x0000000002d7e428]
+Event: 2.404 Thread 0x00000000182a2000  248   !   3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::readNextEntry (192 bytes)
+Event: 2.405 Thread 0x00000000182a2000 nmethod 248 0x0000000002d7e510 code [0x0000000002d7e7a0, 0x0000000002d7f778]
+Event: 2.405 Thread 0x00000000182a2000  244       3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::isSelfOrParent (24 bytes)
+Event: 2.405 Thread 0x00000000182a2000 nmethod 244 0x0000000002d80090 code [0x0000000002d80200, 0x0000000002d80578]
+Event: 2.405 Thread 0x00000000182a2000  245       3       sun.nio.fs.WindowsDirectoryStream::access$400 (5 bytes)
+Event: 2.405 Thread 0x00000000182a2000 nmethod 245 0x0000000002d80650 code [0x0000000002d807a0, 0x0000000002d808d0]
+Event: 2.405 Thread 0x00000000182a2000  247  s    3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::hasNext (35 bytes)
+Event: 2.405 Thread 0x00000000182a2000 nmethod 247 0x0000000002d80990 code [0x0000000002d80b00, 0x0000000002d80ee8]
+Event: 2.405 Thread 0x00000000182a2000  249   !   3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::acceptEntry (71 bytes)
+Event: 2.405 Thread 0x00000000182a2000 nmethod 249 0x0000000002d80fd0 code [0x0000000002d811e0, 0x0000000002d81be8]
+Event: 2.405 Thread 0x00000000182a2000  250   !   3       java.lang.StringCoding::encode (120 bytes)
+Event: 2.407 Thread 0x00000000182a2000 nmethod 250 0x0000000002d82190 code [0x0000000002d824c0, 0x0000000002d83ef8]
+Event: 2.407 Thread 0x00000000182a2000  251   !   3       java.lang.StringCoding$StringEncoder::encode (179 bytes)
+Event: 2.408 Thread 0x00000000182a2000 nmethod 251 0x0000000002d84dd0 code [0x0000000002d85120, 0x0000000002d86d98]
+Event: 2.408 Thread 0x00000000182a2000  252       3       java.lang.StringCoding::access$300 (8 bytes)
+Event: 2.408 Thread 0x00000000182a2000 nmethod 252 0x0000000002d87e90 code [0x0000000002d88020, 0x0000000002d88548]
+Event: 2.408 Thread 0x00000000182a2000  253       3       java.lang.StringCoding::safeTrim (24 bytes)
+Event: 2.409 Thread 0x00000000182a2000 nmethod 253 0x0000000002d88790 code [0x0000000002d88920, 0x0000000002d88de8]
+Event: 2.449 Thread 0x00000000182a2000  254   !   3       java.lang.StringCoding::encode (64 bytes)
+Event: 2.449 Thread 0x00000000182a2000 nmethod 254 0x0000000002d88f90 code [0x0000000002d89200, 0x0000000002d89f08]
+Event: 2.777 Thread 0x00000000182a2000  260   !   3       sun.nio.fs.WindowsPath::createFromNormalizedPath (65 bytes)
+Event: 2.778 Thread 0x00000000182a2000 nmethod 260 0x0000000002d8a590 code [0x0000000002d8a7a0, 0x0000000002d8b218]
+Event: 2.778 Thread 0x00000000182a2000  255       3       sun.nio.fs.WindowsPathParser::parseNormalizedPath (6 bytes)
+Event: 2.778 Thread 0x00000000182a2000 nmethod 255 0x0000000002d8b910 code [0x0000000002d8ba80, 0x0000000002d8bbe8]
+Event: 2.778 Thread 0x00000000182a2000  256       3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::next (5 bytes)
+Event: 2.778 Thread 0x00000000182a2000 nmethod 256 0x0000000002d8bc90 code [0x0000000002d8be00, 0x0000000002d8bf88]
+Event: 2.778 Thread 0x00000000182a2000  257  s    3       sun.nio.fs.WindowsDirectoryStream$WindowsDirectoryIterator::next (48 bytes)
+Event: 2.778 Thread 0x00000000182a2000 nmethod 257 0x0000000002d8c010 code [0x0000000002d8c1a0, 0x0000000002d8c5f8]
+Event: 2.778 Thread 0x00000000182a2000  259       3       sun.nio.fs.WindowsFileAttributes::<init> (57 bytes)
+Event: 2.778 Thread 0x00000000182a2000 nmethod 259 0x0000000002d8c750 code [0x0000000002d8c8a0, 0x0000000002d8ca90]
+Event: 2.778 Thread 0x00000000182a2000  258       3       sun.nio.fs.WindowsPath::getFileName (87 bytes)
+Event: 2.779 Thread 0x00000000182a2000 nmethod 258 0x0000000002d8cb90 code [0x0000000002d8cd60, 0x0000000002d8d858]
+Event: 2.886 Thread 0x0000000018298800  261       4       java.util.Arrays::copyOfRange (63 bytes)
+Event: 2.887 Thread 0x0000000018298800 nmethod 261 0x0000000002d90a90 code [0x0000000002d90be0, 0x0000000002d90e18]
+Event: 3.010 Thread 0x00000000182a2000  262       3       java.util.concurrent.atomic.AtomicLong::get (5 bytes)
+Event: 3.011 Thread 0x00000000182a2000 nmethod 262 0x0000000002d90790 code [0x0000000002d908e0, 0x0000000002d90a30]
+Event: 3.011 Thread 0x00000000182a2000  263       3       java.util.concurrent.atomic.AtomicLong::compareAndSet (13 bytes)
+Event: 3.011 Thread 0x00000000182a2000 nmethod 263 0x0000000002d90450 code [0x0000000002d905a0, 0x0000000002d90710]
+Event: 3.038 Thread 0x000000001824a000  264       4       java.lang.String::<init> (82 bytes)
+Event: 3.040 Thread 0x000000001824a000 nmethod 264 0x0000000002d8e8d0 code [0x0000000002d8ea20, 0x0000000002d8ed38]
+Event: 3.144 Thread 0x00000000182a2000  265       3       sun.security.provider.SHA::implCompress (13 bytes)
+Event: 3.144 Thread 0x00000000182a2000 nmethod 265 0x0000000002d8e1d0 code [0x0000000002d8e360, 0x0000000002d8e6e8]
+Event: 3.144 Thread 0x00000000182a2000  266       3       sun.security.provider.SHA::implCompressCheck (15 bytes)
+Event: 3.145 Thread 0x00000000182a2000 nmethod 266 0x0000000002d8fe90 code [0x0000000002d90020, 0x0000000002d902f8]
+Event: 3.145 Thread 0x00000000182a2000  267       3       sun.security.provider.ByteArrayAccess::b2iBig64 (614 bytes)
+Event: 3.145 Thread 0x00000000182a2000 nmethod 267 0x0000000002d91390 code [0x0000000002d915a0, 0x0000000002d92328]
+Event: 3.185 Thread 0x00000000182a2000  268       3       java.util.Random::nextBoolean (14 bytes)
+Event: 3.185 Thread 0x00000000182a2000 nmethod 268 0x0000000002d8dd50 code [0x0000000002d8dec0, 0x0000000002d8e128]
+Event: 3.185 Thread 0x00000000182a2000  269       3       java.util.Random::next (47 bytes)
+Event: 3.186 Thread 0x00000000182a2000 nmethod 269 0x0000000002d8f790 code [0x0000000002d8f900, 0x0000000002d8fd10]
+Event: 3.219 Thread 0x0000000018298800  270 %     4       sun.security.provider.SHA::implCompress0 @ 3 (482 bytes)
+Event: 3.254 Thread 0x0000000018298800 nmethod 270% 0x0000000002d96050 code [0x0000000002d961a0, 0x0000000002d96c78]
+Event: 4.003 Thread 0x00000000182a2000  271       3       java.util.concurrent.ConcurrentHashMap::addCount (292 bytes)
+Event: 4.005 Thread 0x00000000182a2000 nmethod 271 0x0000000002d94f50 code [0x0000000002d95160, 0x0000000002d95c68]
+Event: 4.005 Thread 0x00000000182a2000  273   !   3       sun.misc.URLClassPath$JarLoader::getResource (85 bytes)
+Event: 4.006 Thread 0x00000000182a2000 nmethod 273 0x0000000002d93d90 code [0x0000000002d93fa0, 0x0000000002d94a18]
+Event: 4.006 Thread 0x00000000182a2000  272       3       java.lang.ClassLoader::getClassLoadingLock (35 bytes)
+Event: 4.006 Thread 0x00000000182a2000 nmethod 272 0x0000000002d8f0d0 code [0x0000000002d8f260, 0x0000000002d8f628]
+Event: 4.007 Thread 0x00000000182a2000  274       3       java.util.jar.JarFile::getEntry (22 bytes)
+Event: 4.007 Thread 0x00000000182a2000 nmethod 274 0x0000000002d93750 code [0x0000000002d938e0, 0x0000000002d93c38]
+Event: 4.007 Thread 0x00000000182a2000  275       3       java.nio.charset.CharsetDecoder::maxCharsPerByte (5 bytes)
+Event: 4.007 Thread 0x00000000182a2000 nmethod 275 0x0000000002d91090 code [0x0000000002d911e0, 0x0000000002d91330]
+Event: 4.013 Thread 0x00000000182a2000  276       1       java.lang.Class::getClassLoader0 (5 bytes)
+Event: 4.013 Thread 0x00000000182a2000 nmethod 276 0x0000000002d92a90 code [0x0000000002d92be0, 0x0000000002d92cf0]
+Event: 4.013 Thread 0x00000000182a2000  277       1       java.lang.ClassLoaderHelper::mapAlternativeName (2 bytes)
+Event: 4.013 Thread 0x00000000182a2000 nmethod 277 0x0000000002d96f90 code [0x0000000002d970e0, 0x0000000002d971d0]
+Event: 4.014 Thread 0x00000000182a2000  278       3       java.lang.String::<init> (15 bytes)
+Event: 4.014 Thread 0x00000000182a2000 nmethod 278 0x0000000002d97210 code [0x0000000002d973a0, 0x0000000002d97788]
+Event: 4.015 Thread 0x000000001824a000  279       4       java.lang.String::startsWith (72 bytes)
+Event: 4.015 Thread 0x00000000182a2000  280       3       java.io.WinNTFileSystem::resolve (231 bytes)
+Event: 4.016 Thread 0x0000000018298800  281 %     4       java.lang.String::indexOf @ 69 (166 bytes)
+Event: 4.016 Thread 0x00000000182a2000 nmethod 280 0x0000000002d97950 code [0x0000000002d97c20, 0x0000000002d994a8]
+Event: 4.019 Thread 0x000000001824a000 nmethod 279 0x0000000002d9ce50 code [0x0000000002d9cfa0, 0x0000000002d9d1b8]
+Event: 4.019 Thread 0x00000000182a2000  282       3       java.net.URL::<init> (8 bytes)
+Event: 4.019 Thread 0x00000000182a2000 nmethod 282 0x0000000002d9cad0 code [0x0000000002d9cc40, 0x0000000002d9cdc8]
+Event: 4.019 Thread 0x00000000182a2000  283       3       java.net.URLStreamHandler::setURL (73 bytes)
+Event: 4.020 Thread 0x00000000182a2000 nmethod 283 0x0000000002d9b8d0 code [0x0000000002d9bac0, 0x0000000002d9c5b8]
+Event: 4.022 Thread 0x0000000018298800 nmethod 281% 0x0000000002d9ee10 code [0x0000000002d9ef60, 0x0000000002d9f358]
+Event: 4.175 Thread 0x00000000182a2000  285       3       java.lang.StringBuffer::<init> (6 bytes)
+Event: 4.175 Thread 0x00000000182a2000 nmethod 285 0x0000000002d9af90 code [0x0000000002d9b100, 0x0000000002d9b3b0]
+Event: 4.176 Thread 0x00000000182a2000  288       3       sun.net.util.IPAddressUtil::scan (92 bytes)
+Event: 4.176 Thread 0x0000000018298800  289       4       java.lang.String::indexOf (166 bytes)
+Event: 4.177 Thread 0x00000000182a2000 nmethod 288 0x0000000002d9a050 code [0x0000000002d9a220, 0x0000000002d9aa48]
+Event: 4.177 Thread 0x00000000182a2000  286       3       java.lang.String::concat (47 bytes)
+Event: 4.177 Thread 0x00000000182a2000 nmethod 286 0x0000000002d9e110 code [0x0000000002d9e2e0, 0x0000000002d9ea98]
+Event: 4.177 Thread 0x00000000182a2000  287       3       java.lang.String::getChars (16 bytes)
+Event: 4.177 Thread 0x00000000182a2000 nmethod 287 0x0000000002d9dcd0 code [0x0000000002d9de40, 0x0000000002d9e048]
+Event: 4.185 Thread 0x0000000018298800 nmethod 289 0x0000000002d9d310 code [0x0000000002d9d460, 0x0000000002d9d978]
+Event: 4.216 Thread 0x00000000182a2000  290       1       java.security.CodeSource::getLocation (5 bytes)
+Event: 4.216 Thread 0x00000000182a2000 nmethod 290 0x0000000002da2490 code [0x0000000002da25e0, 0x0000000002da26f0]
+Event: 4.217 Thread 0x000000001824a000  291       4       java.lang.String::replace (127 bytes)
+Event: 4.217 Thread 0x00000000182a2000  292       3       sun.misc.URLClassPath::getResource (83 bytes)
+Event: 4.217 Thread 0x00000000182a2000 nmethod 292 0x0000000002da1d90 code [0x0000000002da1f20, 0x0000000002da22e8]
+Event: 4.219 Thread 0x00000000182a2000  293       3       java.io.InputStream::<init> (5 bytes)
+Event: 4.219 Thread 0x00000000182a2000 nmethod 293 0x0000000002da1990 code [0x0000000002da1b00, 0x0000000002da1cb0]
+Event: 4.220 Thread 0x00000000182a2000  294       3       sun.net.www.protocol.file.Handler::parseURL (18 bytes)
+Event: 4.220 Thread 0x00000000182a2000 nmethod 294 0x0000000002da1490 code [0x0000000002da1600, 0x0000000002da1878]
+Event: 4.220 Thread 0x00000000182a2000  295       3       java.net.URLStreamHandler::parseURL (1193 bytes)
+Event: 4.220 Thread 0x0000000018298800  296       4       java.lang.String::getChars (62 bytes)
+Event: 4.221 Thread 0x0000000018298800 nmethod 296 0x0000000002d9fb50 code [0x0000000002d9fca0, 0x0000000002d9fe18]
+Event: 4.222 Thread 0x000000001824a000 nmethod 291 0x0000000002da37d0 code [0x0000000002da3920, 0x0000000002da3df8]
+Event: 4.225 Thread 0x00000000182a2000 nmethod 295 0x0000000002da5bd0 code [0x0000000002da6720, 0x0000000002db02e8]
+Event: 4.225 Thread 0x00000000182a2000  298       3       java.util.LinkedHashMap::newNode (23 bytes)
+Event: 4.225 Thread 0x00000000182a2000 nmethod 298 0x0000000002da2fd0 code [0x0000000002da3160, 0x0000000002da3590]
+Event: 4.225 Thread 0x00000000182a2000  297       3       java.util.AbstractList::<init> (10 bytes)
+Event: 4.225 Thread 0x00000000182a2000 nmethod 297 0x0000000002d9f710 code [0x0000000002d9f880, 0x0000000002d9fa90]
+Event: 4.225 Thread 0x00000000182a2000  299       3       java.util.WeakHashMap::indexFor (6 bytes)
+Event: 4.225 Thread 0x00000000182a2000 nmethod 299 0x0000000002da2cd0 code [0x0000000002da2e20, 0x0000000002da2f50]
+Event: 4.225 Thread 0x00000000182a2000  300   !   3       java.util.WeakHashMap::expungeStaleEntries (139 bytes)
+Event: 4.226 Thread 0x00000000182a2000 nmethod 300 0x0000000002da0190 code [0x0000000002da0360, 0x0000000002da0e68]
+Event: 4.296 Thread 0x00000000182a2000  304       1       java.util.Hashtable::access$500 (5 bytes)
+Event: 4.296 Thread 0x00000000182a2000 nmethod 304 0x0000000002da5210 code [0x0000000002da5360, 0x0000000002da5450]
+Event: 4.296 Thread 0x00000000182a2000  305       1       java.util.Hashtable$Entry::getKey (5 bytes)
+Event: 4.296 Thread 0x00000000182a2000 nmethod 305 0x0000000002da4f50 code [0x0000000002da50a0, 0x0000000002da51b0]
+Event: 4.296 Thread 0x00000000182a2000  306       1       java.util.Hashtable$Entry::getValue (5 bytes)
+Event: 4.296 Thread 0x00000000182a2000 nmethod 306 0x0000000002da4c90 code [0x0000000002da4de0, 0x0000000002da4ef0]
+Event: 4.303 Thread 0x00000000182a2000  308       3       java.util.WeakHashMap::remove (133 bytes)
+Event: 4.304 Thread 0x00000000182a2000 nmethod 308 0x0000000002db6750 code [0x0000000002db6940, 0x0000000002db7408]
+Event: 4.304 Thread 0x00000000182a2000  307   !   3       java.util.zip.ZipFile$ZipFileInputStream::close (110 bytes)
+Event: 4.304 Thread 0x00000000182a2000 nmethod 307 0x0000000002db7890 code [0x0000000002db7a40, 0x0000000002db8258]
+Event: 4.305 Thread 0x00000000182a2000  309       3       java.util.jar.Attributes$Name::hashCode (24 bytes)
+Event: 4.305 Thread 0x00000000182a2000 nmethod 309 0x0000000002da48d0 code [0x0000000002da4a40, 0x0000000002da4c08]
+Event: 4.305 Thread 0x00000000182a2000  310       3       java.util.jar.Manifest$FastInputStream::readLine (9 bytes)
+Event: 4.305 Thread 0x00000000182a2000 nmethod 310 0x0000000002da44d0 code [0x0000000002da4640, 0x0000000002da47e8]
+Event: 4.305 Thread 0x00000000182a2000  312       3       java.util.jar.Attributes$Name::isValid (45 bytes)
+Event: 4.305 Thread 0x00000000182a2000 nmethod 312 0x0000000002db85d0 code [0x0000000002db87a0, 0x0000000002db9128]
+Event: 4.305 Thread 0x00000000182a2000  311       3       java.util.jar.Manifest$FastInputStream::peek (38 bytes)
+Event: 4.305 Thread 0x00000000182a2000 nmethod 311 0x0000000002da3fd0 code [0x0000000002da4140, 0x0000000002da4388]
+Event: 4.306 Thread 0x00000000182a2000  313   !   3       java.lang.ref.Finalizer::add (41 bytes)
+Event: 4.306 Thread 0x00000000182a2000 nmethod 313 0x0000000002db9450 code [0x0000000002db95c0, 0x0000000002db9970]
+Event: 4.371 Thread 0x00000000182a2000  314   !   3       java.net.URL::<init> (543 bytes)
+Event: 4.373 Thread 0x00000000182a2000 nmethod 314 0x0000000002db9a90 code [0x0000000002db9f40, 0x0000000002dbd0a8]
+Event: 4.373 Thread 0x00000000182a2000  315       3       sun.net.util.IPAddressUtil::checkHostString (53 bytes)
+Event: 4.373 Thread 0x00000000182a2000 nmethod 315 0x0000000002dbf550 code [0x0000000002dbf760, 0x0000000002dc01b8]
+Event: 4.374 Thread 0x00000000182a2000  316   !   3       java.net.URL::set (114 bytes)
+Event: 4.374 Thread 0x00000000182a2000 nmethod 316 0x0000000002dc0610 code [0x0000000002dc0800, 0x0000000002dc1338]
+Event: 4.385 Thread 0x0000000018298800  317       4       java.lang.AbstractStringBuilder::append (50 bytes)
+Event: 4.386 Thread 0x00000000182a2000  318       1       java.util.ArrayList::access$000 (5 bytes)
+Event: 4.386 Thread 0x00000000182a2000 nmethod 318 0x0000000002dc1950 code [0x0000000002dc1aa0, 0x0000000002dc1b90]
+Event: 4.386 Thread 0x000000001824a000  319       4       java.io.WinNTFileSystem::normalize (143 bytes)
+Event: 4.387 Thread 0x00000000182a2000  320       3       java.lang.String::checkBounds (46 bytes)
+Event: 4.388 Thread 0x00000000182a2000 nmethod 320 0x0000000002dc1c10 code [0x0000000002dc1da0, 0x0000000002dc2108]
+Event: 4.388 Thread 0x00000000182a2000  321       3       java.lang.String::<init> (100 bytes)
+Event: 4.388 Thread 0x00000000182a2000 nmethod 321 0x0000000002dc22d0 code [0x0000000002dc2480, 0x0000000002dc2968]
+Event: 4.389 Thread 0x0000000018298800 nmethod 317 0x0000000002dc5cd0 code [0x0000000002dc5e20, 0x0000000002dc6238]
+Event: 4.391 Thread 0x00000000182a2000  322       1       sun.misc.URLClassPath$JarLoader::access$600 (5 bytes)
+Event: 4.391 Thread 0x00000000182a2000 nmethod 322 0x0000000002dc5a10 code [0x0000000002dc5b60, 0x0000000002dc5c50]
+Event: 4.392 Thread 0x00000000182a2000  323  s    3       java.lang.Throwable::fillInStackTrace (29 bytes)
+Event: 4.392 Thread 0x00000000182a2000 nmethod 323 0x0000000002dc5090 code [0x0000000002dc5200, 0x0000000002dc55a8]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (8 events):
+Event: 0.137 Thread 0x0000000002b27800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d5f07cb8) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\sh
+Event: 0.137 Thread 0x0000000002b27800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d5f07fa0) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.c
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a2788) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a2998) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a6b18) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a6d28) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a8558) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.135 Thread 0x0000000002b27800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d62a8768) thrown at [C:\cygwin64\tmp\ojdkbuild\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+
+Events (250 events):
+Event: 1.149 loading class sun/security/provider/SecureRandom$SeederHolder
+Event: 1.149 loading class sun/security/provider/SecureRandom$SeederHolder done
+Event: 1.149 loading class sun/security/provider/SeedGenerator
+Event: 1.149 loading class sun/security/provider/SeedGenerator done
+Event: 1.149 loading class sun/security/provider/NativeSeedGenerator
+Event: 1.149 loading class sun/security/provider/NativeSeedGenerator done
+Event: 1.186 loading class sun/security/provider/SeedGenerator$1
+Event: 1.186 loading class sun/security/provider/SeedGenerator$1 done
+Event: 1.186 loading class java/lang/StringCoding$StringEncoder
+Event: 1.186 loading class java/lang/StringCoding$StringEncoder done
+Event: 1.186 loading class sun/security/provider/ByteArrayAccess
+Event: 1.186 loading class sun/security/provider/ByteArrayAccess done
+Event: 1.187 loading class java/net/NetworkInterface
+Event: 1.187 loading class java/net/NetworkInterface done
+Event: 1.187 loading class java/net/NetworkInterface$1
+Event: 1.187 loading class java/net/NetworkInterface$1 done
+Event: 1.190 loading class java/net/InterfaceAddress
+Event: 1.190 loading class java/net/InterfaceAddress done
+Event: 1.190 loading class java/net/InetAddress
+Event: 1.190 loading class java/net/InetAddress done
+Event: 1.191 loading class java/net/InetAddress$1
+Event: 1.191 loading class java/net/InetAddress$1 done
+Event: 1.191 loading class java/net/InetAddress$InetAddressHolder
+Event: 1.191 loading class java/net/InetAddress$InetAddressHolder done
+Event: 1.191 loading class java/net/InetAddress$Cache
+Event: 1.191 loading class java/net/InetAddress$Cache done
+Event: 1.191 loading class java/net/InetAddress$Cache$Type
+Event: 1.191 loading class java/net/InetAddress$Cache$Type done
+Event: 1.191 loading class java/net/InetAddressImplFactory
+Event: 1.191 loading class java/net/InetAddressImplFactory done
+Event: 1.191 loading class java/net/Inet6AddressImpl
+Event: 1.191 loading class java/net/InetAddressImpl
+Event: 1.191 loading class java/net/InetAddressImpl done
+Event: 1.191 loading class java/net/Inet6AddressImpl done
+Event: 1.191 loading class java/net/InetAddress$2
+Event: 1.191 loading class sun/net/spi/nameservice/NameService
+Event: 1.191 loading class sun/net/spi/nameservice/NameService done
+Event: 1.191 loading class java/net/InetAddress$2 done
+Event: 1.191 loading class java/net/Inet4Address
+Event: 1.191 loading class java/net/Inet4Address done
+Event: 1.191 loading class java/net/Inet6Address
+Event: 1.192 loading class java/net/Inet6Address done
+Event: 1.192 loading class java/net/Inet6Address$Inet6AddressHolder
+Event: 1.192 loading class java/net/Inet6Address$Inet6AddressHolder done
+Event: 1.192 loading class java/net/DefaultInterface
+Event: 1.192 loading class java/net/DefaultInterface done
+Event: 1.235 loading class java/net/NetworkInterface$2
+Event: 1.235 loading class java/net/NetworkInterface$2 done
+Event: 1.240 loading class java/nio/file/FileSystems
+Event: 1.240 loading class java/nio/file/FileSystems done
+Event: 1.240 loading class java/nio/file/FileSystems$DefaultFileSystemHolder
+Event: 1.240 loading class java/nio/file/FileSystems$DefaultFileSystemHolder done
+Event: 1.240 loading class java/nio/file/FileSystems$DefaultFileSystemHolder$1
+Event: 1.241 loading class java/nio/file/FileSystems$DefaultFileSystemHolder$1 done
+Event: 1.241 loading class java/nio/file/Files
+Event: 1.241 loading class java/nio/file/Files done
+Event: 1.241 loading class java/nio/file/Files$AcceptAllFilter
+Event: 1.241 loading class java/nio/file/DirectoryStream$Filter
+Event: 1.241 loading class java/nio/file/DirectoryStream$Filter done
+Event: 1.241 loading class java/nio/file/Files$AcceptAllFilter done
+Event: 1.241 loading class sun/nio/fs/WindowsDirectoryStream
+Event: 1.241 loading class java/nio/file/DirectoryStream
+Event: 1.241 loading class java/nio/file/DirectoryStream done
+Event: 1.241 loading class sun/nio/fs/WindowsDirectoryStream done
+Event: 1.241 loading class sun/nio/fs/WindowsNativeDispatcher
+Event: 1.241 loading class sun/nio/fs/WindowsNativeDispatcher done
+Event: 1.242 loading class sun/nio/fs/WindowsNativeDispatcher$1
+Event: 1.242 loading class sun/nio/fs/WindowsNativeDispatcher$1 done
+Event: 1.243 loading class sun/nio/fs/WindowsNativeDispatcher$FirstFile
+Event: 1.243 loading class sun/nio/fs/WindowsNativeDispatcher$FirstFile done
+Event: 1.243 loading class sun/nio/fs/WindowsNativeDispatcher$FirstStream
+Event: 1.243 loading class sun/nio/fs/WindowsNativeDispatcher$FirstStream done
+Event: 1.243 loading class sun/nio/fs/WindowsNativeDispatcher$VolumeInformation
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$VolumeInformation done
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$DiskFreeSpace
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$DiskFreeSpace done
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$Account
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$Account done
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$AclInformation
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$AclInformation done
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$CompletionStatus
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$CompletionStatus done
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$BackupResult
+Event: 1.244 loading class sun/nio/fs/WindowsNativeDispatcher$BackupResult done
+Event: 1.244 loading class sun/nio/fs/NativeBuffers
+Event: 1.244 loading class sun/nio/fs/NativeBuffers done
+Event: 1.244 loading class sun/nio/fs/NativeBuffer
+Event: 1.244 loading class sun/nio/fs/NativeBuffer done
+Event: 1.244 loading class sun/nio/fs/NativeBuffer$Deallocator
+Event: 1.244 loading class sun/nio/fs/NativeBuffer$Deallocator done
+Event: 1.244 loading class sun/nio/fs/WindowsFileAttributes
+Event: 1.244 loading class java/nio/file/attribute/DosFileAttributes
+Event: 1.244 loading class java/nio/file/attribute/BasicFileAttributes
+Event: 1.244 loading class java/nio/file/attribute/BasicFileAttributes done
+Event: 1.244 loading class java/nio/file/attribute/DosFileAttributes done
+Event: 1.244 loading class sun/nio/fs/WindowsFileAttributes done
+Event: 1.244 loading class sun/nio/fs/WindowsDirectoryStream$WindowsDirectoryIterator
+Event: 1.245 loading class sun/nio/fs/WindowsDirectoryStream$WindowsDirectoryIterator done
+Event: 1.279 loading class sun/nio/fs/WindowsPath$WindowsPathWithAttributes
+Event: 1.279 loading class sun/nio/fs/BasicFileAttributesHolder
+Event: 1.279 loading class sun/nio/fs/BasicFileAttributesHolder done
+Event: 1.279 loading class sun/nio/fs/WindowsPath$WindowsPathWithAttributes done
+Event: 3.369 loading class sun/net/www/protocol/jar/JarURLConnection
+Event: 3.369 loading class java/net/JarURLConnection
+Event: 3.369 loading class java/net/JarURLConnection done
+Event: 3.369 loading class sun/net/www/protocol/jar/JarURLConnection done
+Event: 3.369 loading class sun/net/www/protocol/jar/JarFileFactory
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile$URLJarFileCloseController
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile$URLJarFileCloseController done
+Event: 3.370 loading class sun/net/www/protocol/jar/JarFileFactory done
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile done
+Event: 3.370 Executing VM operation: Deoptimize
+Event: 3.370 Executing VM operation: Deoptimize done
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile$URLJarFileEntry
+Event: 3.370 loading class sun/net/www/protocol/jar/URLJarFile$URLJarFileEntry done
+Event: 3.370 loading class sun/net/www/protocol/jar/JarURLConnection$JarURLInputStream
+Event: 3.370 loading class sun/net/www/protocol/jar/JarURLConnection$JarURLInputStream done
+Event: 3.389 loading class java/io/DeleteOnExitHook
+Event: 3.389 loading class java/io/DeleteOnExitHook done
+Event: 3.389 loading class java/io/DeleteOnExitHook$1
+Event: 3.390 loading class java/io/DeleteOnExitHook$1 done
+Event: 3.390 loading class java/lang/Shutdown
+Event: 3.390 loading class java/lang/Shutdown done
+Event: 3.390 loading class java/lang/Shutdown$Lock
+Event: 3.390 loading class java/lang/Shutdown$Lock done
+Event: 3.390 loading class java/io/FileOutputStream$1
+Event: 3.390 loading class java/io/FileOutputStream$1 done
+Event: 4.003 loading class org/fusesource/jansi/AnsiConsole$JansiOutputType
+Event: 4.003 loading class org/fusesource/jansi/AnsiConsole$JansiOutputType done
+Event: 4.004 loading class org/fusesource/jansi/FilterPrintStream$1
+Event: 4.004 loading class org/fusesource/jansi/FilterPrintStream$1 done
+Event: 4.007 loading class org/fusesource/jansi/internal/Kernel32
+Event: 4.007 loading class org/fusesource/jansi/internal/Kernel32 done
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$CONSOLE_SCREEN_BUFFER_INFO
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$CONSOLE_SCREEN_BUFFER_INFO done
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$COORD
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$COORD done
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$SMALL_RECT
+Event: 4.108 loading class org/fusesource/jansi/internal/Kernel32$SMALL_RECT done
+Event: 4.109 loading class org/fusesource/jansi/internal/WindowsSupport
+Event: 4.109 loading class org/fusesource/jansi/internal/WindowsSupport done
+Event: 4.110 loading class java/lang/ApplicationShutdownHooks
+Event: 4.110 loading class java/lang/ApplicationShutdownHooks done
+Event: 4.110 loading class java/lang/ApplicationShutdownHooks$1
+Event: 4.110 loading class java/lang/ApplicationShutdownHooks$1 done
+Event: 4.110 loading class java/util/IdentityHashMap
+Event: 4.110 loading class java/util/IdentityHashMap done
+Event: 4.110 loading class org/apache/maven/execution/MavenExecutionRequest
+Event: 4.110 loading class org/apache/maven/execution/MavenExecutionRequest done
+Event: 4.111 loading class org/apache/maven/execution/DefaultMavenExecutionRequest
+Event: 4.111 loading class org/apache/maven/execution/DefaultMavenExecutionRequest done
+Event: 4.174 loading class org/eclipse/aether/RepositoryCache
+Event: 4.174 loading class org/eclipse/aether/RepositoryCache done
+Event: 4.176 loading class org/apache/maven/project/ProjectBuildingRequest
+Event: 4.176 loading class org/apache/maven/project/ProjectBuildingRequest done
+Event: 4.176 Thread 0x0000000002b27800 DEOPT PACKING pc=0x0000000002d0d6f6 sp=0x00000000029dba80
+Event: 4.176 Thread 0x0000000002b27800 DEOPT UNPACKING pc=0x0000000002c2a0d0 sp=0x00000000029db758 mode 0
+Event: 4.214 Executing VM operation: EnableBiasedLocking
+Event: 4.214 Executing VM operation: EnableBiasedLocking done
+Event: 4.216 loading class org/eclipse/aether/DefaultRepositoryCache
+Event: 4.216 loading class org/eclipse/aether/DefaultRepositoryCache done
+Event: 4.217 loading class org/apache/maven/cli/logging/Slf4jStdoutLogger
+Event: 4.217 loading class org/apache/maven/cli/logging/Slf4jStdoutLogger done
+Event: 4.217 loading class org/apache/maven/cli/CLIManager
+Event: 4.217 loading class org/apache/maven/cli/CLIManager done
+Event: 4.218 loading class org/apache/commons/cli/CommandLineParser
+Event: 4.218 loading class org/apache/commons/cli/CommandLineParser done
+Event: 4.218 loading class org/apache/commons/cli/Options
+Event: 4.218 loading class org/apache/commons/cli/Options done
+Event: 4.219 loading class org/apache/commons/cli/Option
+Event: 4.219 loading class org/apache/commons/cli/Option done
+Event: 4.219 loading class java/lang/UnsupportedOperationException
+Event: 4.219 loading class java/lang/UnsupportedOperationException done
+Event: 4.219 loading class java/lang/CloneNotSupportedException
+Event: 4.219 loading class java/lang/CloneNotSupportedException done
+Event: 4.219 loading class org/apache/commons/cli/Option$Builder
+Event: 4.219 loading class org/apache/commons/cli/Option$Builder done
+Event: 4.220 loading class org/apache/commons/cli/OptionValidator
+Event: 4.220 loading class org/apache/commons/cli/OptionValidator done
+Event: 4.222 loading class org/apache/maven/cli/CleanArgument
+Event: 4.222 loading class org/apache/maven/cli/CleanArgument done
+Event: 4.222 loading class org/apache/commons/cli/GnuParser
+Event: 4.222 loading class org/apache/commons/cli/GnuParser done
+Event: 4.222 loading class org/apache/commons/cli/Parser
+Event: 4.222 loading class org/apache/commons/cli/Parser done
+Event: 4.223 loading class org/apache/commons/cli/MissingArgumentException
+Event: 4.223 loading class org/apache/commons/cli/MissingArgumentException done
+Event: 4.223 loading class org/apache/commons/cli/MissingOptionException
+Event: 4.223 loading class org/apache/commons/cli/MissingOptionException done
+Event: 4.224 loading class org/apache/commons/cli/CommandLine
+Event: 4.224 loading class org/apache/commons/cli/CommandLine done
+Event: 4.224 loading class org/apache/commons/cli/Util
+Event: 4.224 loading class org/apache/commons/cli/Util done
+Event: 4.225 loading class java/util/AbstractList$ListItr
+Event: 4.245 loading class java/util/ListIterator
+Event: 4.245 loading class java/util/ListIterator done
+Event: 4.245 loading class java/util/AbstractList$ListItr done
+Event: 4.245 loading class org/apache/maven/properties/internal/EnvironmentUtils
+Event: 4.245 loading class org/apache/maven/properties/internal/EnvironmentUtils done
+Event: 4.257 loading class org/codehaus/plexus/util/Os
+Event: 4.257 loading class org/codehaus/plexus/util/Os done
+Event: 4.283 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet
+Event: 4.283 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet done
+Event: 4.283 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet$1
+Event: 4.283 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet$1 done
+Event: 4.284 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry
+Event: 4.284 loading class java/util/Collections$UnmodifiableMap$UnmodifiableEntrySet$UnmodifiableEntry done
+Event: 4.284 loading class org/apache/maven/properties/internal/SystemProperties
+Event: 4.284 loading class org/apache/maven/properties/internal/SystemProperties done
+Event: 4.296 loading class org/apache/maven/cli/CLIReportingUtils
+Event: 4.296 loading class org/apache/maven/cli/CLIReportingUtils done
+Event: 4.304 loading class org/apache/commons/lang3/StringUtils
+Event: 4.304 loading class org/apache/commons/lang3/StringUtils done
+Event: 4.327 loading class org/slf4j/LoggerFactory
+Event: 4.327 loading class org/slf4j/LoggerFactory done
+Event: 4.369 loading class java/lang/NoSuchFieldError
+Event: 4.369 loading class java/lang/NoSuchFieldError done
+Event: 4.369 loading class org/slf4j/ILoggerFactory
+Event: 4.369 loading class org/slf4j/ILoggerFactory done
+Event: 4.371 loading class org/slf4j/helpers/SubstituteLoggerFactory
+Event: 4.371 loading class org/slf4j/helpers/SubstituteLoggerFactory done
+Event: 4.384 loading class org/slf4j/helpers/NOPLoggerFactory
+Event: 4.384 loading class org/slf4j/helpers/NOPLoggerFactory done
+Event: 4.385 loading class sun/misc/URLClassPath$2
+Event: 4.385 loading class sun/misc/URLClassPath$2 done
+Event: 4.385 loading class java/lang/ClassLoader$2
+Event: 4.385 loading class java/lang/ClassLoader$2 done
+Event: 4.385 loading class sun/misc/URLClassPath$1
+Event: 4.385 loading class sun/misc/URLClassPath$1 done
+Event: 4.385 loading class java/net/URLClassLoader$3
+Event: 4.385 loading class java/net/URLClassLoader$3 done
+Event: 4.385 loading class sun/misc/CompoundEnumeration
+Event: 4.385 loading class sun/misc/CompoundEnumeration done
+Event: 4.385 loading class java/net/URLClassLoader$3$1
+Event: 4.385 loading class java/net/URLClassLoader$3$1 done
+Event: 4.386 loading class java/util/Collections$3
+Event: 4.386 loading class java/util/Collections$3 done
+Event: 4.387 loading class org/slf4j/impl/StaticLoggerBinder
+Event: 4.387 loading class org/slf4j/impl/StaticLoggerBinder done
+Event: 4.389 loading class org/slf4j/spi/LoggerFactoryBinder
+Event: 4.389 loading class org/slf4j/spi/LoggerFactoryBinder done
+Event: 4.391 loading class org/slf4j/impl/SimpleLoggerFactory
+Event: 4.391 loading class org/slf4j/impl/SimpleLoggerFactory done
+Event: 4.392 loading class org/slf4j/impl/SimpleLogger
+Event: 4.392 loading class org/slf4j/impl/SimpleLogger done
+Event: 4.392 loading class org/slf4j/helpers/MarkerIgnoringBase
+Event: 4.392 loading class org/slf4j/helpers/MarkerIgnoringBase done
+Event: 4.410 loading class org/slf4j/helpers/NamedLoggerBase
+Event: 4.410 loading class org/slf4j/helpers/NamedLoggerBase done
+
+
+Dynamic libraries:
+0x00007ff60afb0000 - 0x00007ff60b03b000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\bin\javaw.exe
+0x00007ffcc3f40000 - 0x00007ffcc412d000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffcc3d90000 - 0x00007ffcc3e43000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffcc0aa0000 - 0x00007ffcc0d33000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffcc3550000 - 0x00007ffcc35f3000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffcc3c00000 - 0x00007ffcc3c9e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffcc3010000 - 0x00007ffcc30ae000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffcc12b0000 - 0x00007ffcc13d2000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffcc2df0000 - 0x00007ffcc2f87000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffcc0ee0000 - 0x00007ffcc0f00000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffcc2d40000 - 0x00007ffcc2d69000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffcc0900000 - 0x00007ffcc0a99000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffcc0e40000 - 0x00007ffcc0ee0000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffcc0800000 - 0x00007ffcc08fa000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffca7a40000 - 0x00007ffca7cb9000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.1039_none_de701650534c7021\COMCTL32.dll
+0x00007ffcc1510000 - 0x00007ffcc183c000 	C:\WINDOWS\System32\combase.dll
+0x00007ffcc0d90000 - 0x00007ffcc0e0e000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffcc3d60000 - 0x00007ffcc3d8e000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffca6a90000 - 0x00007ffca6b42000 	C:\Program Files\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPApi.dll
+0x00007ffcc0f00000 - 0x00007ffcc0f59000 	C:\WINDOWS\System32\WINTRUST.dll
+0x00007ffcbffe0000 - 0x00007ffcbfff2000 	C:\WINDOWS\System32\MSASN1.dll
+0x00007ffcc0f60000 - 0x00007ffcc113c000 	C:\WINDOWS\System32\CRYPT32.dll
+0x000000006dae0000 - 0x000000006daec000 	C:\Program Files\McAfee\Endpoint Security\Threat Prevention\Ips\EpMPThe.dll
+0x000000006c930000 - 0x000000006ca02000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\msvcr100.dll
+0x000000006cf80000 - 0x000000006d83d000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\server\jvm.dll
+0x00007ffcc3f00000 - 0x00007ffcc3f08000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffcba530000 - 0x00007ffcba554000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffcb7500000 - 0x00007ffcb750a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffcba460000 - 0x00007ffcba48d000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ffcc0d40000 - 0x00007ffcc0d8a000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ffcb78b0000 - 0x00007ffcb78b9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffcc1240000 - 0x00007ffcc12ad000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffca01c0000 - 0x00007ffca01cf000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\verify.dll
+0x00007ffc7bfa0000 - 0x00007ffc7bfc9000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\java.dll
+0x00007ffc7bf80000 - 0x00007ffc7bf96000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\zip.dll
+0x00007ffcc1840000 - 0x00007ffcc2d34000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffcc3e50000 - 0x00007ffcc3ef8000 	C:\WINDOWS\System32\shcore.dll
+0x00007ffcc0000000 - 0x00007ffcc074d000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ffcbffb0000 - 0x00007ffcbffd4000 	C:\WINDOWS\System32\profapi.dll
+0x00007ffcbff50000 - 0x00007ffcbffad000 	C:\WINDOWS\System32\powrprof.dll
+0x00007ffcc11e0000 - 0x00007ffcc1232000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ffcbff30000 - 0x00007ffcbff41000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ffcc1140000 - 0x00007ffcc1157000 	C:\WINDOWS\System32\cryptsp.dll
+0x00007ffcbf2c0000 - 0x00007ffcbf2f3000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ffcc0e10000 - 0x00007ffcc0e36000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffcbfe60000 - 0x00007ffcbfe88000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ffcbf910000 - 0x00007ffcbf91c000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ffca3a90000 - 0x00007ffca3aaa000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\net.dll
+0x00007ffcbf740000 - 0x00007ffcbf7a7000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ffcbf460000 - 0x00007ffcbf49d000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ffcc3390000 - 0x00007ffcc3398000 	C:\WINDOWS\System32\NSI.dll
+0x00007ffcbdc10000 - 0x00007ffcbdc26000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ffcbdbf0000 - 0x00007ffcbdc0c000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x00007ffcbf4e0000 - 0x00007ffcbf5a6000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x00007ffca3a70000 - 0x00007ffca3a82000 	C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin\nio.dll
+0x00007ffcba840000 - 0x00007ffcba84a000 	C:\Users\chaitalishah.ttl\AppData\Local\Temp\jansi-1.17.1-1176395096529966138.dll
+0x00007ffcb8660000 - 0x00007ffcb866a000 	C:\Users\chaitalishah.ttl\AppData\Local\Temp\jansi-1.17.1-1534116808339658563.dll
+
+VM Arguments:
+jvm_args: -Dmaven.home=EMBEDDED -Dclassworlds.conf=D:\ESB3\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5649161103960375141.tmp -Dmaven.multiModuleProjectDirectory=D:\ESB2\TML_eInvoice_GenerateIRN -Dfile.encoding=Cp1252 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -B -Dmaven.test.skip=true -DskipTests spring-boot:run
+java_class_path (initial): D:\ESB\studio\plugins\org.eclipse.m2e.maven.runtime_1.14.0.20191209-1923\jars\plexus-classworlds-2.6.0.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=D:\ORACLE\product\11.1.0\client_1\bin;C:\Users\chaitalishah.ttl\product\12.2.0\client_1\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Microsoft Online Services;C:\Program Files (x86)\Common Files\Microsoft Shared\Microsoft Online Services;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Windows\CCM;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\bin;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.232-3\jre\bin;D:\ESB\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\chaitalishah.ttl\AppData\Local\Microsoft\WindowsApps;C:\Users\chaitalishah.ttl\AppData\Roaming\npm;C:\Users\chaitalishah.ttl\AppData\Local\Programs\Git\cmd
+USERNAME=ChaitaliShah.ttl
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 11, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17763 (10.0.17763.475)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 158 stepping 11, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8270196k(1287452k free), swap 14414196k(3232k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.232-b09) for windows-amd64 JRE (1.8.0_232-b09), built on Oct 20 2019 23:15:08 by "build" with MS VC++ 10.0 (VS2010)
+
+time: Fri Mar 06 11:29:02 2020
+timezone: India Standard Time
+elapsed time: 4 seconds (0d 0h 0m 4s)
+

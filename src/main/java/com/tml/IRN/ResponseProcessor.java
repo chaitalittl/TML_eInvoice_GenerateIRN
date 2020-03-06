@@ -1,5 +1,6 @@
 package com.tml.IRN;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -139,6 +140,33 @@ public class ResponseProcessor {
 			inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
 			MessageContentsList req = new MessageContentsList();
 			req.add(finalResponse);
+			//System.out.println("bodyPara" + req);
+			inMessage.setBody(req);
+
+		} catch (Exception e) {
+			log.error("Exception in process()", e);
+		}
+
+	} 
+	public void processItemlistjson(Exchange exchange) throws Exception {
+		try {
+			Message inMessage = exchange.getIn();
+			String jsonString = null;
+			String tentResponse = null;
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+
+			// System.out.println("**************IN process******** 101 both API");
+			HashMap<String, ArrayList<HashMap<String, String>>> map1 = new HashMap<>();
+			map1 = (HashMap<String, ArrayList<HashMap<String, String>>>) inMessage.getHeader("ITEMLISTH");
+			
+			jsonString = objectMapper.writeValueAsString(map1);
+			tentResponse = jsonString;
+			
+			
+			inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
+			MessageContentsList req = new MessageContentsList();
+			req.add(tentResponse);
 			//System.out.println("bodyPara" + req);
 			inMessage.setBody(req);
 
