@@ -714,7 +714,6 @@
                             <when id="_when5">
                                 <simple>${header.DispDtlsgstin} != '' and ${header.DispDtlstrdNm} != '' and ${header.DispDtlsloc} != '' and ${header.DispDtlspin} != '' and ${header.DispDtlsstcd} != ''</simple>-->
                 <!--Check ExpDtls Validations -->
-                <log id="_log1" message="after OR check export1________${header.expCat}"/>
                 <!--Export Details -->
                 <choice id="_choice51">
                     <when id="_when51">
@@ -807,6 +806,8 @@
                                     method="selectedParamProcess" ref="resProcessor"/>
                                     <unmarshal
                                     id="_unmarshal52" ref="json"/>
+                                    <bean id="_bean78"
+                                    method="unmarshal(unmarshal Final API RESPONSE :: *****)" ref="logger"/>
                                     <to id="_to42" uri="xslt:classpath:xmltrnsform.xslt"/>
                                     </when>
                                     <otherwise id="_otherwise3">
@@ -1413,9 +1414,9 @@
                     </when>
                     <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
                     <unmarshal id="_unmarshal1" ref="json"/>
-                    <!-- <bean id="_bean68"
+                     <bean id="_bean68"
                         method="response(UNMARSHAL API RESPONSE :: *****)" ref="logger"/>
-                    <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/>-->
+                   
                     <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/>
                     <bean id="_bean68"
                         method="response(XSLT API RESPONSE :: *****)" ref="logger"/>
