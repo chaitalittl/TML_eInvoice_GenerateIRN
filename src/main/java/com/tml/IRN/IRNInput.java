@@ -24,6 +24,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "User_GSTIN","TaxSch","is_irn"
 })*/
 public class IRNInput {
+	protected String is_ewb;
+	public String getIs_ewb() {
+		return is_ewb;
+	}
+
+	public void setIs_ewb(String is_ewb) {
+		this.is_ewb = is_ewb;
+	}
+
 	protected String User_GSTIN;
     public String getTaxSch() {
 		return TaxSch;
