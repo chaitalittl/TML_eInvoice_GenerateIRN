@@ -1,3 +1,27 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@chaitalittl 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+chaitalittl
+/
+TML_eInvoice_GenerateIRN
+1
+00
+ Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights Settings
+TML_eInvoice_GenerateIRN/pom.xml
+@chaitalittl chaitalittl 60
+2453c2d yesterday
+264 lines (233 sloc)  8.22 KB
+  
 <?xml version="1.0" encoding="UTF-8"?>
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
