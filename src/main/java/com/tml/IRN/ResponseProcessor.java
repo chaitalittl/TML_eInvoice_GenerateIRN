@@ -70,6 +70,7 @@ public class ResponseProcessor {
 					String pSignedQRCode = (String) inMessage.getHeader("signedQRCode", String.class);
 					String pIrnstatus = (String) inMessage.getHeader("irnstatus", String.class);
 					String preport_url = (String) inMessage.getHeader("report_url", String.class);
+					//String valid_remark = (String) inMessage.getHeader("validation_remark", String.class);
 				
 
 					/*String finalResponse = "{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
@@ -79,7 +80,7 @@ public class ResponseProcessor {
 					String finalResponse ="{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
 					+ pAckDt + "\",\"ackNo\":\""+ pAckNo + "\",\"irn\":\""+ pIrn + "\",\"signedInvoice\":\""
 							+ pSignedInvoice + "\",\"signedQRCode\":\""+ pSignedQRCode + "\",\"irnstatus\":\""+ pIrnstatus + "\",\"report_url\" : \""+preport_url+"\"}";
-					//System.out.println("tentResponse :" + finalResponse);
+					System.out.println("tentResponse :" + finalResponse);
 					inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
 					MessageContentsList req = new MessageContentsList();
 					req.add(finalResponse);

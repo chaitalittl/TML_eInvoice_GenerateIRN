@@ -11,8 +11,7 @@
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
     </cxf:cxfEndpoint>
-    <cxf:rsClient
-        address="${IRN_URL}" id="rsGenIRN" loggingFeatureEnabled="true"/>
+    <cxf:rsClient address="${IRN_URL}" id="rsGenIRN" loggingFeatureEnabled="true"/>
     <!--  <cxf:rsClient
         address="https://einvoice-dev-3scale-apicast-production.api.tatamotors.com:443/v1/en/push?user_key=0a7bda06306c8c2d50680ac9c876bc34"
         id="rsGenIRN" loggingFeatureEnabled="true"/> -->
@@ -1412,11 +1411,17 @@
                             <jsonpath>$.irp_response.data.nic_response_data.SignedQRCode</jsonpath>
                         </setHeader>
                     </when>
+                    <!-- <when id="_when3">
+                        <simple>${header.status} == '707'</simple>
+                        <setHeader headerName="validation_remark" id="_setHeader9">
+                            <jsonpath>$.pwc_response.validation_remarks</jsonpath>
+                        </setHeader>
+                    </when> -->
+                    <log id="simple-route21" message=">>>>>validation_remark>>> ${header.validation_remark}"/>
                     <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
                     <unmarshal id="_unmarshal1" ref="json"/>
-                     <bean id="_bean68"
+                    <bean id="_bean68"
                         method="response(UNMARSHAL API RESPONSE :: *****)" ref="logger"/>
-                   
                     <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/>
                     <bean id="_bean68"
                         method="response(XSLT API RESPONSE :: *****)" ref="logger"/>
