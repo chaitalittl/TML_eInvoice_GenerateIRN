@@ -184,7 +184,7 @@
        
        
        
-           <!-- <repositories>
+            <!-- <repositories>
               <repository>
                      <id>red-hat-ga-repository</id>
                      <url>https://maven.repository.redhat.com/ga</url>
