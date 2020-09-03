@@ -6,7 +6,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
     <bean class="com.tml.IRN.LogAggregator" id="logger"/>
     <bean class="com.tml.IRN.ResponseProcessor" id="resProcessor"/>
-    <cxf:cxfEndpoint address="http://0.0.0.0:9008/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
+    <cxf:cxfEndpoint address="http://0.0.0.0:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
