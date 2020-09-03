@@ -29,7 +29,7 @@
             <json id="gson" library="Gson"/>
             <!-- <soapjaxb contextPath="com.tml.crm" id="soapxml" namespacePrefixRef="myMap"/>-->
             <soapjaxb contextPath="com.tml.IRNItem" id="soapxml"/>
-            <xmljson id="xmlJson"/>
+            <!-- >xmljson id="xmlJson"/-->
         </dataFormats>
         <route id="simple-route">
             <!--  <from id="route-timer" uri="timer:foo?period=200"/> -->
@@ -580,7 +580,7 @@
                 </setHeader>
                 <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
                 <log id="_log4" message="Request________${body}"/>
-                <marshal id="_marshal1" ref="xmlJson"/>
+                <!-- >marshal id="_marshal1" ref="xmlJson"/-->
                 <log id="_log4" message="UnRequest________${body}"/>
                 <setHeader headerName="irnInput" id="_setHeader18">
                     <jsonpath>$.soapenv:Body.com:IRNInput.ItemList</jsonpath>
