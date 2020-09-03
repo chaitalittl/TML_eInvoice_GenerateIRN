@@ -1,26 +1,20 @@
 package com.tml.IRN;
 
 public class ExpDtlsObj {
-	protected String WthPay;
+	
+	protected String RefClm;
 	protected String ShipBNo;
 	protected String ShipBDt;
 	protected String Port;
-	protected String InvForCur;
 	protected String ForCur;
 	protected String CntCode;
-
-	protected String ExpCat;
-	public String getExpCat() {
-		return ExpCat;
+	protected String ExpDuty;
+	
+	public String getRefClm() {
+		return RefClm;
 	}
-	public void setExpCat(String expCat) {
-		ExpCat = expCat;
-	}
-	public String getWthPay() {
-		return WthPay;
-	}
-	public void setWthPay(String wthPay) {
-		WthPay = wthPay;
+	public void setRefClm(String refClm) {
+		RefClm = refClm;
 	}
 	public String getShipBNo() {
 		return ShipBNo;
@@ -40,12 +34,6 @@ public class ExpDtlsObj {
 	public void setPort(String port) {
 		Port = port;
 	}
-	public String getInvForCur() {
-		return InvForCur;
-	}
-	public void setInvForCur(String invForCur) {
-		InvForCur = invForCur;
-	}
 	public String getForCur() {
 		return ForCur;
 	}
@@ -58,5 +46,12 @@ public class ExpDtlsObj {
 	public void setCntCode(String cntCode) {
 		CntCode = cntCode;
 	}
-
+	public String getExpDuty() {
+		return ExpDuty;
+	}
+	public void setExpDuty(String expDuty) {
+		ExpDuty = expDuty;
+	}
+	
+	
 }

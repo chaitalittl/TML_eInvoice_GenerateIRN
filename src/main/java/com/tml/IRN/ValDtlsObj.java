@@ -1,6 +1,19 @@
 package com.tml.IRN;
 
 public class ValDtlsObj {
+
+	protected String AssVal;
+	protected String CgstVal;
+	protected String SgstVal;
+	protected String IgstVal;
+	protected String CesVal;
+	protected String StCesVal;
+	protected String CesNonAdVal;
+	protected String Discount;
+	protected String OthChrg;
+	protected String RndOffAmt;
+	protected String TotInvValFc;
+	protected String TotInvVal;
 	
 	public String getAssVal() {
 		return AssVal;
@@ -44,11 +57,11 @@ public class ValDtlsObj {
 	public void setCesNonAdVal(String cesNonAdVal) {
 		CesNonAdVal = cesNonAdVal;
 	}
-	public String getDisc() {
-		return Disc;
+	public String getDiscount() {
+		return Discount;
 	}
-	public void setDisc(String disc) {
-		Disc = disc;
+	public void setDiscount(String discount) {
+		Discount = discount;
 	}
 	public String getOthChrg() {
 		return OthChrg;
@@ -56,22 +69,24 @@ public class ValDtlsObj {
 	public void setOthChrg(String othChrg) {
 		OthChrg = othChrg;
 	}
+	public String getRndOffAmt() {
+		return RndOffAmt;
+	}
+	public void setRndOffAmt(String rndOffAmt) {
+		RndOffAmt = rndOffAmt;
+	}
+	public String getTotInvValFc() {
+		return TotInvValFc;
+	}
+	public void setTotInvValFc(String totInvValFc) {
+		TotInvValFc = totInvValFc;
+	}
 	public String getTotInvVal() {
 		return TotInvVal;
 	}
 	public void setTotInvVal(String totInvVal) {
 		TotInvVal = totInvVal;
 	}
-	protected String AssVal;
-	protected String CgstVal;
-	protected String SgstVal;
-	protected String IgstVal;
-	protected String CesVal;
-	protected String StCesVal;
-	protected String CesNonAdVal;
-	protected String Disc;
-	protected String OthChrg;
-	protected String TotInvVal;
 
 
 }

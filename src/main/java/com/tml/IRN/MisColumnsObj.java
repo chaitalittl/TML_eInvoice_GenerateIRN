@@ -10,29 +10,39 @@ public class MisColumnsObj {
 	protected String CompanyName;
 	protected String TrackingNo;
 	protected String TransactionCount;
-	protected String GlAccount;
 	protected String EwbNo;
 	protected String ReturnPeriod;
-	protected String Mis11;
-	protected String Mis12;
-	protected String Mis13;
-	protected String Mis14;
-	protected String Mis15;
-	protected String Mis16;
-	protected String Mis17;
-	protected String Mis18;
-	protected String Mis19;
-	protected String Mis20;
-	protected String Mis21;
-	protected String Mis22;
-	protected String Mis23;
-	protected String Mis24;
-	protected String Mis25;
-	protected String Mis26;
-	protected String Mis27;
-	protected String Mis28;
-	protected String Mis29;
-	protected String Mis30;
+	protected String TdsApplicable;
+	protected String Mis31;
+	protected String Mis32;
+	protected String Mis33;
+	protected String Mis34;
+	protected String Mis35;
+	protected String Mis36;
+	protected String Mis37;
+	protected String Mis38;
+	protected String Mis39;
+	protected String Mis40;
+	protected String Mis41;
+	protected String Mis42;
+	protected String Mis43;
+	protected String Mis44;
+	protected String Mis45;
+	protected String Mis46;
+	protected String Mis47;
+	protected String Mis48;
+	protected String Mis49;
+	protected String Mis50;
+	protected String Mis51;
+	protected String Mis52;
+	protected String Mis53;
+	protected String Mis54;
+	protected String Mis55;
+	protected String Mis56;
+	protected String Mis57;
+	protected String Mis58;
+	protected String Mis59;
+	protected String Mis60;
 	
 	public String getBu() {
 		return Bu;
@@ -82,12 +92,6 @@ public class MisColumnsObj {
 	public void setTransactionCount(String transactionCount) {
 		TransactionCount = transactionCount;
 	}
-	public String getGlAccount() {
-		return GlAccount;
-	}
-	public void setGlAccount(String glAccount) {
-		GlAccount = glAccount;
-	}
 	public String getEwbNo() {
 		return EwbNo;
 	}
@@ -100,126 +104,192 @@ public class MisColumnsObj {
 	public void setReturnPeriod(String returnPeriod) {
 		ReturnPeriod = returnPeriod;
 	}
-	public String getMis11() {
-		return Mis11;
+	public String getTdsApplicable() {
+		return TdsApplicable;
 	}
-	public void setMis11(String mis11) {
-		Mis11 = mis11;
+	public void setTdsApplicable(String tdsApplicable) {
+		TdsApplicable = tdsApplicable;
 	}
-	public String getMis12() {
-		return Mis12;
+	public String getMis31() {
+		return Mis31;
 	}
-	public void setMis12(String mis12) {
-		Mis12 = mis12;
+	public void setMis31(String mis31) {
+		Mis31 = mis31;
 	}
-	public String getMis13() {
-		return Mis13;
+	public String getMis32() {
+		return Mis32;
 	}
-	public void setMis13(String mis13) {
-		Mis13 = mis13;
+	public void setMis32(String mis32) {
+		Mis32 = mis32;
 	}
-	public String getMis14() {
-		return Mis14;
+	public String getMis33() {
+		return Mis33;
 	}
-	public void setMis14(String mis14) {
-		Mis14 = mis14;
+	public void setMis33(String mis33) {
+		Mis33 = mis33;
 	}
-	public String getMis15() {
-		return Mis15;
+	public String getMis34() {
+		return Mis34;
 	}
-	public void setMis15(String mis15) {
-		Mis15 = mis15;
+	public void setMis34(String mis34) {
+		Mis34 = mis34;
 	}
-	public String getMis16() {
-		return Mis16;
+	public String getMis35() {
+		return Mis35;
 	}
-	public void setMis16(String mis16) {
-		Mis16 = mis16;
+	public void setMis35(String mis35) {
+		Mis35 = mis35;
 	}
-	public String getMis17() {
-		return Mis17;
+	public String getMis36() {
+		return Mis36;
 	}
-	public void setMis17(String mis17) {
-		Mis17 = mis17;
+	public void setMis36(String mis36) {
+		Mis36 = mis36;
 	}
-	public String getMis18() {
-		return Mis18;
+	public String getMis37() {
+		return Mis37;
 	}
-	public void setMis18(String mis18) {
-		Mis18 = mis18;
+	public void setMis37(String mis37) {
+		Mis37 = mis37;
 	}
-	public String getMis19() {
-		return Mis19;
+	public String getMis38() {
+		return Mis38;
 	}
-	public void setMis19(String mis19) {
-		Mis19 = mis19;
+	public void setMis38(String mis38) {
+		Mis38 = mis38;
 	}
-	public String getMis20() {
-		return Mis20;
+	public String getMis39() {
+		return Mis39;
 	}
-	public void setMis20(String mis20) {
-		Mis20 = mis20;
+	public void setMis39(String mis39) {
+		Mis39 = mis39;
 	}
-	public String getMis21() {
-		return Mis21;
+	public String getMis40() {
+		return Mis40;
 	}
-	public void setMis21(String mis21) {
-		Mis21 = mis21;
+	public void setMis40(String mis40) {
+		Mis40 = mis40;
 	}
-	public String getMis22() {
-		return Mis22;
+	public String getMis41() {
+		return Mis41;
 	}
-	public void setMis22(String mis22) {
-		Mis22 = mis22;
+	public void setMis41(String mis41) {
+		Mis41 = mis41;
 	}
-	public String getMis23() {
-		return Mis23;
+	public String getMis42() {
+		return Mis42;
 	}
-	public void setMis23(String mis23) {
-		Mis23 = mis23;
+	public void setMis42(String mis42) {
+		Mis42 = mis42;
 	}
-	public String getMis24() {
-		return Mis24;
+	public String getMis43() {
+		return Mis43;
 	}
-	public void setMis24(String mis24) {
-		Mis24 = mis24;
+	public void setMis43(String mis43) {
+		Mis43 = mis43;
 	}
-	public String getMis25() {
-		return Mis25;
+	public String getMis44() {
+		return Mis44;
 	}
-	public void setMis25(String mis25) {
-		Mis25 = mis25;
+	public void setMis44(String mis44) {
+		Mis44 = mis44;
 	}
-	public String getMis26() {
-		return Mis26;
+	public String getMis45() {
+		return Mis45;
 	}
-	public void setMis26(String mis26) {
-		Mis26 = mis26;
+	public void setMis45(String mis45) {
+		Mis45 = mis45;
 	}
-	public String getMis27() {
-		return Mis27;
+	public String getMis46() {
+		return Mis46;
 	}
-	public void setMis27(String mis27) {
-		Mis27 = mis27;
+	public void setMis46(String mis46) {
+		Mis46 = mis46;
 	}
-	public String getMis28() {
-		return Mis28;
+	public String getMis47() {
+		return Mis47;
 	}
-	public void setMis28(String mis28) {
-		Mis28 = mis28;
+	public void setMis47(String mis47) {
+		Mis47 = mis47;
 	}
-	public String getMis29() {
-		return Mis29;
+	public String getMis48() {
+		return Mis48;
 	}
-	public void setMis29(String mis29) {
-		Mis29 = mis29;
+	public void setMis48(String mis48) {
+		Mis48 = mis48;
 	}
-	public String getMis30() {
-		return Mis30;
+	public String getMis49() {
+		return Mis49;
 	}
-	public void setMis30(String mis30) {
-		Mis30 = mis30;
+	public void setMis49(String mis49) {
+		Mis49 = mis49;
 	}
-
-
-}
+	public String getMis50() {
+		return Mis50;
+	}
+	public void setMis50(String mis50) {
+		Mis50 = mis50;
+	}
+	public String getMis51() {
+		return Mis51;
+	}
+	public void setMis51(String mis51) {
+		Mis51 = mis51;
+	}
+	public String getMis52() {
+		return Mis52;
+	}
+	public void setMis52(String mis52) {
+		Mis52 = mis52;
+	}
+	public String getMis53() {
+		return Mis53;
+	}
+	public void setMis53(String mis53) {
+		Mis53 = mis53;
+	}
+	public String getMis54() {
+		return Mis54;
+	}
+	public void setMis54(String mis54) {
+		Mis54 = mis54;
+	}
+	public String getMis55() {
+		return Mis55;
+	}
+	public void setMis55(String mis55) {
+		Mis55 = mis55;
+	}
+	public String getMis56() {
+		return Mis56;
+	}
+	public void setMis56(String mis56) {
+		Mis56 = mis56;
+	}
+	public String getMis57() {
+		return Mis57;
+	}
+	public void setMis57(String mis57) {
+		Mis57 = mis57;
+	}
+	public String getMis58() {
+		return Mis58;
+	}
+	public void setMis58(String mis58) {
+		Mis58 = mis58;
+	}
+	public String getMis59() {
+		return Mis59;
+	}
+	public void setMis59(String mis59) {
+		Mis59 = mis59;
+	}
+	public String getMis60() {
+		return Mis60;
+	}
+	public void setMis60(String mis60) {
+		Mis60 = mis60;
+	}
+	
+	
+	}

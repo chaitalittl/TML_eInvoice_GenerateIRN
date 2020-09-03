@@ -1,17 +1,12 @@
 package com.tml.IRN;
 
-import java.awt.event.ItemListener;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 @XmlAccessorType( XmlAccessType.FIELD )
 /*@XmlType( name = "check",propOrder = {
@@ -24,34 +19,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "User_GSTIN","TaxSch","is_irn"
 })*/
 public class IRNInput {
-	protected String is_ewb;
-	public String getIs_ewb() {
-		return is_ewb;
-	}
-
-	public void setIs_ewb(String is_ewb) {
-		this.is_ewb = is_ewb;
-	}
-
+	
 	protected String User_GSTIN;
-    public String getTaxSch() {
-		return TaxSch;
-	}
-
-	public void setTaxSch(String taxSch) {
-		TaxSch = taxSch;
-	}
-
-	public String getIs_irn() {
-		return is_irn;
-	}
-
-	public void setIs_irn(String is_irn) {
-		this.is_irn = is_irn;
-	}
-
-	protected String TaxSch;
+	protected String IRN;
+	protected String SourceSystem;
 	protected String is_irn;
+	protected String is_ewb;
+	protected String email;
 	
 	public String getUser_GSTIN() {
 		return User_GSTIN;
@@ -61,6 +35,30 @@ public class IRNInput {
 		User_GSTIN = user_GSTIN;
 	}
 	
+	public String getIRN() {
+			return IRN;
+	}
+
+	public void setIRN(String iRN) {
+			IRN = iRN;
+	}
+	
+	public String getIs_irn() {
+		return is_irn;
+	}
+
+	public void setIs_irn(String is_irn) {
+		this.is_irn = is_irn;
+	}
+	
+	public String getIs_ewb() {
+		return is_ewb;
+	}
+
+	public void setIs_ewb(String is_ewb) {
+		this.is_ewb = is_ewb;
+	}
+	
 	@XmlElement(name="TranDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<TranDtlsObj> TranDtls ;
@@ -68,22 +66,6 @@ public class IRNInput {
 	@XmlElement(name="DocDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<DocDtlsObj> DocDtls ;
-		
-	@XmlElement(name="ExpDtls")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<ExpDtlsObj> ExpDtls ;
-	
-	@XmlElement(name="MisColumns")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<MisColumnsObj> MisColumns ;
-	
-	@XmlElement(name="FuColumns")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<FuColumnsObj> FuColumns ;
-	
-	@XmlElement(name="TransportDtls")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<TransportDtlsObj> TransportDtls ;
 	
 	@XmlElement(name="SellerDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
@@ -92,7 +74,7 @@ public class IRNInput {
 	@XmlElement(name="BuyerDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<BuyerDtlsObj> BuyerDtls ;
-	
+
 	@XmlElement(name="DispDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<DispDtlsObj> DispDtls ;
@@ -101,22 +83,52 @@ public class IRNInput {
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<ShipDtlsObj> ShipDtls ;
 	
+	@XmlElement(name="ItemList")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<ItemListObj> ItemList ;
+
 	@XmlElement(name="ValDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<ValDtlsObj> ValDtls ;
-	
-	@XmlElement(name="RefDtls")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<RefDtlsObj> RefDtls ;
 	
 	@XmlElement(name="PayDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<PayDtlsObj> PayDtls ;
 	
-	@XmlElement(name="ItemList")
+	@XmlElement(name="RefDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<ItemListObj> ItemList ;
+	protected List<RefDtlsObj> RefDtls ;
 	
+	@XmlElement(name="AddlDocDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<AddlDocDtlsObj> AddlDocDtls ;
+		
+	@XmlElement(name="ExpDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<ExpDtlsObj> ExpDtls ;
 	
+	@XmlElement(name="EwbDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<EwbDtlsObj> EwbDtls ;
+	
+	@XmlElement(name="WhtHdrsDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<WhtHdrsDtlsObj> WhtHdrsDtls ;
+	
+	@XmlElement(name="MisColumns")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<MisColumnsObj> MisColumns ;
+	
+	@XmlElement(name="FuColumns")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<FuColumnsObj> FuColumns ;
 
+	public String getSourceSystem() {
+		return SourceSystem;
+	}
+
+	public void setSourceSystem(String sourceSystem) {
+		SourceSystem = sourceSystem;
+	}
+	
 }

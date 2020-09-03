@@ -1,12 +1,24 @@
 package com.tml.IRN;
 
 public class PayDtlsObj {
+
+	protected String Nm;
+	protected String Mode;
+	protected String FinInsBr;
+	protected String PayTerm;
+	protected String PayInstr;
+	protected String CrTrn;
+	protected String DirDr;
+	protected String CrDay;
+	protected String PaidAmt;
+	protected String PaymtDue;
+	protected String AccDet;
 	
-	public String getNam() {
-		return Nam;
+	public String getNm() {
+		return Nm;
 	}
-	public void setNam(String nam) {
-		Nam = nam;
+	public void setNm(String nm) {
+		Nm = nm;
 	}
 	public String getMode() {
 		return Mode;
@@ -50,34 +62,23 @@ public class PayDtlsObj {
 	public void setCrDay(String crDay) {
 		CrDay = crDay;
 	}
-	public String getBalAmt() {
-		return BalAmt;
+	public String getPaidAmt() {
+		return PaidAmt;
 	}
-	public void setBalAmt(String balAmt) {
-		BalAmt = balAmt;
+	public void setPaidAmt(String paidAmt) {
+		PaidAmt = paidAmt;
 	}
-	public String getPayDueDt() {
-		return PayDueDt;
+	public String getPaymtDue() {
+		return PaymtDue;
 	}
-	public void setPayDueDt(String payDueDt) {
-		PayDueDt = payDueDt;
+	public void setPaymtDue(String paymtDue) {
+		PaymtDue = paymtDue;
 	}
-	public String getAcctDet() {
-		return AcctDet;
+	public String getAccDet() {
+		return AccDet;
 	}
-	public void setAcctDet(String acctDet) {
-		AcctDet = acctDet;
+	public void setAccDet(String accDet) {
+		AccDet = accDet;
 	}
-	protected String Nam;
-	protected String Mode;
-	protected String FinInsBr;
-	protected String PayTerm;
-	protected String PayInstr;
-	protected String CrTrn;
-	protected String DirDr;
-	protected String CrDay;
-	protected String BalAmt;
-	protected String PayDueDt;
-	protected String AcctDet;
 
 }

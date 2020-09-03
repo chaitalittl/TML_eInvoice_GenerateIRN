@@ -9,43 +9,20 @@ import javax.xml.bind.annotation.XmlType;
 
 public class TranDtlsObj {
 	
+	protected String OutwardInward;
+	protected String SubType;
+	protected String SubTypeDescription;
+	protected String SupTyp;
+	protected String RegRev;
+	protected String Typ;
+	protected String EcmGstin;
+	protected String IgstOnIntra;
+	protected String DiffPercentage;
+	protected String Taxability;
+	protected String InterIntra;
+	protected String CnlRsn;
+	protected String CnlRem;
 	
-	public String getCatg() {
-		return Catg;
-	}
-	public void setCatg(String catg) {
-		Catg = catg;
-	}
-	public String getRegRev() {
-		return RegRev;
-	}
-	public void setRegRev(String regRev) {
-		RegRev = regRev;
-	}
-	public String getTyp() {
-		return Typ;
-	}
-	public void setTyp(String typ) {
-		Typ = typ;
-	}
-	public String getEcmTrnSel() {
-		return EcmTrnSel;
-	}
-	public void setEcmTrnSel(String ecmTrnSel) {
-		EcmTrnSel = ecmTrnSel;
-	}
-	public String getEcmTrn() {
-		return EcmTrn;
-	}
-	public void setEcmTrn(String ecmTrn) {
-		EcmTrn = ecmTrn;
-	}
-	public String getEcmGstin() {
-		return EcmGstin;
-	}
-	public void setEcmGstin(String ecmGstin) {
-		EcmGstin = ecmGstin;
-	}
 	public String getOutwardInward() {
 		return OutwardInward;
 	}
@@ -64,17 +41,35 @@ public class TranDtlsObj {
 	public void setSubTypeDescription(String subTypeDescription) {
 		SubTypeDescription = subTypeDescription;
 	}
-	public String getPos() {
-		return Pos;
+	public String getSupTyp() {
+		return SupTyp;
 	}
-	public void setPos(String pos) {
-		Pos = pos;
+	public void setSupTyp(String supTyp) {
+		SupTyp = supTyp;
 	}
-	public String getClaimingRefund() {
-		return ClaimingRefund;
+	public String getRegRev() {
+		return RegRev;
 	}
-	public void setClaimingRefund(String claimingRefund) {
-		ClaimingRefund = claimingRefund;
+	public void setRegRev(String regRev) {
+		RegRev = regRev;
+	}
+	public String getTyp() {
+		return Typ;
+	}
+	public void setTyp(String typ) {
+		Typ = typ;
+	}
+	public String getEcmGstin() {
+		return EcmGstin;
+	}
+	public void setEcmGstin(String ecmGstin) {
+		EcmGstin = ecmGstin;
+	}
+	public String getIgstOnIntra() {
+		return IgstOnIntra;
+	}
+	public void setIgstOnIntra(String igstOnIntra) {
+		IgstOnIntra = igstOnIntra;
 	}
 	public String getDiffPercentage() {
 		return DiffPercentage;
@@ -94,19 +89,18 @@ public class TranDtlsObj {
 	public void setInterIntra(String interIntra) {
 		InterIntra = interIntra;
 	}
-	protected String Catg;
-	protected String RegRev;
-	protected String Typ;
-	protected String EcmTrnSel;
-	protected String EcmTrn;
-	protected String EcmGstin;
-	protected String OutwardInward;
-	protected String SubType;
-	protected String SubTypeDescription;
-	protected String Pos;
-	protected String ClaimingRefund;
-	protected String DiffPercentage;
-	protected String Taxability;
-	protected String InterIntra;
-
+	public String getCnlRsn() {
+		return CnlRsn;
+	}
+	public void setCnlRsn(String cnlRsn) {
+		CnlRsn = cnlRsn;
+	}
+	public String getCnlRem() {
+		return CnlRem;
+	}
+	public void setCnlRem(String cnlRem) {
+		CnlRem = cnlRem;
+	}
+	
+	
 }

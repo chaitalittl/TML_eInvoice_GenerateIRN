@@ -1,11 +1,138 @@
 package com.tml.IRN;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class elementObj {
-	public String getLineItem() {
-		return LineItem;
+	
+	protected String SlNo;
+	protected String OrdLineRef;
+	protected String PrdSlNo;
+	protected String ItemCode;
+	protected String PrdNm;
+	protected String PrdDesc;
+	protected String HsnCd;
+	protected String IsServc;
+	protected String BarCde;
+	protected String Qty;
+	protected String FreeQty;
+	protected String Unit;
+	protected String UnitPrice;
+	protected String TotAmt;
+	protected String Discount;
+	protected String OthChrg;
+	protected String Vat;
+	protected String CentralDxcise;
+	protected String StateExcise;
+	protected String ValueBeforeBcd;
+	protected String Bcd;
+	protected String PreTaxVal;
+	protected String AssAmt;
+	protected String GstRt;
+	protected String CgstRt;
+	protected String SgstRt;
+	protected String IgstRt;
+	protected String CesRt;
+	protected String CesNonAdVal;
+	protected String StateCesRt;
+	protected String IgstAmt;
+	protected String CgstAmt;
+	protected String SgstAmt;
+	protected String CessAmt;
+	protected String CesNonAdvlAmt;
+	protected String StateCesAmt;
+	protected String StateCesNonAdvlAmt;
+	protected String TotItemVal;
+	protected String OrgCntry;
+	
+	@XmlElement(name="BchDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<BchDtlsObj> BchDtls ;
+	
+	@XmlElement(name="AttribDtls")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<AttribDtlsObj> AttribDtls ;
+	
+	@XmlElement(name="WhtItem")
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	protected List<WhtItemObj> WhtItem ;
+	
+	protected String EligibilityItc;
+	protected String ItcIgst;
+	protected String ItcCgst;
+	protected String ItcSgst;
+	protected String ItcCess;
+	protected String NatureOfExpense;
+	protected String GlCodeRevenueExpense;
+	protected String GlCodeIgst;
+	protected String GlCodeCgst;
+	protected String GlCodeSgst;
+	protected String GlCodeCess;
+	protected String GlCodeIgstItc;
+	protected String GlCodeCgstItc;
+	protected String GlCodeSgstItc;
+	protected String GlCodeCessItc;
+	protected String Mis1;
+	protected String Mis2;
+	protected String Mis3;
+	protected String Mis4;
+	protected String Mis5;
+	protected String Mis6;
+	protected String Mis7;
+	protected String Mis8;
+	protected String Mis9;
+	protected String Mis10;
+	protected String Mis11;
+	protected String Mis12;
+	protected String Mis13;
+	protected String Mis14;
+	protected String Mis15;
+	protected String Mis16;
+	protected String Mis17;
+	protected String Mis18;
+	protected String Mis19;
+	protected String Mis20;
+	protected String Mis21;
+	protected String Mis22;
+	protected String Mis23;
+	protected String Mis24;
+	protected String Mis25;
+	protected String Mis26;
+	protected String Mis27;
+	protected String Mis28;
+	protected String Mis29;
+	protected String Mis30;
+	protected String Fu1;
+	protected String Fu2;
+	protected String Fu3;
+	protected String Fu4;
+	protected String Fu5;
+	protected String Fu6;
+	protected String Fu7;
+	protected String Fu8;
+	protected String Fu9;
+	protected String Fu10;
+	
+	public String getSlNo() {
+		return SlNo;
 	}
-	public void setLineItem(String lineItem) {
-		LineItem = lineItem;
+	public void setSlNo(String slNo) {
+		SlNo = slNo;
+	}
+	public String getOrdLineRef() {
+		return OrdLineRef;
+	}
+	public void setOrdLineRef(String ordLineRef) {
+		OrdLineRef = ordLineRef;
+	}
+	public String getPrdSlNo() {
+		return PrdSlNo;
+	}
+	public void setPrdSlNo(String prdSlNo) {
+		PrdSlNo = prdSlNo;
 	}
 	public String getItemCode() {
 		return ItemCode;
@@ -31,11 +158,11 @@ public class elementObj {
 	public void setHsnCd(String hsnCd) {
 		HsnCd = hsnCd;
 	}
-	public String getGoodsService() {
-		return GoodsService;
+	public String getIsServc() {
+		return IsServc;
 	}
-	public void setGoodsService(String goodsService) {
-		GoodsService = goodsService;
+	public void setIsServc(String isServc) {
+		IsServc = isServc;
 	}
 	public String getBarCde() {
 		return BarCde;
@@ -73,48 +200,6 @@ public class elementObj {
 	public void setTotAmt(String totAmt) {
 		TotAmt = totAmt;
 	}
-	public String getCgstRt() {
-		return CgstRt;
-	}
-	public void setCgstRt(String cgstRt) {
-		CgstRt = cgstRt;
-	}
-	public String getSgstRt() {
-		return SgstRt;
-	}
-	public void setSgstRt(String sgstRt) {
-		SgstRt = sgstRt;
-	}
-	public String getIgstRt() {
-		return IgstRt;
-	}
-	public void setIgstRt(String igstRt) {
-		IgstRt = igstRt;
-	}
-	public String getCesRt() {
-		return CesRt;
-	}
-	public void setCesRt(String cesRt) {
-		CesRt = cesRt;
-	}
-	public String getCesNonAdVal() {
-		return CesNonAdVal;
-	}
-	public void setCesNonAdVal(String cesNonAdVal) {
-		CesNonAdVal = cesNonAdVal;
-	}
-	public String getStateCes() {
-		return StateCes;
-	}
-	public void setStateCes(String stateCes) {
-		StateCes = stateCes;
-	}
-	public String getTotItemVal() {
-		return TotItemVal;
-	}
-	public void setTotItemVal(String totItemVal) {
-		TotItemVal = totItemVal;
-	}
 	public String getDiscount() {
 		return Discount;
 	}
@@ -145,12 +230,6 @@ public class elementObj {
 	public void setStateExcise(String stateExcise) {
 		StateExcise = stateExcise;
 	}
-	public String getExportDuty() {
-		return ExportDuty;
-	}
-	public void setExportDuty(String exportDuty) {
-		ExportDuty = exportDuty;
-	}
 	public String getValueBeforeBcd() {
 		return ValueBeforeBcd;
 	}
@@ -163,23 +242,59 @@ public class elementObj {
 	public void setBcd(String bcd) {
 		Bcd = bcd;
 	}
+	public String getPreTaxVal() {
+		return PreTaxVal;
+	}
+	public void setPreTaxVal(String preTaxVal) {
+		PreTaxVal = preTaxVal;
+	}
 	public String getAssAmt() {
 		return AssAmt;
 	}
 	public void setAssAmt(String assAmt) {
 		AssAmt = assAmt;
 	}
-	public String getTotalGstRate() {
-		return TotalGstRate;
+	public String getGstRt() {
+		return GstRt;
 	}
-	public void setTotalGstRate(String totalGstRate) {
-		TotalGstRate = totalGstRate;
+	public void setGstRt(String gstRt) {
+		GstRt = gstRt;
 	}
-	public String getCessNonAdvolRt() {
-		return CessNonAdvolRt;
+	public String getCgstRt() {
+		return CgstRt;
 	}
-	public void setCessNonAdvolRt(String cessNonAdvolRt) {
-		CessNonAdvolRt = cessNonAdvolRt;
+	public void setCgstRt(String cgstRt) {
+		CgstRt = cgstRt;
+	}
+	public String getSgstRt() {
+		return SgstRt;
+	}
+	public void setSgstRt(String sgstRt) {
+		SgstRt = sgstRt;
+	}
+	public String getIgstRt() {
+		return IgstRt;
+	}
+	public void setIgstRt(String igstRt) {
+		IgstRt = igstRt;
+	}
+	public String getCesRt() {
+		return CesRt;
+	}
+	public void setCesRt(String cesRt) {
+		CesRt = cesRt;
+	}
+	public String getCesNonAdVal() {
+		return CesNonAdVal;
+	}
+	public void setCesNonAdVal(String cesNonAdVal) {
+		CesNonAdVal = cesNonAdVal;
+	}
+	public String getStateCesRt() {
+		return StateCesRt;
+	}
+	public void setStateCesRt(String stateCesRt) {
+		StateCesRt = stateCesRt;
 	}
 	public String getIgstAmt() {
 		return IgstAmt;
@@ -204,6 +319,36 @@ public class elementObj {
 	}
 	public void setCessAmt(String cessAmt) {
 		CessAmt = cessAmt;
+	}
+	public String getCesNonAdvlAmt() {
+		return CesNonAdvlAmt;
+	}
+	public void setCesNonAdvlAmt(String cesNonAdvlAmt) {
+		CesNonAdvlAmt = cesNonAdvlAmt;
+	}
+	public String getStateCesAmt() {
+		return StateCesAmt;
+	}
+	public void setStateCesAmt(String stateCesAmt) {
+		StateCesAmt = stateCesAmt;
+	}
+	public String getStateCesNonAdvlAmt() {
+		return StateCesNonAdvlAmt;
+	}
+	public void setStateCesNonAdvlAmt(String stateCesNonAdvlAmt) {
+		StateCesNonAdvlAmt = stateCesNonAdvlAmt;
+	}
+	public String getTotItemVal() {
+		return TotItemVal;
+	}
+	public void setTotItemVal(String totItemVal) {
+		TotItemVal = totItemVal;
+	}
+	public String getOrgCntry() {
+		return OrgCntry;
+	}
+	public void setOrgCntry(String orgCntry) {
+		OrgCntry = orgCntry;
 	}
 	public String getEligibilityItc() {
 		return EligibilityItc;
@@ -240,6 +385,60 @@ public class elementObj {
 	}
 	public void setNatureOfExpense(String natureOfExpense) {
 		NatureOfExpense = natureOfExpense;
+	}
+	public String getGlCodeRevenueExpense() {
+		return GlCodeRevenueExpense;
+	}
+	public void setGlCodeRevenueExpense(String glCodeRevenueExpense) {
+		GlCodeRevenueExpense = glCodeRevenueExpense;
+	}
+	public String getGlCodeIgst() {
+		return GlCodeIgst;
+	}
+	public void setGlCodeIgst(String glCodeIgst) {
+		GlCodeIgst = glCodeIgst;
+	}
+	public String getGlCodeCgst() {
+		return GlCodeCgst;
+	}
+	public void setGlCodeCgst(String glCodeCgst) {
+		GlCodeCgst = glCodeCgst;
+	}
+	public String getGlCodeSgst() {
+		return GlCodeSgst;
+	}
+	public void setGlCodeSgst(String glCodeSgst) {
+		GlCodeSgst = glCodeSgst;
+	}
+	public String getGlCodeCess() {
+		return GlCodeCess;
+	}
+	public void setGlCodeCess(String glCodeCess) {
+		GlCodeCess = glCodeCess;
+	}
+	public String getGlCodeIgstItc() {
+		return GlCodeIgstItc;
+	}
+	public void setGlCodeIgstItc(String glCodeIgstItc) {
+		GlCodeIgstItc = glCodeIgstItc;
+	}
+	public String getGlCodeCgstItc() {
+		return GlCodeCgstItc;
+	}
+	public void setGlCodeCgstItc(String glCodeCgstItc) {
+		GlCodeCgstItc = glCodeCgstItc;
+	}
+	public String getGlCodeSgstItc() {
+		return GlCodeSgstItc;
+	}
+	public void setGlCodeSgstItc(String glCodeSgstItc) {
+		GlCodeSgstItc = glCodeSgstItc;
+	}
+	public String getGlCodeCessItc() {
+		return GlCodeCessItc;
+	}
+	public void setGlCodeCessItc(String glCodeCessItc) {
+		GlCodeCessItc = glCodeCessItc;
 	}
 	public String getMis1() {
 		return Mis1;
@@ -301,6 +500,126 @@ public class elementObj {
 	public void setMis10(String mis10) {
 		Mis10 = mis10;
 	}
+	public String getMis11() {
+		return Mis11;
+	}
+	public void setMis11(String mis11) {
+		Mis11 = mis11;
+	}
+	public String getMis12() {
+		return Mis12;
+	}
+	public void setMis12(String mis12) {
+		Mis12 = mis12;
+	}
+	public String getMis13() {
+		return Mis13;
+	}
+	public void setMis13(String mis13) {
+		Mis13 = mis13;
+	}
+	public String getMis14() {
+		return Mis14;
+	}
+	public void setMis14(String mis14) {
+		Mis14 = mis14;
+	}
+	public String getMis15() {
+		return Mis15;
+	}
+	public void setMis15(String mis15) {
+		Mis15 = mis15;
+	}
+	public String getMis16() {
+		return Mis16;
+	}
+	public void setMis16(String mis16) {
+		Mis16 = mis16;
+	}
+	public String getMis17() {
+		return Mis17;
+	}
+	public void setMis17(String mis17) {
+		Mis17 = mis17;
+	}
+	public String getMis18() {
+		return Mis18;
+	}
+	public void setMis18(String mis18) {
+		Mis18 = mis18;
+	}
+	public String getMis19() {
+		return Mis19;
+	}
+	public void setMis19(String mis19) {
+		Mis19 = mis19;
+	}
+	public String getMis20() {
+		return Mis20;
+	}
+	public void setMis20(String mis20) {
+		Mis20 = mis20;
+	}
+	public String getMis21() {
+		return Mis21;
+	}
+	public void setMis21(String mis21) {
+		Mis21 = mis21;
+	}
+	public String getMis22() {
+		return Mis22;
+	}
+	public void setMis22(String mis22) {
+		Mis22 = mis22;
+	}
+	public String getMis23() {
+		return Mis23;
+	}
+	public void setMis23(String mis23) {
+		Mis23 = mis23;
+	}
+	public String getMis24() {
+		return Mis24;
+	}
+	public void setMis24(String mis24) {
+		Mis24 = mis24;
+	}
+	public String getMis25() {
+		return Mis25;
+	}
+	public void setMis25(String mis25) {
+		Mis25 = mis25;
+	}
+	public String getMis26() {
+		return Mis26;
+	}
+	public void setMis26(String mis26) {
+		Mis26 = mis26;
+	}
+	public String getMis27() {
+		return Mis27;
+	}
+	public void setMis27(String mis27) {
+		Mis27 = mis27;
+	}
+	public String getMis28() {
+		return Mis28;
+	}
+	public void setMis28(String mis28) {
+		Mis28 = mis28;
+	}
+	public String getMis29() {
+		return Mis29;
+	}
+	public void setMis29(String mis29) {
+		Mis29 = mis29;
+	}
+	public String getMis30() {
+		return Mis30;
+	}
+	public void setMis30(String mis30) {
+		Mis30 = mis30;
+	}
 	public String getFu1() {
 		return Fu1;
 	}
@@ -361,65 +680,24 @@ public class elementObj {
 	public void setFu10(String fu10) {
 		Fu10 = fu10;
 	}
-	protected String LineItem;
-	protected String ItemCode;
-	protected String PrdNm;
-	protected String PrdDesc;
-	protected String HsnCd;
-	protected String GoodsService;
-	protected String BarCde;
-	protected String Qty;
-	protected String FreeQty;
-	protected String Unit;
-	protected String UnitPrice;
-	protected String TotAmt;
-	protected String CgstRt;
-	protected String SgstRt;
-	protected String IgstRt;
-	protected String CesRt;
-	protected String CesNonAdVal;
-	protected String StateCes;
-	protected String TotItemVal;
-	protected String Discount;
-	protected String OthChrg;
-	protected String Vat;
-	protected String CentralDxcise;
-	protected String StateExcise;
-	protected String ExportDuty;
-	protected String ValueBeforeBcd;
-	protected String Bcd;
-	protected String AssAmt;
-	protected String TotalGstRate;
-	protected String CessNonAdvolRt;
-	protected String IgstAmt;
-	protected String CgstAmt;
-	protected String SgstAmt;
-	protected String CessAmt;
-	protected String EligibilityItc;
-	protected String ItcIgst;
-	protected String ItcCgst;
-	protected String ItcSgst;
-	protected String ItcCess;
-	protected String NatureOfExpense;
-	protected String Mis1;
-	protected String Mis2;
-	protected String Mis3;
-	protected String Mis4;
-	protected String Mis5;
-	protected String Mis6;
-	protected String Mis7;
-	protected String Mis8;
-	protected String Mis9;
-	protected String Mis10;
-	protected String Fu1;
-	protected String Fu2;
-	protected String Fu3;
-	protected String Fu4;
-	protected String Fu5;
-	protected String Fu6;
-	protected String Fu7;
-	protected String Fu8;
-	protected String Fu9;
-	protected String Fu10;
-
-}
+	public List<BchDtlsObj> getBchDtls() {
+		return BchDtls;
+	}
+	public void setBchDtls(List<BchDtlsObj> bchDtls) {
+		BchDtls = bchDtls;
+	}
+	public List<AttribDtlsObj> getAttribDtls() {
+		return AttribDtls;
+	}
+	public void setAttribDtls(List<AttribDtlsObj> attribDtls) {
+		AttribDtls = attribDtls;
+	}
+	public List<WhtItemObj> getWhtItem() {
+		return WhtItem;
+	}
+	public void setWhtItem(List<WhtItemObj> whtItem) {
+		WhtItem = whtItem;
+	}
+	
+	
+	}

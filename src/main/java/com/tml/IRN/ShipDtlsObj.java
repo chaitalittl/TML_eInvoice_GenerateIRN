@@ -2,11 +2,26 @@ package com.tml.IRN;
 
 public class ShipDtlsObj {
 
+	protected String Gstin;
+	protected String LglNm;
+	protected String TrdNm;
+	protected String Addr1;
+	protected String Addr2;
+	protected String Loc;
+	protected String Pin;
+	protected String Stcd;
+	
 	public String getGstin() {
 		return Gstin;
 	}
 	public void setGstin(String gstin) {
 		Gstin = gstin;
+	}
+	public String getLglNm() {
+		return LglNm;
+	}
+	public void setLglNm(String lglNm) {
+		LglNm = lglNm;
 	}
 	public String getTrdNm() {
 		return TrdNm;
@@ -14,35 +29,23 @@ public class ShipDtlsObj {
 	public void setTrdNm(String trdNm) {
 		TrdNm = trdNm;
 	}
-	public String getBno() {
-		return Bno;
+	public String getAddr1() {
+		return Addr1;
 	}
-	public void setBno(String bno) {
-		Bno = bno;
+	public void setAddr1(String addr1) {
+		Addr1 = addr1;
 	}
-	public String getBnm() {
-		return Bnm;
+	public String getAddr2() {
+		return Addr2;
 	}
-	public void setBnm(String bnm) {
-		Bnm = bnm;
-	}
-	public String getFlno() {
-		return Flno;
-	}
-	public void setFlno(String flno) {
-		Flno = flno;
+	public void setAddr2(String addr2) {
+		Addr2 = addr2;
 	}
 	public String getLoc() {
 		return Loc;
 	}
 	public void setLoc(String loc) {
 		Loc = loc;
-	}
-	public String getDst() {
-		return Dst;
-	}
-	public void setDst(String dst) {
-		Dst = dst;
 	}
 	public String getPin() {
 		return Pin;
@@ -56,28 +59,5 @@ public class ShipDtlsObj {
 	public void setStcd(String stcd) {
 		Stcd = stcd;
 	}
-	public String getPh() {
-		return Ph;
-	}
-	public void setPh(String ph) {
-		Ph = ph;
-	}
-	public String getEm() {
-		return Em;
-	}
-	public void setEm(String em) {
-		Em = em;
-	}
-	protected String Gstin;
-	protected String TrdNm;
-	protected String Bno;
-	protected String Bnm;
-	protected String Flno;
-	protected String Loc;
-	protected String Dst;
-	protected String Pin;
-	protected String Stcd;
-	protected String Ph;
-	protected String Em;
-
+	
 }
