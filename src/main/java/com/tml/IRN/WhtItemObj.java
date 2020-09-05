@@ -9,11 +9,11 @@ public class WhtItemObj {
 	protected String PoDescription;
 	protected String VoucherId;
 	protected String DebitCreditIdentifier;
-	protected String GrossExpenseAmt;
-	protected String TdsBaseAmt;
+	protected int GrossExpenseAmt;
+	protected int TdsBaseAmt;
 	protected String TdsSection;
 	protected String TdsRate;
-	protected String TdsAmt;
+	protected int TdsAmt;
 	protected String OffsetGlCode;
 	protected String TdsGlCode;
 	
@@ -35,16 +35,16 @@ public class WhtItemObj {
 	public void setDebitCreditIdentifier(String debitCreditIdentifier) {
 		DebitCreditIdentifier = debitCreditIdentifier;
 	}
-	public String getGrossExpenseAmt() {
+	public int getGrossExpenseAmt() {
 		return GrossExpenseAmt;
 	}
-	public void setGrossExpenseAmt(String grossExpenseAmt) {
+	public void setGrossExpenseAmt(int grossExpenseAmt) {
 		GrossExpenseAmt = grossExpenseAmt;
 	}
-	public String getTdsBaseAmt() {
+	public int getTdsBaseAmt() {
 		return TdsBaseAmt;
 	}
-	public void setTdsBaseAmt(String tdsBaseAmt) {
+	public void setTdsBaseAmt(int tdsBaseAmt) {
 		TdsBaseAmt = tdsBaseAmt;
 	}
 	public String getTdsSection() {
@@ -59,10 +59,10 @@ public class WhtItemObj {
 	public void setTdsRate(String tdsRate) {
 		TdsRate = tdsRate;
 	}
-	public String getTdsAmt() {
+	public int getTdsAmt() {
 		return TdsAmt;
 	}
-	public void setTdsAmt(String tdsAmt) {
+	public void setTdsAmt(int tdsAmt) {
 		TdsAmt = tdsAmt;
 	}
 	public String getOffsetGlCode() {

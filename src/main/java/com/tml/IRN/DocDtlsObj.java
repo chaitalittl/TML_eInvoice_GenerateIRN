@@ -1,13 +1,26 @@
 package com.tml.IRN;
 
+import java.util.Date;
+
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 public class DocDtlsObj {
+	
+	@XmlElement(required = true)
 	protected String Typ;
+	
+	@XmlElement(required = true)
+	@Size(min=0,max=16)
 	protected String No;
-	protected String Dt;
+	
+	@XmlElement(required = true)
+	protected Date Dt;
+	
+	@Size(min=0,max=250)
 	protected String ReasonForCnDn;
 	
 	public String getTyp() {
@@ -22,10 +35,10 @@ public class DocDtlsObj {
 	public void setNo(String no) {
 		No = no;
 	}
-	public String getDt() {
+	public Date getDt() {
 		return Dt;
 	}
-	public void setDt(String dt) {
+	public void setDt(Date dt) {
 		Dt = dt;
 	}
 	public String getReasonForCnDn() {

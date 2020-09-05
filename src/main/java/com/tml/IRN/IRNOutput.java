@@ -87,12 +87,19 @@ public class IRNOutput {
 	String irn;
 	String signedInvoice;
 	String signedQRCode;
+	String qr_b64_encoded;
 	
 	public String getstatus() {
 		return status;
 	}
 	public void setInvoice_number(String status) {
 		this.status = status;
+	}
+	public String getQr_b64_encoded() {
+		return qr_b64_encoded;
+	}
+	public void setQr_b64_encoded(String qr_b64_encoded) {
+		this.qr_b64_encoded = qr_b64_encoded;
 	}
 
 	

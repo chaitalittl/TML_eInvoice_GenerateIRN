@@ -1,96 +1,63 @@
 package com.tml.IRN;
 
+import java.math.BigDecimal;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 public class ValDtlsObj {
 
-	protected String AssVal;
-	protected String CgstVal;
-	protected String SgstVal;
-	protected String IgstVal;
-	protected String CesVal;
-	protected String StCesVal;
-	protected String CesNonAdVal;
-	protected String Discount;
-	protected String OthChrg;
-	protected String RndOffAmt;
-	protected String TotInvValFc;
-	protected String TotInvVal;
+	@XmlElement(required = true)
+	protected BigDecimal AssVal;
+	protected BigDecimal CgstVal;
+	protected BigDecimal SgstVal;
+	protected BigDecimal IgstVal;
+	protected BigDecimal CesVal;
+	protected BigDecimal StCesVal;
+	protected BigDecimal CesNonAdVal;
+	protected BigDecimal Discount;
+	protected BigDecimal OthChrg;
+	protected BigDecimal RndOffAmt;
+	protected BigDecimal TotInvValFc;
+	@XmlElement(required = true)
+	protected BigDecimal TotInvVal;
 	
-	public String getAssVal() {
-		return AssVal;
-	}
-	public void setAssVal(String assVal) {
+	public void setAssVal(BigDecimal assVal) {
 		AssVal = assVal;
 	}
-	public String getCgstVal() {
-		return CgstVal;
-	}
-	public void setCgstVal(String cgstVal) {
+	public void setCgstVal(BigDecimal cgstVal) {
 		CgstVal = cgstVal;
 	}
-	public String getSgstVal() {
-		return SgstVal;
-	}
-	public void setSgstVal(String sgstVal) {
+	public void setSgstVal(BigDecimal sgstVal) {
 		SgstVal = sgstVal;
 	}
-	public String getIgstVal() {
-		return IgstVal;
-	}
-	public void setIgstVal(String igstVal) {
+	public void setIgstVal(BigDecimal igstVal) {
 		IgstVal = igstVal;
 	}
-	public String getCesVal() {
-		return CesVal;
-	}
-	public void setCesVal(String cesVal) {
+	public void setCesVal(BigDecimal cesVal) {
 		CesVal = cesVal;
 	}
-	public String getStCesVal() {
-		return StCesVal;
-	}
-	public void setStCesVal(String stCesVal) {
+	public void setStCesVal(BigDecimal stCesVal) {
 		StCesVal = stCesVal;
 	}
-	public String getCesNonAdVal() {
-		return CesNonAdVal;
-	}
-	public void setCesNonAdVal(String cesNonAdVal) {
+	public void setCesNonAdVal(BigDecimal cesNonAdVal) {
 		CesNonAdVal = cesNonAdVal;
 	}
-	public String getDiscount() {
-		return Discount;
-	}
-	public void setDiscount(String discount) {
+	public void setDiscount(BigDecimal discount) {
 		Discount = discount;
 	}
-	public String getOthChrg() {
-		return OthChrg;
-	}
-	public void setOthChrg(String othChrg) {
+	public void setOthChrg(BigDecimal othChrg) {
 		OthChrg = othChrg;
 	}
-	public String getRndOffAmt() {
-		return RndOffAmt;
-	}
-	public void setRndOffAmt(String rndOffAmt) {
+	public void setRndOffAmt(BigDecimal rndOffAmt) {
 		RndOffAmt = rndOffAmt;
 	}
-	public String getTotInvValFc() {
-		return TotInvValFc;
-	}
-	public void setTotInvValFc(String totInvValFc) {
+	public void setTotInvValFc(BigDecimal totInvValFc) {
 		TotInvValFc = totInvValFc;
 	}
-	public String getTotInvVal() {
-		return TotInvVal;
-	}
-	public void setTotInvVal(String totInvVal) {
+	public void setTotInvVal(BigDecimal totInvVal) {
 		TotInvVal = totInvVal;
 	}
-
-
 }

@@ -1,5 +1,7 @@
 package com.tml.IRN;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -11,12 +13,12 @@ public class WhtHdrsDtlsObj {
 	protected String WhtTransCategory;
 	protected String SourceDocType;
 	protected String LineDescription;
-	protected String DateOfDeduction;
-	protected String EntryDate;
+	protected Date DateOfDeduction;
+	protected Date EntryDate;
 	protected String ProjectCode;
 	protected String TaxCodeErp;
 	protected String Currency;
-	protected String ExchangeRate;
+	protected int ExchangeRate;
 	protected String ExchangeType;
 	protected String Notification_21_2012;
 	protected String CountryRemittance;
@@ -52,16 +54,16 @@ public class WhtHdrsDtlsObj {
 	public void setLineDescription(String lineDescription) {
 		LineDescription = lineDescription;
 	}
-	public String getDateOfDeduction() {
+	public Date getDateOfDeduction() {
 		return DateOfDeduction;
 	}
-	public void setDateOfDeduction(String dateOfDeduction) {
+	public void setDateOfDeduction(Date dateOfDeduction) {
 		DateOfDeduction = dateOfDeduction;
 	}
-	public String getEntryDate() {
+	public Date getEntryDate() {
 		return EntryDate;
 	}
-	public void setEntryDate(String entryDate) {
+	public void setEntryDate(Date entryDate) {
 		EntryDate = entryDate;
 	}
 	public String getProjectCode() {
@@ -82,10 +84,10 @@ public class WhtHdrsDtlsObj {
 	public void setCurrency(String currency) {
 		Currency = currency;
 	}
-	public String getExchangeRate() {
+	public int getExchangeRate() {
 		return ExchangeRate;
 	}
-	public void setExchangeRate(String exchangeRate) {
+	public void setExchangeRate(int exchangeRate) {
 		ExchangeRate = exchangeRate;
 	}
 	public String getExchangeType() {

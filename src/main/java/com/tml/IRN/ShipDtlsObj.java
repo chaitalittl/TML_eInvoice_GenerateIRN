@@ -1,17 +1,28 @@
 package com.tml.IRN;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 public class ShipDtlsObj {
 
+	@Size(min=3,max=15)
 	protected String Gstin;
+	@Size(min=3,max=100)
 	protected String LglNm;
+	@Size(min=3,max=100)
 	protected String TrdNm;
+	@Size(min=3,max=100)
 	protected String Addr1;
+	@Size(min=3,max=100)
 	protected String Addr2;
+	@Size(min=3,max=100)
 	protected String Loc;
+	@Min(100000)
+	@Max(999999)
 	protected String Pin;
 	protected String Stcd;
 	

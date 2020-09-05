@@ -1,5 +1,10 @@
 package com.tml.IRN;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -8,11 +13,14 @@ public class ExpDtlsObj {
 	
 	protected String RefClm;
 	protected String ShipBNo;
-	protected String ShipBDt;
+	protected Date ShipBDt;
 	protected String Port;
 	protected String ForCur;
 	protected String CntCode;
-	protected String ExpDuty;
+	
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal ExpDuty;
 	
 	public String getRefClm() {
 		return RefClm;
@@ -26,10 +34,10 @@ public class ExpDtlsObj {
 	public void setShipBNo(String shipBNo) {
 		ShipBNo = shipBNo;
 	}
-	public String getShipBDt() {
+	public Date getShipBDt() {
 		return ShipBDt;
 	}
-	public void setShipBDt(String shipBDt) {
+	public void setShipBDt(Date shipBDt) {
 		ShipBDt = shipBDt;
 	}
 	public String getPort() {
@@ -50,10 +58,10 @@ public class ExpDtlsObj {
 	public void setCntCode(String cntCode) {
 		CntCode = cntCode;
 	}
-	public String getExpDuty() {
+	public BigDecimal getExpDuty() {
 		return ExpDuty;
 	}
-	public void setExpDuty(String expDuty) {
+	public void setExpDuty(BigDecimal expDuty) {
 		ExpDuty = expDuty;
 	}
 	

@@ -4,31 +4,41 @@
     xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
     xmlns:util="http://www.springframework.org/schema/util"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
-    
     <bean class="com.tml.IRN.LogAggregator" id="logger"/>
     <bean class="com.tml.IRN.ResponseProcessor" id="resProcessor"/>
-    
-    <cxf:cxfEndpoint address="http://0.0.0.0:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
+    <cxf:cxfEndpoint address="http://0.0.0.0:8095/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
     </cxf:cxfEndpoint>
-    
     <cxf:rsClient address="${IRN_URL}" id="rsGenIRN" loggingFeatureEnabled="true"/>
-    
-    <camelContext id="camelContext-93465f9a-acd3-4e76-991e-0773ebdf0b5a" streamCache="true"
-        trace="false" xmlns="http://camel.apache.org/schema/spring">
-        
-        <properties>
-            <property key="CamelMaximumEndpointCacheSize" value="500"/>
-        </properties>
-        
-        <route id="IRNGenRoute">
-        	<from id="_from1" uri="cxf:bean:GenIRN"/>
-        	<doTry id="_doTry1">
-        		
-        	
-        	</doTry>
+    <camelContext id="camelContext-93465f9a-acd3-4e76-991e-0773ebdf0b5a"
+        streamCache="true" trace="false" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <jaxb contextPath="com.tml.IRN" id="xml" objectFactory="true" prettyPrint="false" />
+            <json id="jaxreq" library="Jackson" unmarshalTypeName="com.tml.IRN.RequestObj"/>
+            <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
+            <json id="jsonid" library="Jackson" unmarshalTypeName="com.tml.IRNItem.ItemListParent"/>
+            <json id="gson" library="Gson"/>
+            <soapjaxb contextPath="com.tml.IRNItem" id="soapxml"/>
+            <xmljson id="xmlJson"/>
+        </dataFormats>
+        <route id="IRNGenRoute" xmlns:com="http://com.tml.IRN/">
+            <from id="_from1" uri="cxf:bean:GenIRN"/>
+            <log id="_log1" message="Request Received from CRM*********____${body}"/>
+            <doTry id="_doTry1">
+				<setBody>
+                <xpath>//*[local-name() = 'request']</xpath>
+                </setBody>
+                <unmarshal id="_unmarshal11" ref="xml"/>
+                <log id="_log2" message="After unmarshall-----${body}"/>
+                <marshal id="_marshal1">
+                    <custom ref="jaxreq"/>
+                </marshal>
+                <bean id="_bean78"
+                    method="marshal(unmarshal API RESPONSE :: *****)" ref="logger"/>
+                <log id="_log3" loggingLevel="INFO" message=">>>>> ${body}"/>
+            </doTry>
         </route>
     </camelContext>
 </beans>

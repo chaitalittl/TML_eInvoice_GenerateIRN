@@ -1,17 +1,27 @@
 package com.tml.IRN;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 public class DispDtlsObj {
 	
+	@Size(min=3,max=15)
 	protected String Gstin;
+	@Size(min=3,max=100)
 	protected String Nm;
+	@Size(min=3,max=100)
 	protected String Addr1;
+	@Size(min=3,max=100)
 	protected String Addr2;
+	@Size(min=3,max=100)
 	protected String Loc;
-	protected String Pin;
+	@Min(100000)
+	@Max(999999)
+	protected int Pin;
 	protected String Stcd;
 	
 	public String getGstin() {
@@ -44,10 +54,10 @@ public class DispDtlsObj {
 	public void setLoc(String loc) {
 		Loc = loc;
 	}
-	public String getPin() {
+	public int getPin() {
 		return Pin;
 	}
-	public void setPin(String pin) {
+	public void setPin(int pin) {
 		Pin = pin;
 	}
 	public String getStcd() {

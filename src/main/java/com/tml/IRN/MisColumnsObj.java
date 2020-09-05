@@ -13,8 +13,8 @@ public class MisColumnsObj {
 	protected String CompanyCode;
 	protected String CompanyName;
 	protected String TrackingNo;
-	protected String TransactionCount;
-	protected String EwbNo;
+	protected int TransactionCount;
+	protected int EwbNo;
 	protected String ReturnPeriod;
 	protected String TdsApplicable;
 	protected String Mis31;
@@ -90,16 +90,16 @@ public class MisColumnsObj {
 	public void setTrackingNo(String trackingNo) {
 		TrackingNo = trackingNo;
 	}
-	public String getTransactionCount() {
+	public int getTransactionCount() {
 		return TransactionCount;
 	}
-	public void setTransactionCount(String transactionCount) {
+	public void setTransactionCount(int transactionCount) {
 		TransactionCount = transactionCount;
 	}
-	public String getEwbNo() {
+	public int getEwbNo() {
 		return EwbNo;
 	}
-	public void setEwbNo(String ewbNo) {
+	public void setEwbNo(int ewbNo) {
 		EwbNo = ewbNo;
 	}
 	public String getReturnPeriod() {

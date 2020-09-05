@@ -1,5 +1,7 @@
 package com.tml.IRN;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -7,7 +9,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class PrecDocDtls {
 	
 	protected String InvNo;
-	protected String InvDt; 	
+	protected Date InvDt; 	
 	protected String OthRefNo;
 	
 	public String getInvNo() {
@@ -16,10 +18,10 @@ public class PrecDocDtls {
 	public void setInvNo(String invNo) {
 		InvNo = invNo;
 	}
-	public String getInvDt() {
+	public Date getInvDt() {
 		return InvDt;
 	}
-	public void setInvDt(String invDt) {
+	public void setInvDt(Date invDt) {
 		InvDt = invDt;
 	}
 	public String getOthRefNo() {

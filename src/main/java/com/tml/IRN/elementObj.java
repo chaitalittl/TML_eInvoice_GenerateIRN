@@ -1,7 +1,11 @@
 package com.tml.IRN;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,65 +16,111 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @XmlAccessorType( XmlAccessType.FIELD )
 public class elementObj {
 	
+	@Size(min=1,max=6)
+	@XmlElement(required = true)
 	protected String SlNo;
+	@Size(min=1,max=50)
 	protected String OrdLineRef;
+	@Size(min=1,max=20)
 	protected String PrdSlNo;
+	@Size(max=250)
 	protected String ItemCode;
+	@Size(min=3,max=100)
 	protected String PrdNm;
+	@Size(min=3,max=100)
 	protected String PrdDesc;
+	@Size(min=4,max=8)
+	@XmlElement(required = true)
 	protected String HsnCd;
+	@XmlElement(required = true)
 	protected String IsServc;
+	@Size(min=3,max=30)
 	protected String BarCde;
-	protected String Qty;
-	protected String FreeQty;
+	
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal Qty;
+	
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal FreeQty;
+	
 	protected String Unit;
-	protected String UnitPrice;
-	protected String TotAmt;
-	protected String Discount;
-	protected String OthChrg;
-	protected String Vat;
-	protected String CentralDxcise;
-	protected String StateExcise;
-	protected String ValueBeforeBcd;
-	protected String Bcd;
-	protected String PreTaxVal;
-	protected String AssAmt;
+	
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	@XmlElement(required = true)
+	protected BigDecimal UnitPrice;
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	@XmlElement(required = true)
+	protected BigDecimal TotAmt;
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal Discount;
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal OthChrg;
+	
+	@Size(min=0,max=17)
+	protected int Vat;
+	@Size(min=0,max=17)
+	protected int CentralDxcise;
+	
+	@Size(min=0,max=17)
+	protected int StateExcise;
+	@Size(min=0,max=17)
+	protected int ValueBeforeBcd;
+	@Size(min=0,max=17)
+	protected int Bcd;
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	protected BigDecimal PreTaxVal;
+	@DecimalMin("0.0")
+	@DecimalMax("9999999999.999")
+	@XmlElement(required = true)
+	protected BigDecimal AssAmt;
+	@XmlElement(required = true)
 	protected String GstRt;
 	protected String CgstRt;
 	protected String SgstRt;
 	protected String IgstRt;
-	protected String CesRt;
+	@DecimalMin("0.0")
+	@DecimalMax("999.999")
+	protected BigDecimal CesRt;
+	@Size(min=0,max=17)
 	protected String CesNonAdVal;
-	protected String StateCesRt;
-	protected String IgstAmt;
-	protected String CgstAmt;
-	protected String SgstAmt;
-	protected String CessAmt;
-	protected String CesNonAdvlAmt;
-	protected String StateCesAmt;
-	protected String StateCesNonAdvlAmt;
-	protected String TotItemVal;
+	@DecimalMin("0.0")
+	@DecimalMax("999.999")
+	protected BigDecimal StateCesRt;
+	protected BigDecimal IgstAmt;
+	protected BigDecimal CgstAmt;
+	protected BigDecimal SgstAmt;
+	protected BigDecimal CessAmt;
+	protected BigDecimal CesNonAdvlAmt;
+	protected BigDecimal StateCesAmt;
+	protected BigDecimal StateCesNonAdvlAmt;
+	@XmlElement(required = true)
+	protected BigDecimal TotItemVal;
 	protected String OrgCntry;
 	
 	@XmlElement(name="BchDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<BchDtlsObj> BchDtls ;
+	protected BchDtlsObj BchDtls ;
 	
 	@XmlElement(name="AttribDtls")
-	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	@JsonProperty("AttribDtls")
-	@JsonFormat(shape=JsonFormat.Shape.ARRAY)
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	protected List<AttribDtlsObj> AttribDtls;
 	
 	@XmlElement(name="WhtItem")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<WhtItemObj> WhtItem ;
+	protected WhtItemObj WhtItem ;
 	
 	protected String EligibilityItc;
-	protected String ItcIgst;
-	protected String ItcCgst;
-	protected String ItcSgst;
-	protected String ItcCess;
+	protected BigDecimal ItcIgst;
+	protected BigDecimal ItcCgst;
+	protected BigDecimal ItcSgst;
+	protected BigDecimal ItcCess;
 	protected String NatureOfExpense;
 	protected String GlCodeRevenueExpense;
 	protected String GlCodeIgst;
@@ -175,16 +225,16 @@ public class elementObj {
 	public void setBarCde(String barCde) {
 		BarCde = barCde;
 	}
-	public String getQty() {
+	public BigDecimal getQty() {
 		return Qty;
 	}
-	public void setQty(String qty) {
+	public void setQty(BigDecimal qty) {
 		Qty = qty;
 	}
-	public String getFreeQty() {
+	public BigDecimal getFreeQty() {
 		return FreeQty;
 	}
-	public void setFreeQty(String freeQty) {
+	public void setFreeQty(BigDecimal freeQty) {
 		FreeQty = freeQty;
 	}
 	public String getUnit() {
@@ -193,70 +243,70 @@ public class elementObj {
 	public void setUnit(String unit) {
 		Unit = unit;
 	}
-	public String getUnitPrice() {
+	public BigDecimal getUnitPrice() {
 		return UnitPrice;
 	}
-	public void setUnitPrice(String unitPrice) {
+	public void setUnitPrice(BigDecimal unitPrice) {
 		UnitPrice = unitPrice;
 	}
-	public String getTotAmt() {
+	public BigDecimal getTotAmt() {
 		return TotAmt;
 	}
-	public void setTotAmt(String totAmt) {
+	public void setTotAmt(BigDecimal totAmt) {
 		TotAmt = totAmt;
 	}
-	public String getDiscount() {
+	public BigDecimal getDiscount() {
 		return Discount;
 	}
-	public void setDiscount(String discount) {
+	public void setDiscount(BigDecimal discount) {
 		Discount = discount;
 	}
-	public String getOthChrg() {
+	public BigDecimal getOthChrg() {
 		return OthChrg;
 	}
-	public void setOthChrg(String othChrg) {
+	public void setOthChrg(BigDecimal othChrg) {
 		OthChrg = othChrg;
 	}
-	public String getVat() {
+	public int getVat() {
 		return Vat;
 	}
-	public void setVat(String vat) {
+	public void setVat(int vat) {
 		Vat = vat;
 	}
-	public String getCentralDxcise() {
+	public int getCentralDxcise() {
 		return CentralDxcise;
 	}
-	public void setCentralDxcise(String centralDxcise) {
+	public void setCentralDxcise(int centralDxcise) {
 		CentralDxcise = centralDxcise;
 	}
-	public String getStateExcise() {
+	public int getStateExcise() {
 		return StateExcise;
 	}
-	public void setStateExcise(String stateExcise) {
+	public void setStateExcise(int stateExcise) {
 		StateExcise = stateExcise;
 	}
-	public String getValueBeforeBcd() {
+	public int getValueBeforeBcd() {
 		return ValueBeforeBcd;
 	}
-	public void setValueBeforeBcd(String valueBeforeBcd) {
+	public void setValueBeforeBcd(int valueBeforeBcd) {
 		ValueBeforeBcd = valueBeforeBcd;
 	}
-	public String getBcd() {
+	public int getBcd() {
 		return Bcd;
 	}
-	public void setBcd(String bcd) {
+	public void setBcd(int bcd) {
 		Bcd = bcd;
 	}
-	public String getPreTaxVal() {
+	public BigDecimal getPreTaxVal() {
 		return PreTaxVal;
 	}
-	public void setPreTaxVal(String preTaxVal) {
+	public void setPreTaxVal(BigDecimal preTaxVal) {
 		PreTaxVal = preTaxVal;
 	}
-	public String getAssAmt() {
+	public BigDecimal getAssAmt() {
 		return AssAmt;
 	}
-	public void setAssAmt(String assAmt) {
+	public void setAssAmt(BigDecimal assAmt) {
 		AssAmt = assAmt;
 	}
 	public String getGstRt() {
@@ -283,10 +333,10 @@ public class elementObj {
 	public void setIgstRt(String igstRt) {
 		IgstRt = igstRt;
 	}
-	public String getCesRt() {
+	public BigDecimal getCesRt() {
 		return CesRt;
 	}
-	public void setCesRt(String cesRt) {
+	public void setCesRt(BigDecimal cesRt) {
 		CesRt = cesRt;
 	}
 	public String getCesNonAdVal() {
@@ -295,58 +345,58 @@ public class elementObj {
 	public void setCesNonAdVal(String cesNonAdVal) {
 		CesNonAdVal = cesNonAdVal;
 	}
-	public String getStateCesRt() {
+	public BigDecimal getStateCesRt() {
 		return StateCesRt;
 	}
-	public void setStateCesRt(String stateCesRt) {
+	public void setStateCesRt(BigDecimal stateCesRt) {
 		StateCesRt = stateCesRt;
 	}
-	public String getIgstAmt() {
+	public BigDecimal getIgstAmt() {
 		return IgstAmt;
 	}
-	public void setIgstAmt(String igstAmt) {
+	public void setIgstAmt(BigDecimal igstAmt) {
 		IgstAmt = igstAmt;
 	}
-	public String getCgstAmt() {
+	public BigDecimal getCgstAmt() {
 		return CgstAmt;
 	}
-	public void setCgstAmt(String cgstAmt) {
+	public void setCgstAmt(BigDecimal cgstAmt) {
 		CgstAmt = cgstAmt;
 	}
-	public String getSgstAmt() {
+	public BigDecimal getSgstAmt() {
 		return SgstAmt;
 	}
-	public void setSgstAmt(String sgstAmt) {
+	public void setSgstAmt(BigDecimal sgstAmt) {
 		SgstAmt = sgstAmt;
 	}
-	public String getCessAmt() {
+	public BigDecimal getCessAmt() {
 		return CessAmt;
 	}
-	public void setCessAmt(String cessAmt) {
+	public void setCessAmt(BigDecimal cessAmt) {
 		CessAmt = cessAmt;
 	}
-	public String getCesNonAdvlAmt() {
+	public BigDecimal getCesNonAdvlAmt() {
 		return CesNonAdvlAmt;
 	}
-	public void setCesNonAdvlAmt(String cesNonAdvlAmt) {
+	public void setCesNonAdvlAmt(BigDecimal cesNonAdvlAmt) {
 		CesNonAdvlAmt = cesNonAdvlAmt;
 	}
-	public String getStateCesAmt() {
+	public BigDecimal getStateCesAmt() {
 		return StateCesAmt;
 	}
-	public void setStateCesAmt(String stateCesAmt) {
+	public void setStateCesAmt(BigDecimal stateCesAmt) {
 		StateCesAmt = stateCesAmt;
 	}
-	public String getStateCesNonAdvlAmt() {
+	public BigDecimal getStateCesNonAdvlAmt() {
 		return StateCesNonAdvlAmt;
 	}
-	public void setStateCesNonAdvlAmt(String stateCesNonAdvlAmt) {
+	public void setStateCesNonAdvlAmt(BigDecimal stateCesNonAdvlAmt) {
 		StateCesNonAdvlAmt = stateCesNonAdvlAmt;
 	}
-	public String getTotItemVal() {
+	public BigDecimal getTotItemVal() {
 		return TotItemVal;
 	}
-	public void setTotItemVal(String totItemVal) {
+	public void setTotItemVal(BigDecimal totItemVal) {
 		TotItemVal = totItemVal;
 	}
 	public String getOrgCntry() {
@@ -355,52 +405,34 @@ public class elementObj {
 	public void setOrgCntry(String orgCntry) {
 		OrgCntry = orgCntry;
 	}
-	public List<BchDtlsObj> getBchDtls() {
-		return BchDtls;
-	}
-	public void setBchDtls(List<BchDtlsObj> bchDtls) {
-		BchDtls = bchDtls;
-	}
-	public List<AttribDtlsObj> getAttribDtls() {
-		return AttribDtls;
-	}
-	public void setAttribDtls(List<AttribDtlsObj> attribDtls) {
-		AttribDtls = attribDtls;
-	}
-	public List<WhtItemObj> getWhtItem() {
-		return WhtItem;
-	}
-	public void setWhtItem(List<WhtItemObj> whtItem) {
-		WhtItem = whtItem;
-	}
 	public String getEligibilityItc() {
 		return EligibilityItc;
 	}
 	public void setEligibilityItc(String eligibilityItc) {
 		EligibilityItc = eligibilityItc;
 	}
-	public String getItcIgst() {
+	public BigDecimal getItcIgst() {
 		return ItcIgst;
 	}
-	public void setItcIgst(String itcIgst) {
+	public void setItcIgst(BigDecimal itcIgst) {
 		ItcIgst = itcIgst;
 	}
-	public String getItcCgst() {
+	public BigDecimal getItcCgst() {
 		return ItcCgst;
 	}
-	public void setItcCgst(String itcCgst) {
+	public void setItcCgst(BigDecimal itcCgst) {
 		ItcCgst = itcCgst;
 	}
-	public String getItcSgst() {
+	public BigDecimal getItcSgst() {
 		return ItcSgst;
 	}
-	public void setItcSgst(String itcSgst) {
+	public void setItcSgst(BigDecimal itcSgst) {
 		ItcSgst = itcSgst;
 	}
-	public String getItcCess() {
+	public BigDecimal getItcCess() {
 		return ItcCess;
 	}
-	public void setItcCess(String itcCess) {
+	public void setItcCess(BigDecimal itcCess) {
 		ItcCess = itcCess;
 	}
 	public String getNatureOfExpense() {
@@ -703,5 +735,6 @@ public class elementObj {
 	public void setFu10(String fu10) {
 		Fu10 = fu10;
 	}
-	
-		}
+
+
+}

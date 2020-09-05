@@ -1,5 +1,7 @@
 package com.tml.IRN;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -7,13 +9,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class ContrDtlsObj {
 
 	protected String RecAdvRefr;
-	protected String RecAdvDt;
+	protected Date RecAdvDt;
 	protected String TendRefr;
 	protected String ContrRefr;
 	protected String ExtRefr;
 	protected String ProjRefr;
 	protected String PORefr;
-	protected String PORefDt;
+	protected Date PORefDt;
 	
 	public String getRecAdvRefr() {
 		return RecAdvRefr;
@@ -21,10 +23,10 @@ public class ContrDtlsObj {
 	public void setRecAdvRefr(String recAdvRefr) {
 		RecAdvRefr = recAdvRefr;
 	}
-	public String getRecAdvDt() {
+	public Date getRecAdvDt() {
 		return RecAdvDt;
 	}
-	public void setRecAdvDt(String recAdvDt) {
+	public void setRecAdvDt(Date recAdvDt) {
 		RecAdvDt = recAdvDt;
 	}
 	public String getTendRefr() {
@@ -57,10 +59,10 @@ public class ContrDtlsObj {
 	public void setPORefr(String pORefr) {
 		PORefr = pORefr;
 	}
-	public String getPORefDt() {
+	public Date getPORefDt() {
 		return PORefDt;
 	}
-	public void setPORefDt(String pORefDt) {
+	public void setPORefDt(Date pORefDt) {
 		PORefDt = pORefDt;
 	}
 }

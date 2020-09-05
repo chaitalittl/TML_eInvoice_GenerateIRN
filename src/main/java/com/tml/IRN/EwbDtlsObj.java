@@ -1,5 +1,7 @@
 package com.tml.IRN;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -7,11 +9,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class EwbDtlsObj {
 
 	protected String TransId;
-	protected String Distance;
+	protected int Distance;
 	protected String TransName;
 	protected String TransMode;
 	protected String TransDocNo;
-	protected String TransDocDt;
+	protected Date TransDocDt;
 	protected String VehNo;
 	protected String VehType;
 	
@@ -21,10 +23,10 @@ public class EwbDtlsObj {
 	public void setTransId(String transId) {
 		TransId = transId;
 	}
-	public String getDistance() {
+	public int getDistance() {
 		return Distance;
 	}
-	public void setDistance(String distance) {
+	public void setDistance(int distance) {
 		Distance = distance;
 	}
 	public String getTransName() {
@@ -45,10 +47,10 @@ public class EwbDtlsObj {
 	public void setTransDocNo(String transDocNo) {
 		TransDocNo = transDocNo;
 	}
-	public String getTransDocDt() {
+	public Date getTransDocDt() {
 		return TransDocDt;
 	}
-	public void setTransDocDt(String transDocDt) {
+	public void setTransDocDt(Date transDocDt) {
 		TransDocDt = transDocDt;
 	}
 	public String getVehNo() {

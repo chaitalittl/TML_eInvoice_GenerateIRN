@@ -1,5 +1,6 @@
 package com.tml.IRN;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,7 +16,7 @@ public class RefDtlsObj {
 	
 	@XmlElement(name="DocPerdDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<DocPerdDtlsObj> DocPerdDtls ;
+	protected DocPerdDtlsObj DocPerdDtls ;
 	
 	@XmlElement(name="PrecDocDtls")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
@@ -26,12 +27,12 @@ public class RefDtlsObj {
 	protected List<ContrDtlsObj> ContrDtls ;
 	
 	protected String AccountingDocNo;
-	protected String AccountingDocDt;
+	protected Date AccountingDocDt;
 	protected String SoNo;
-	protected String SoDt;
+	protected Date SoDt;
 	protected String AdvanceRefNo;
-	protected String AdvanceRefDt;
-	protected String AdvanceAmt;
+	protected Date AdvanceRefDt;
+	protected int AdvanceAmt;
 	
 	
 	public String getInvRm() {
@@ -46,10 +47,10 @@ public class RefDtlsObj {
 	public void setAccountingDocNo(String accountingDocNo) {
 		AccountingDocNo = accountingDocNo;
 	}
-	public String getAccountingDocDt() {
+	public Date getAccountingDocDt() {
 		return AccountingDocDt;
 	}
-	public void setAccountingDocDt(String accountingDocDt) {
+	public void setAccountingDocDt(Date accountingDocDt) {
 		AccountingDocDt = accountingDocDt;
 	}
 	public String getSoNo() {
@@ -58,10 +59,10 @@ public class RefDtlsObj {
 	public void setSoNo(String soNo) {
 		SoNo = soNo;
 	}
-	public String getSoDt() {
+	public Date getSoDt() {
 		return SoDt;
 	}
-	public void setSoDt(String soDt) {
+	public void setSoDt(Date soDt) {
 		SoDt = soDt;
 	}
 	public String getAdvanceRefNo() {
@@ -70,16 +71,16 @@ public class RefDtlsObj {
 	public void setAdvanceRefNo(String advanceRefNo) {
 		AdvanceRefNo = advanceRefNo;
 	}
-	public String getAdvanceRefDt() {
+	public Date getAdvanceRefDt() {
 		return AdvanceRefDt;
 	}
-	public void setAdvanceRefDt(String advanceRefDt) {
+	public void setAdvanceRefDt(Date advanceRefDt) {
 		AdvanceRefDt = advanceRefDt;
 	}
-	public String getAdvanceAmt() {
+	public int getAdvanceAmt() {
 		return AdvanceAmt;
 	}
-	public void setAdvanceAmt(String advanceAmt) {
+	public void setAdvanceAmt(int advanceAmt) {
 		AdvanceAmt = advanceAmt;
 	}
 

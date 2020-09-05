@@ -1,22 +1,33 @@
 package com.tml.IRN;
 
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 
 @XmlType(name = "TranDtlsObj") 
 @XmlRootElement(name = "TranDtlsObj")
 @XmlAccessorType( XmlAccessType.FIELD )
+//@JsonNaming(PropertyNamingStrategy.UPPER_CAMEL_CASE.class)
 public class TranDtlsObj {
 	
 	protected String OutwardInward;
 	protected String SubType;
 	protected String SubTypeDescription;
+	
+	@XmlElement(required = true)
+	@Size(min=0,max=20)
 	protected String SupTyp;
 	protected String RegRev;
 	protected String Typ;
+	
+	@Size(min=15,max=15)
 	protected String EcmGstin;
 	protected String IgstOnIntra;
 	protected String DiffPercentage;
@@ -24,6 +35,8 @@ public class TranDtlsObj {
 	protected String InterIntra;
 	protected String CancelFlag="N";
 	protected String CnlRsn;
+	
+	@Size(min=0,max=250)
 	protected String CnlRem;
 	
 	

@@ -1,5 +1,7 @@
 package com.tml.IRN;
 
+import java.math.BigDecimal;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -13,9 +15,9 @@ public class PayDtlsObj {
 	protected String PayInstr;
 	protected String CrTrn;
 	protected String DirDr;
-	protected String CrDay;
-	protected String PaidAmt;
-	protected String PaymtDue;
+	protected int CrDay;
+	protected BigDecimal PaidAmt;
+	protected BigDecimal PaymtDue;
 	protected String AccDet;
 	
 	public String getNm() {
@@ -60,22 +62,22 @@ public class PayDtlsObj {
 	public void setDirDr(String dirDr) {
 		DirDr = dirDr;
 	}
-	public String getCrDay() {
+	public int getCrDay() {
 		return CrDay;
 	}
-	public void setCrDay(String crDay) {
+	public void setCrDay(int crDay) {
 		CrDay = crDay;
 	}
-	public String getPaidAmt() {
+	public BigDecimal getPaidAmt() {
 		return PaidAmt;
 	}
-	public void setPaidAmt(String paidAmt) {
+	public void setPaidAmt(BigDecimal paidAmt) {
 		PaidAmt = paidAmt;
 	}
-	public String getPaymtDue() {
+	public BigDecimal getPaymtDue() {
 		return PaymtDue;
 	}
-	public void setPaymtDue(String paymtDue) {
+	public void setPaymtDue(BigDecimal paymtDue) {
 		PaymtDue = paymtDue;
 	}
 	public String getAccDet() {
