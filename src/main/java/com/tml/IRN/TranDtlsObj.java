@@ -1,12 +1,14 @@
 package com.tml.IRN;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 @XmlType(name = "TranDtlsObj") 
-
 @XmlRootElement(name = "TranDtlsObj")
-
+@XmlAccessorType( XmlAccessType.FIELD )
 public class TranDtlsObj {
 	
 	protected String OutwardInward;
@@ -20,8 +22,10 @@ public class TranDtlsObj {
 	protected String DiffPercentage;
 	protected String Taxability;
 	protected String InterIntra;
+	protected String CancelFlag="N";
 	protected String CnlRsn;
 	protected String CnlRem;
+	
 	
 	public String getOutwardInward() {
 		return OutwardInward;
@@ -100,6 +104,12 @@ public class TranDtlsObj {
 	}
 	public void setCnlRem(String cnlRem) {
 		CnlRem = cnlRem;
+	}
+	public String getCancelFlag() {
+		return "N";
+	}
+	public void setCancelFlag(String cancelFlag) {
+		CancelFlag = "N";
 	}
 	
 	

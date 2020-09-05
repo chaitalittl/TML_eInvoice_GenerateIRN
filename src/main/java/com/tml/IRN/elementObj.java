@@ -2,10 +2,14 @@ package com.tml.IRN;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@XmlAccessorType( XmlAccessType.FIELD )
 public class elementObj {
 	
 	protected String SlNo;
@@ -53,8 +57,10 @@ public class elementObj {
 	protected List<BchDtlsObj> BchDtls ;
 	
 	@XmlElement(name="AttribDtls")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<AttribDtlsObj> AttribDtls ;
+	//@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonProperty("AttribDtls")
+	@JsonFormat(shape=JsonFormat.Shape.ARRAY)
+	protected List<AttribDtlsObj> AttribDtls;
 	
 	@XmlElement(name="WhtItem")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
@@ -115,7 +121,6 @@ public class elementObj {
 	protected String Fu8;
 	protected String Fu9;
 	protected String Fu10;
-	
 	public String getSlNo() {
 		return SlNo;
 	}
@@ -349,6 +354,24 @@ public class elementObj {
 	}
 	public void setOrgCntry(String orgCntry) {
 		OrgCntry = orgCntry;
+	}
+	public List<BchDtlsObj> getBchDtls() {
+		return BchDtls;
+	}
+	public void setBchDtls(List<BchDtlsObj> bchDtls) {
+		BchDtls = bchDtls;
+	}
+	public List<AttribDtlsObj> getAttribDtls() {
+		return AttribDtls;
+	}
+	public void setAttribDtls(List<AttribDtlsObj> attribDtls) {
+		AttribDtls = attribDtls;
+	}
+	public List<WhtItemObj> getWhtItem() {
+		return WhtItem;
+	}
+	public void setWhtItem(List<WhtItemObj> whtItem) {
+		WhtItem = whtItem;
 	}
 	public String getEligibilityItc() {
 		return EligibilityItc;
@@ -680,24 +703,5 @@ public class elementObj {
 	public void setFu10(String fu10) {
 		Fu10 = fu10;
 	}
-	public List<BchDtlsObj> getBchDtls() {
-		return BchDtls;
-	}
-	public void setBchDtls(List<BchDtlsObj> bchDtls) {
-		BchDtls = bchDtls;
-	}
-	public List<AttribDtlsObj> getAttribDtls() {
-		return AttribDtls;
-	}
-	public void setAttribDtls(List<AttribDtlsObj> attribDtls) {
-		AttribDtls = attribDtls;
-	}
-	public List<WhtItemObj> getWhtItem() {
-		return WhtItem;
-	}
-	public void setWhtItem(List<WhtItemObj> whtItem) {
-		WhtItem = whtItem;
-	}
 	
-	
-	}
+		}

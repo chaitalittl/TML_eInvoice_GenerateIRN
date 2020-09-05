@@ -9,15 +9,6 @@ import javax.xml.bind.annotation.XmlElement;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @XmlAccessorType( XmlAccessType.FIELD )
-/*@XmlType( name = "check",propOrder = {
-		"User_GSTIN","TaxSch","TranDtls","DocDtls",
-		"ExpDtls","MisColumns","FuColumns","TransportDtls","SellerDtls","BuyerDtls","DispDtls","ShipDtls","ValDtls","RefDtls","PayDtls"
-
-}) */
-
-/*@XmlType(name = "IRNInput", propOrder = {
-    "User_GSTIN","TaxSch","is_irn"
-})*/
 public class IRNInput {
 	
 	protected String User_GSTIN;
