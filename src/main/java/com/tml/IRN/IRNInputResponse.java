@@ -10,6 +10,7 @@ import javax.jws.soap.SOAPBinding.Style;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jws.soap.SOAPBinding;
@@ -49,10 +50,10 @@ public class IRNInputResponse {
 	public void setIrnstatus(String irnstatus) {
 		this.irnstatus = irnstatus;
 	}
-	public String getAckDt() {
+	public Date getAckDt() {
 		return ackDt;
 	}
-	public void setAckDt(String ackDt) {
+	public void setAckDt(Date ackDt) {
 		this.ackDt = ackDt;
 	}
 	public String getAckNo() {
@@ -82,11 +83,19 @@ public class IRNInputResponse {
 	String message;
 	String report_url;
 	String irnstatus;
-	String ackDt;
+	Date ackDt;
 	String ackNo;
 	String irn;
 	String signedInvoice;
 	String signedQRCode;
+	String qr_b64_encoded;
+	
+	public String getQr_b64_encoded() {
+		return qr_b64_encoded;
+	}
+	public void setQr_b64_encoded(String qr_b64_encoded) {
+		this.qr_b64_encoded = qr_b64_encoded;
+	}
 	
 	//Validation_remarks Validation_remarksObject;
 	
