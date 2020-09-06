@@ -20,12 +20,20 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlType(name = "IRNInputResponse")
-
 @XmlRootElement(name = "IRNInputResponse")
-
 public class IRNInputResponse {
 	
 	String status;
+	String message;
+	String report_url;
+	String irnstatus;
+	Date ackDt;
+	String ackNo;
+	String irn;
+	String signedInvoice;
+	String signedQRCode;
+	String qr_b64_encoded;
+	
 	public String getStatus() {
 		return status;
 	}
@@ -80,35 +88,12 @@ public class IRNInputResponse {
 	public void setSignedQRCode(String signedQRCode) {
 		this.signedQRCode = signedQRCode;
 	}
-	String message;
-	String report_url;
-	String irnstatus;
-	Date ackDt;
-	String ackNo;
-	String irn;
-	String signedInvoice;
-	String signedQRCode;
-	String qr_b64_encoded;
-	
 	public String getQr_b64_encoded() {
 		return qr_b64_encoded;
 	}
 	public void setQr_b64_encoded(String qr_b64_encoded) {
 		this.qr_b64_encoded = qr_b64_encoded;
 	}
-	
-	//Validation_remarks Validation_remarksObject;
-	
-	/*@XmlElement(name="Validation_remarks")
-	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	protected List<Validation_remarks> Validation_remarks ;*/
-	
-	/*public Validation_remarks getValidation_remarksObject() {
-		return Validation_remarksObject;
-	}
-	public void setValidation_remarksObject(Validation_remarks validation_remarksObject) {
-		Validation_remarksObject = validation_remarksObject;
-	}*/
 	public String getstatus() {
 		return status;
 	}

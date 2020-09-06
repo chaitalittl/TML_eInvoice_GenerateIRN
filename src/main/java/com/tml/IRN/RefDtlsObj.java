@@ -8,8 +8,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @XmlAccessorType( XmlAccessType.FIELD )
+@JsonNaming(UpperCamelCaseStrategy.class)
 public class RefDtlsObj {
 
 	protected String InvRm;

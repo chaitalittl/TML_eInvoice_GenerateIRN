@@ -6,7 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 @XmlAccessorType( XmlAccessType.FIELD )
+@JsonNaming(UpperCamelCaseStrategy.class)
 public class ValDtlsObj {
 
 	@XmlElement(required = true)

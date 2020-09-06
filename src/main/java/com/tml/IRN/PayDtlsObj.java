@@ -5,7 +5,11 @@ import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 @XmlAccessorType( XmlAccessType.FIELD )
+@JsonNaming(UpperCamelCaseStrategy.class)
 public class PayDtlsObj {
 
 	protected String Nm;

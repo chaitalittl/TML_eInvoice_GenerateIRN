@@ -12,8 +12,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @XmlAccessorType( XmlAccessType.FIELD )
+@JsonNaming(UpperCamelCaseStrategy.class)
 public class elementObj {
 	
 	@Size(min=1,max=6)

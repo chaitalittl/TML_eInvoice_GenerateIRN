@@ -8,13 +8,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.UpperCamelCaseStrategy;
 
 @XmlType(name = "TranDtlsObj") 
 @XmlRootElement(name = "TranDtlsObj")
 @XmlAccessorType( XmlAccessType.FIELD )
-//@JsonNaming(PropertyNamingStrategy.UPPER_CAMEL_CASE.class)
+@JsonNaming(UpperCamelCaseStrategy.class)
 public class TranDtlsObj {
 	
 	protected String OutwardInward;
