@@ -20,13 +20,13 @@
             <json id="jaxreq" library="Jackson" unmarshalTypeName="com.tml.IRN.RequestObj"/>
             <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
             <json id="jsonid" library="Jackson" unmarshalTypeName="com.tml.IRNItem.ItemListParent"/>
-            <json id="gson" library="Gson"/>
+            <json id="gson" library="Gson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
             <soapjaxb contextPath="com.tml.IRNItem" id="soapxml"/>
             <xmljson id="xmlJson"/>
         </dataFormats>
         <route id="IRNGenRoute" xmlns:com="http://com.tml.IRN/">
             <from id="_from1" uri="cxf:bean:GenIRN"/>
-            <log message="Request Received from CRM*********____${body}"/>
+            <log id="_log1" message="Request Received from CRM*********____${body}"/>
             <doTry id="_doTry1">
                 <setBody id="_setBody1">
                     <xpath>//*[local-name() = 'request']</xpath>
@@ -38,7 +38,7 @@
                 </marshal>
                 <bean id="_bean78"
                     method="marshal(unmarshal API RESPONSE :: *****)" ref="logger"/>
-                <log loggingLevel="INFO" message=">>>>> ${body}"/>
+                <log id="_log3" loggingLevel="INFO" message=">>>>> ${body}"/>
                 <setHeader headerName="Content-Type" id="_setHeader7">
                     <constant>application/json</constant>
                 </setHeader>
@@ -54,67 +54,70 @@
                 <setBody id="_setBody2">
                     <simple>[${body}]</simple>
                 </setBody>
-                <log loggingLevel="INFO" message=">>>>>after concate ${body}"/>
+                <log id="_log4" loggingLevel="INFO" message=">>>>>after concate ${body}"/>
                 <to id="_to1" pattern="InOut" uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false"/>
-                <log message="http status________${header.CamelHttpResponseCode}"/>
-                <log message="http status________${body}"/>
+                <log id="_log5" message="body from property file________${body}"/>
+                <log id="_log6" message="http status________${header.CamelHttpResponseCode}"/>
+                <log id="_log7" message="http status________${body}"/>
                 <bean id="_bean4"
                     method="response(API RESPONSE :: *****)" ref="logger"/>
                 <bean id="_bean9" method="process" ref="resProcessor"/>
                 <bean id="_bean5"
                     method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/>
-                <log message=" after bean response________${body}"/>
+                <log id="_log9" message=" after bean response________${body}"/>
                 <setHeader headerName="status" id="_setHeader9">
                     <jsonpath>$.pwc_response.status</jsonpath>
                 </setHeader>
-                <log message=" staatus headedr________${header.status}"/>
+                <log id="_log10" message=" staatus headedr________${header.status}"/>
                 <setHeader headerName="error" id="_setHeader9">
                     <jsonpath>$.pwc_response.message</jsonpath>
                 </setHeader>
-                <log message=" message headedr________${header.error}"/>
+                <log id="_log11" message=" message headedr________${header.error}"/>
                 <choice id="_choice1">
                     <when id="_when1">
                         <simple>${header.CamelHttpResponseCode} == '200'</simple>
-                        <log message=" in 200 headedr________${header.CamelHttpResponseCode}"/>
+                        <log id="_log12" message=" in 200 headedr________${header.CamelHttpResponseCode}"/>
                         <setHeader headerName="message" id="_setHeader9">
                             <jsonpath>$.pwc_response.message</jsonpath>
                         </setHeader>
                         <choice id="_choice2">
                             <when id="_when2">
                                 <simple>${header.status} == '700'</simple>
-                                <log message=" in 700________${header.status}"/>
+                                <log id="_log13" message=" in 700________${header.status}"/>
                                 <setHeader headerName="report_url" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.report_url</jsonpath>
                                 </setHeader>
-                                <log message=" in report_url________${header.report_url}"/>
+                                <log id="_log14" message=" in report_url________${header.report_url}"/>
                                 <setHeader headerName="irnstatus" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.nic_status</jsonpath>
                                 </setHeader>
-                                <log message=" in irnstatus________${header.irnstatus}"/>
+                                <log id="_log15" message=" in irnstatus________${header.irnstatus}"/>
                                 <setHeader headerName="ackDt" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.nic_response_plaintext_json.AckDt</jsonpath>
                                 </setHeader>
-                                <log  message=" in ackDt________${header.ackDt}"/>
+                                <log id="_log16" message=" in ackDt________${header.ackDt}"/>
                                 <setHeader headerName="ackNo" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.nic_response_plaintext_json.AckNo</jsonpath>
                                 </setHeader>
-                                <log message=" in ackNo________${header.ackNo}"/>
+                                <log id="_log17" message=" in ackNo________${header.ackNo}"/>
                                 <setHeader headerName="irn" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.nic_response_plaintext_json.Irn</jsonpath>
                                 </setHeader>
-                                <log message=" in irn________${header.irn}"/>
+                                <log id="_log18" message=" in irn________${header.irn}"/>
                                 <setHeader headerName="signedInvoice" id="_setHeader9">
-                                    <jsonpath>$.irp_response.data.nic_response_plaintext_json.SignedInvoice</jsonpath>
+                                    <!-- jsonpath>$.irp_response.data.nic_response_plaintext_json.data.SignedInvoice</jsonpath-->
+                                    <simple>null</simple>
                                 </setHeader>
-                                <log message=" in signedInvoice________${header.signedInvoice}"/>
+                                <log id="_log19" message=" in signedInvoice________${header.signedInvoice}"/>
                                 <setHeader headerName="signedQRCode" id="_setHeader9">
-                                    <jsonpath>$.irp_response.data.nic_response_plaintext_json.SignedQRCode</jsonpath>
+                                    <!-- jsonpath>$.irp_response.data.nic_response_plaintext_json.data.SignedQRCode</jsonpath-->
+                                    <simple>null</simple>
                                 </setHeader>
-                                <log message=" in signedQRCode________${header.signedQRCode}"/>
+                                <log id="_log20" message=" in signedQRCode________${header.signedQRCode}"/>
                                 <setHeader headerName="qr_b64_encoded" id="_setHeader9">
                                     <jsonpath>$.qr_b64_encoded</jsonpath>
                                 </setHeader>
-                                <log message=" in qr_b64_encoded________${header.qr_b64_encoded}"/>
+                                <log id="_log21" message=" in qr_b64_encoded________${header.qr_b64_encoded}"/>
                             </when>
                             <otherwise id="_otherwise1">
                                 <setHeader headerName="message" id="_setHeader9">
@@ -123,7 +126,7 @@
                             </otherwise>
                         </choice>
                         <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
-                        <log message=" in selectedParamProcess________"/>
+                        <log id="_log22" message=" in selectedParamProcess________"/>
                         <unmarshal id="_unmarshal1" ref="json"/>
                         <bean id="_bean68"
                             method="response(UNMARSHAL API RESPONSE :: *****)" ref="logger"/>
@@ -139,7 +142,7 @@
                 </choice>
                 <doCatch id="_doCatch6">
                     <exception>java.lang.Exception</exception>
-                    <log message="Exception Occured :: ******************** ${exception.stacktrace}"/>
+                    <log id="_log23" message="Exception Occured :: ******************** ${exception.stacktrace}"/>
                     <setBody id="_setBody18">
                         <simple>{"message":"ExceptionOccured"}</simple>
                     </setBody>
