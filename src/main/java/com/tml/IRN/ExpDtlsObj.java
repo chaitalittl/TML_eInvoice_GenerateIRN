@@ -17,7 +17,7 @@ public class ExpDtlsObj {
 	
 	protected String RefClm;
 	protected String ShipBNo;
-	protected Date ShipBDt;
+	protected String ShipBDt;
 	protected String Port;
 	protected String ForCur;
 	protected String CntCode;
@@ -38,10 +38,10 @@ public class ExpDtlsObj {
 	public void setShipBNo(String shipBNo) {
 		ShipBNo = shipBNo;
 	}
-	public Date getShipBDt() {
+	public String getShipBDt() {
 		return ShipBDt;
 	}
-	public void setShipBDt(Date shipBDt) {
+	public void setShipBDt(String shipBDt) {
 		ShipBDt = shipBDt;
 	}
 	public String getPort() {

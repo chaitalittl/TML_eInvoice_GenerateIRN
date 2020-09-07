@@ -27,7 +27,7 @@ public class ShipDtlsObj {
 	protected String Loc;
 	@Min(100000)
 	@Max(999999)
-	protected String Pin;
+	protected int Pin;
 	protected String Stcd;
 	
 	public String getGstin() {
@@ -66,10 +66,10 @@ public class ShipDtlsObj {
 	public void setLoc(String loc) {
 		Loc = loc;
 	}
-	public String getPin() {
+	public int getPin() {
 		return Pin;
 	}
-	public void setPin(String pin) {
+	public void setPin(int pin) {
 		Pin = pin;
 	}
 	public String getStcd() {

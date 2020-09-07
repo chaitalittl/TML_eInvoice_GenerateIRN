@@ -1,7 +1,5 @@
 package com.tml.IRN;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
@@ -13,8 +11,8 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class BchDtlsObj {
 	
 	protected String Nm;
-	protected Date ExpDt;
-	protected Date WrDt;
+	protected String ExpDt;
+	protected String WrDt;
 	
 	public String getNm() {
 		return Nm;
@@ -22,16 +20,16 @@ public class BchDtlsObj {
 	public void setNm(String nm) {
 		Nm = nm;
 	}
-	public Date getExpDt() {
+	public String getExpDt() {
 		return ExpDt;
 	}
-	public void setExpDt(Date expDt) {
+	public void setExpDt(String expDt) {
 		ExpDt = expDt;
 	}
-	public Date getWrDt() {
+	public String getWrDt() {
 		return WrDt;
 	}
-	public void setWrDt(Date wrDt) {
+	public void setWrDt(String wrDt) {
 		WrDt = wrDt;
 	}
 }

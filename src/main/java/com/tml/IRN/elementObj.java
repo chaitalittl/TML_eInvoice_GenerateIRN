@@ -84,7 +84,7 @@ public class elementObj {
 	@XmlElement(required = true)
 	protected BigDecimal AssAmt;
 	@XmlElement(required = true)
-	protected String GstRt;
+	protected int GstRt;
 	protected String CgstRt;
 	protected String SgstRt;
 	protected String IgstRt;
@@ -312,10 +312,10 @@ public class elementObj {
 	public void setAssAmt(BigDecimal assAmt) {
 		AssAmt = assAmt;
 	}
-	public String getGstRt() {
+	public int getGstRt() {
 		return GstRt;
 	}
-	public void setGstRt(String gstRt) {
+	public void setGstRt(int gstRt) {
 		GstRt = gstRt;
 	}
 	public String getCgstRt() {

@@ -27,7 +27,7 @@ public class IRNInputResponse {
 	String message;
 	String report_url;
 	String irnstatus;
-	Date ackDt;
+	String ackDt;
 	String ackNo;
 	String irn;
 	String signedInvoice;
@@ -58,10 +58,10 @@ public class IRNInputResponse {
 	public void setIrnstatus(String irnstatus) {
 		this.irnstatus = irnstatus;
 	}
-	public Date getAckDt() {
+	public String getAckDt() {
 		return ackDt;
 	}
-	public void setAckDt(Date ackDt) {
+	public void setAckDt(String ackDt) {
 		this.ackDt = ackDt;
 	}
 	public String getAckNo() {

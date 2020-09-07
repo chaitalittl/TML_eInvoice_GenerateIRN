@@ -13,13 +13,13 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class ContrDtlsObj {
 
 	protected String RecAdvRefr;
-	protected Date RecAdvDt;
+	protected String RecAdvDt;
 	protected String TendRefr;
 	protected String ContrRefr;
 	protected String ExtRefr;
 	protected String ProjRefr;
 	protected String PORefr;
-	protected Date PORefDt;
+	protected String PORefDt;
 	
 	public String getRecAdvRefr() {
 		return RecAdvRefr;
@@ -27,10 +27,10 @@ public class ContrDtlsObj {
 	public void setRecAdvRefr(String recAdvRefr) {
 		RecAdvRefr = recAdvRefr;
 	}
-	public Date getRecAdvDt() {
+	public String getRecAdvDt() {
 		return RecAdvDt;
 	}
-	public void setRecAdvDt(Date recAdvDt) {
+	public void setRecAdvDt(String recAdvDt) {
 		RecAdvDt = recAdvDt;
 	}
 	public String getTendRefr() {
@@ -63,10 +63,10 @@ public class ContrDtlsObj {
 	public void setPORefr(String pORefr) {
 		PORefr = pORefr;
 	}
-	public Date getPORefDt() {
+	public String getPORefDt() {
 		return PORefDt;
 	}
-	public void setPORefDt(Date pORefDt) {
+	public void setPORefDt(String pORefDt) {
 		PORefDt = pORefDt;
 	}
 }

@@ -12,19 +12,19 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(UpperCamelCaseStrategy.class)
 public class DocPerdDtlsObj {
 	
-	protected Date InvStDt;
-	protected Date InvEndDt;
+	protected String InvStDt;
+	protected String InvEndDt;
 	
-	public Date getInvStDt() {
+	public String getInvStDt() {
 		return InvStDt;
 	}
-	public void setInvStDt(Date invStDt) {
+	public void setInvStDt(String invStDt) {
 		InvStDt = invStDt;
 	}
-	public Date getInvEndDt() {
+	public String getInvEndDt() {
 		return InvEndDt;
 	}
-	public void setInvEndDt(Date invEndDt) {
+	public void setInvEndDt(String invEndDt) {
 		InvEndDt = invEndDt;
 	}
 }

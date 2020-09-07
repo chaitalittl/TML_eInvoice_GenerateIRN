@@ -22,7 +22,7 @@ public class DocDtlsObj {
 	protected String No;
 	
 	@XmlElement(required = true)
-	protected Date Dt;
+	protected String Dt;
 	
 	@Size(min=0,max=250)
 	protected String ReasonForCnDn;
@@ -39,10 +39,10 @@ public class DocDtlsObj {
 	public void setNo(String no) {
 		No = no;
 	}
-	public Date getDt() {
+	public String getDt() {
 		return Dt;
 	}
-	public void setDt(Date dt) {
+	public void setDt(String dt) {
 		Dt = dt;
 	}
 	public String getReasonForCnDn() {

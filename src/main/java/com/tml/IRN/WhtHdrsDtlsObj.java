@@ -17,8 +17,8 @@ public class WhtHdrsDtlsObj {
 	protected String WhtTransCategory;
 	protected String SourceDocType;
 	protected String LineDescription;
-	protected Date DateOfDeduction;
-	protected Date EntryDate;
+	protected String DateOfDeduction;
+	protected String EntryDate;
 	protected String ProjectCode;
 	protected String TaxCodeErp;
 	protected String Currency;
@@ -58,16 +58,16 @@ public class WhtHdrsDtlsObj {
 	public void setLineDescription(String lineDescription) {
 		LineDescription = lineDescription;
 	}
-	public Date getDateOfDeduction() {
+	public String getDateOfDeduction() {
 		return DateOfDeduction;
 	}
-	public void setDateOfDeduction(Date dateOfDeduction) {
+	public void setDateOfDeduction(String dateOfDeduction) {
 		DateOfDeduction = dateOfDeduction;
 	}
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return EntryDate;
 	}
-	public void setEntryDate(Date entryDate) {
+	public void setEntryDate(String entryDate) {
 		EntryDate = entryDate;
 	}
 	public String getProjectCode() {

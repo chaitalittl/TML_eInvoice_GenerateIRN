@@ -17,7 +17,7 @@ public class EwbDtlsObj {
 	protected String TransName;
 	protected String TransMode;
 	protected String TransDocNo;
-	protected Date TransDocDt;
+	protected String TransDocDt;
 	protected String VehNo;
 	protected String VehType;
 	
@@ -51,10 +51,10 @@ public class EwbDtlsObj {
 	public void setTransDocNo(String transDocNo) {
 		TransDocNo = transDocNo;
 	}
-	public Date getTransDocDt() {
+	public String getTransDocDt() {
 		return TransDocDt;
 	}
-	public void setTransDocDt(Date transDocDt) {
+	public void setTransDocDt(String transDocDt) {
 		TransDocDt = transDocDt;
 	}
 	public String getVehNo() {

@@ -58,8 +58,9 @@ public class ResponseProcessor {
 			String finalResponse = "{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
 					+ pAckDt + "\",\"ackNo\":\"" + pAckNo + "\",\"irn\":\"" + pIrn + "\",\"signedInvoice\":\""
 					+ pSignedInvoice + "\",\"signedQRCode\":\"" + pSignedQRCode + "\",\"irnstatus\":\"" + pIrnstatus
-					+ "\",\"report_url\" : \"" + preport_url + "\",\"report_url\" : \"" + qr_b64_encoded + "\"}";
+					+ "\",\"report_url\" : \"" + preport_url + "\",\"qr_b64_encoded\" : \"" + qr_b64_encoded + "\"}";
 
+			System.out.println("finalResponse "+finalResponse);
 			inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
 			MessageContentsList req = new MessageContentsList();
 			req.add(finalResponse);

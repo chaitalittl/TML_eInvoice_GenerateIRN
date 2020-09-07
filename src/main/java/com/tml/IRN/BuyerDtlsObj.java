@@ -36,7 +36,7 @@ public class BuyerDtlsObj {
 	@XmlElement(required = true)
 	protected String Stcd;
 	@XmlElement(required = true)
-	protected String Poc;
+	protected String Pos;
 	@Size(min=6,max=12)
 	protected String Ph;
 	@Size(min=6,max=100)
@@ -92,11 +92,11 @@ public class BuyerDtlsObj {
 	public void setStcd(String stcd) {
 		Stcd = stcd;
 	}
-	public String getPoc() {
-		return Poc;
+	public String getPos() {
+		return Pos;
 	}
-	public void setPoc(String poc) {
-		Poc = poc;
+	public void setPos(String pos) {
+		Pos = pos;
 	}
 	public String getPh() {
 		return Ph;

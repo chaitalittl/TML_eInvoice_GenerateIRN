@@ -30,11 +30,11 @@ public class RefDtlsObj {
 	protected List<ContrDtlsObj> ContrDtls ;
 	
 	protected String AccountingDocNo;
-	protected Date AccountingDocDt;
+	protected String AccountingDocDt;
 	protected String SoNo;
-	protected Date SoDt;
+	protected String SoDt;
 	protected String AdvanceRefNo;
-	protected Date AdvanceRefDt;
+	protected String AdvanceRefDt;
 	protected int AdvanceAmt;
 	
 	
@@ -50,10 +50,10 @@ public class RefDtlsObj {
 	public void setAccountingDocNo(String accountingDocNo) {
 		AccountingDocNo = accountingDocNo;
 	}
-	public Date getAccountingDocDt() {
+	public String getAccountingDocDt() {
 		return AccountingDocDt;
 	}
-	public void setAccountingDocDt(Date accountingDocDt) {
+	public void setAccountingDocDt(String accountingDocDt) {
 		AccountingDocDt = accountingDocDt;
 	}
 	public String getSoNo() {
@@ -62,10 +62,10 @@ public class RefDtlsObj {
 	public void setSoNo(String soNo) {
 		SoNo = soNo;
 	}
-	public Date getSoDt() {
+	public String getSoDt() {
 		return SoDt;
 	}
-	public void setSoDt(Date soDt) {
+	public void setSoDt(String soDt) {
 		SoDt = soDt;
 	}
 	public String getAdvanceRefNo() {
@@ -74,10 +74,10 @@ public class RefDtlsObj {
 	public void setAdvanceRefNo(String advanceRefNo) {
 		AdvanceRefNo = advanceRefNo;
 	}
-	public Date getAdvanceRefDt() {
+	public String getAdvanceRefDt() {
 		return AdvanceRefDt;
 	}
-	public void setAdvanceRefDt(Date advanceRefDt) {
+	public void setAdvanceRefDt(String advanceRefDt) {
 		AdvanceRefDt = advanceRefDt;
 	}
 	public int getAdvanceAmt() {
