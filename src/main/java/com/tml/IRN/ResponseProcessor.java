@@ -2,20 +2,12 @@ package com.tml.IRN;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
-import org.apache.camel.Processor;
-import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.apache.cxf.message.MessageContentsList;
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONString;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -60,7 +52,7 @@ public class ResponseProcessor {
 					+ pSignedInvoice + "\",\"signedQRCode\":\"" + pSignedQRCode + "\",\"irnstatus\":\"" + pIrnstatus
 					+ "\",\"report_url\" : \"" + preport_url + "\",\"qr_b64_encoded\" : \"" + qr_b64_encoded + "\"}";
 
-			System.out.println("finalResponse "+finalResponse);
+			
 			inMessage.setHeader(Exchange.CONTENT_TYPE, "application/json");
 			MessageContentsList req = new MessageContentsList();
 			req.add(finalResponse);
@@ -147,8 +139,7 @@ public class ResponseProcessor {
 
 			// System.out.println("**************IN process******** 101 both API");
 			HashMap<String, ArrayList<HashMap<String, String>>> map1 = new HashMap<>();
-			map1 = (HashMap<String, ArrayList<HashMap<String, String>>>) inMessage.getHeader("ITEMLISTH");
-
+			
 			jsonString = objectMapper.writeValueAsString(map1);
 			tentResponse = jsonString;
 

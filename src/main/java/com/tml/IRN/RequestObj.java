@@ -14,11 +14,14 @@ import java.util.List;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
 @XmlRootElement(name="request")
+@JsonInclude(Include.NON_NULL)
 public class RequestObj {
 
 	@XmlElement(required = true)
