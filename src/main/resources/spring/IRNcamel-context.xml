@@ -23,6 +23,13 @@
         <route id="IRNGenRoute" xmlns:com="http://com.tml.IRN/">
             <from id="_from1" uri="cxf:bean:GenIRN"/>
             <doTry id="_doTry1">
+                <bean id="_bean2"
+                    method="sourceIp(REQUEST FROM Source:: **********)" ref="logger"/>
+                <bean id="_bean66"
+                    method="request(******* Request Received from User *********)" ref="logger"/>
+                <setHeader headerName="requestIDN" id="_setHeader16">
+                    <xpath resultType="java.lang.String">//com:IRNInput/request/DocDtls/No/text()</xpath>
+                </setHeader>
                 <setBody id="_setBody1">
                     <xpath>//*[local-name() = 'request']</xpath>
                 </setBody>
@@ -31,7 +38,24 @@
                     <custom ref="jaxreq"/>
                 </marshal>
                 <bean id="_bean78"
-                    method="marshal(unmarshal API RESPONSE :: *****)" ref="logger"/>
+                    method="marshal(unmarshal API RESPONSE Json :: *****)" ref="logger"/>
+                <to id="_to1" uri="direct:GenerateIRNDetails"/>
+                <bean id="_bean3"
+                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
+                <doCatch id="_doCatch1">
+                    <exception>java.lang.Exception</exception>
+                    <setBody id="_setBody3">
+                        <simple>{"message":"ExceptionOccured"}</simple>
+                    </setBody>
+                    <to id="_to2" uri="direct:doCatchCall"/>
+                </doCatch>
+            </doTry>
+        </route>
+        <route id="R2_IRNDetails">
+            <from id="_from2" uri="direct:GenerateIRNDetails"/>
+            <doTry id="_doTry2">
+                <removeHeaders excludePattern="requestIDN"
+                    id="_removeHeaders1" pattern="*"/>
                 <setHeader headerName="Content-Type" id="_setHeader1">
                     <constant>application/json</constant>
                 </setHeader>
@@ -47,24 +71,11 @@
                 <setBody id="_setBody2">
                     <simple>[${body}]</simple>
                 </setBody>
-                <to id="_to1" uri="direct:fetchIRNDetails"/>
-                <doCatch id="_doCatch1">
-                    <exception>java.lang.Exception</exception>
-                    <setBody id="_setBody3">
-                        <simple>{"message":"ExceptionOccured"}</simple>
-                    </setBody>
-                    <to id="_to2" uri="direct:doCatchCall"/>
-                </doCatch>
-            </doTry>
-        </route>
-        <route id="R2_IRNDetails">
-    		<from id="_from2" uri="direct:fetchIRNDetails"/>
-    		  
-            <doTry id="_doTry2">  	            	
+                <bean id="_bean12"
+                    method="request(******* Request send to PWC  *********)" ref="logger"/>
                 <to id="_to3" pattern="InOut" uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false"/>
-                
                 <bean id="_bean4"
-                    method="response(API RESPONSE :: *****)" ref="logger"/>
+                    method="response(API RESPONSE FROM PWC:: *****)" ref="logger"/>
                 <bean id="_bean9" method="process" ref="resProcessor"/>
                 <bean id="_bean5"
                     method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/>
@@ -82,13 +93,28 @@
                         </setHeader>
                         <choice id="_choice2">
                             <when id="_when2">
-                                <simple>${header.status} == '700'</simple>
+                                <simple>${header.status} == '700' or ${header.status} == '740'</simple>
                                 <setHeader headerName="report_url" id="_setHeader8">
                                     <jsonpath>$.irp_response.data.report_url</jsonpath>
                                 </setHeader>
-                                <setHeader headerName="irnstatus" id="_setHeader9">
+                                <choice id="_choice3">
+                                    <when id="_when2">
+                                    <simple>${header.status} == '700'</simple>
+                                    <setHeader
+                                    headerName="irnstatus" id="_setHeader9">
                                     <jsonpath>$.irp_response.data.nic_status</jsonpath>
-                                </setHeader>
+                                    </setHeader>
+                                    </when>
+                                    <otherwise id="_otherwise1">
+                                    <setHeader
+                                    headerName="irnstatus" id="_setHeader15">
+                                    <jsonpath>$.irp_response.data.nic_response_status</jsonpath>
+                                    </setHeader>
+                                    <setHeader headerName="message" id="_setHeader5">
+                                    <jsonpath>$.irp_response.data.error_details[0].ErrorMessage</jsonpath>
+                                    </setHeader>
+                                    </otherwise>
+                                </choice>
                                 <setHeader headerName="ackDt" id="_setHeader10">
                                     <jsonpath>$.irp_response.data.nic_response_plaintext_json.AckDt</jsonpath>
                                 </setHeader>
@@ -102,9 +128,8 @@
                                     <!--jsonpath>$.irp_response.data.nic_response_plaintext_json.SignedInvoice.data</jsonpath-->
                                     <simple>null</simple>
                                 </setHeader>
-                                <log message="Header value----${header.signedInvoice}"/>
-                           
-                				<log message="Header value after concate----${header.signedInvoice}"/>
+                                <!-- log id="_log1" message="Header value___${header.signedInvoice}"/-->
+                                <!-- log id="_log2" message="Header value after concate___${header.signedInvoice}"/-->
                                 <setHeader headerName="signedQRCode" id="_setHeader14">
                                     <!-- jsonpath>$.irp_response.data.nic_response_plaintext_json.data.SignedQRCode</jsonpath -->
                                     <simple>null</simple>
@@ -138,21 +163,21 @@
                     <setBody id="_setBody13">
                         <simple>{"message":"Connection Timeout"}</simple>
                     </setBody>
-                    <to uri="direct:doCatchCall"/>
+                    <to id="_to6" uri="direct:doCatchCall"/>
                 </doCatch>
                 <doCatch id="_doCatch5">
                     <exception>java.net.SocketTimeoutException</exception>
                     <setBody id="_setBody14">
                         <simple>{"message":"SocketTimeout"}</simple>
                     </setBody>
-                    <to uri="direct:doCatchCall"/>
+                    <to id="_to10" uri="direct:doCatchCall"/>
                 </doCatch>
                 <doCatch id="_doCatch6">
                     <exception>java.lang.Exception</exception>
                     <setBody id="_setBody15">
                         <simple>{"message":"Exception Occurred"}</simple>
                     </setBody>
-                    <to uri="direct:doCatchCall"/>
+                    <to id="_to11" uri="direct:doCatchCall"/>
                 </doCatch>
             </doTry>
         </route>

@@ -7,9 +7,9 @@ import static net.logstash.logback.argument.StructuredArguments.*;
 
 
 public class LogAggregator {
-	private static final Logger logger = LoggerFactory.getLogger(LogAggregator.class);
+		//private static final Logger logger = LoggerFactory.getLogger(LogAggregator.class);
 
-	  public void sourceIp(String message, Exchange exchange){
+	  /*public void sourceIp(String message, Exchange exchange){
 	    String sourceIp = exchange.getIn().getHeader("X-Forwarded-For", String.class);
 	    //logger.info("This is an information message");
 	    logger.info("source-ip", value("source-ip",message + sourceIp));		
@@ -36,6 +36,35 @@ public class LogAggregator {
 	  
 	  public void exception(String message, Exchange exchange) {
 		  logger.info("exception", value("exception",message + "\n" + exchange.getIn().getBody(String.class)));
-	  }
+	  }*/
+	
+	private static final Logger logger = LoggerFactory.getLogger(LogAggregator.class);
+
+    public void sourceIp(String message, Exchange exchange){
+      String sourceIp = exchange.getIn().getHeader("X-Forwarded-For", String.class);
+      logger.info("source-ip", value("source-ip",message + sourceIp));        
+    }
+
+    public void request(String message, Exchange exchange){        
+        logger.info("request", value("request","DocNo-"+(String)exchange.getIn().getHeader("requestIDN",String.class)+","+message + "," + exchange.getIn().getBody(String.class) ));
+    }
+
+    public void marshal(String message, Exchange exchange) {
+    	logger.info("request", value("marshal","DocNo-"+(String)exchange.getIn().getHeader("requestIDN",String.class)+","+message + "," + exchange.getIn().getBody(String.class) ));
+		  
+	}
+	  
+	public void unmarshal(String message, Exchange exchange) {
+		  logger.info("request", value("unmarshal","DocNo-"+(String)exchange.getIn().getHeader("requestIDN",String.class)+","+message + "," + exchange.getIn().getBody(String.class) ));
+
+	}
+
+    public void response(String message, Exchange exchange) {          
+        logger.info("response", value("response","DocNo-"+(String)exchange.getIn().getHeader("requestIDN",String.class)+","+message + "," + exchange.getIn().getBody(String.class)));
+    }
+    
+    public void invoiceNo(String message, Exchange exchange) {          
+        logger.info("invoiceNo", value("invoiceNo","DocNo-"+(String)exchange.getIn().getHeader("requestIDN",String.class)));
+}
 
 }
