@@ -79,15 +79,16 @@
                 <bean id="_bean9" method="process" ref="resProcessor"/>
                 <bean id="_bean5"
                     method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/>
-                <setHeader headerName="status" id="_setHeader5">
-                    <jsonpath>$.pwc_response.status</jsonpath>
-                </setHeader>
-                <setHeader headerName="error" id="_setHeader6">
-                    <jsonpath>$.pwc_response.message</jsonpath>
-                </setHeader>
+                
                 <choice id="_choice1">
                     <when id="_when1">
                         <simple>${header.CamelHttpResponseCode} == '200'</simple>
+                        <setHeader headerName="status" id="_setHeader5">
+                    		<jsonpath>$.pwc_response.status</jsonpath>
+		                </setHeader>
+		                <setHeader headerName="error" id="_setHeader6">
+		                    <jsonpath>$.pwc_response.message</jsonpath>
+		                </setHeader>
                         <setHeader headerName="message" id="_setHeader7">
                             <jsonpath>$.pwc_response.message</jsonpath>
                         </setHeader>

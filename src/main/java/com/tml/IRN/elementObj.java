@@ -102,6 +102,7 @@ public class elementObj {
 	protected BigDecimal IgstAmt;
 	protected BigDecimal CgstAmt;
 	protected BigDecimal SgstAmt;
+	@JsonProperty(value="CesAmt")
 	protected BigDecimal CessAmt;
 	protected BigDecimal CesNonAdvlAmt;
 	protected BigDecimal StateCesAmt;

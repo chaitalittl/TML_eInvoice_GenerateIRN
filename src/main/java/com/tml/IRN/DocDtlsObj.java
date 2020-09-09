@@ -1,7 +1,5 @@
 package com.tml.IRN;
 
-import java.util.Date;
-
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
