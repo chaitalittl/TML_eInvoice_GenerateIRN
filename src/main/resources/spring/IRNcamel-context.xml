@@ -12,9 +12,6 @@
         </cxf:properties>
     </cxf:cxfEndpoint>
     <cxf:rsClient address="${IRN_URL}" id="rsGenIRN" loggingFeatureEnabled="true"/>
-    <http-conf:conduit name=".*http-conduit">
-        <http-conf:client ReceiveTimeout="${timeout}" />
-    </http-conf:conduit>
     <camelContext id="camelContext-93465f9a-acd3-4e76-991e-0773ebdf0b5a"
         streamCache="true" trace="false" xmlns="http://camel.apache.org/schema/spring">
         <dataFormats>
@@ -40,11 +37,11 @@
                 <marshal id="_marshal1">
                     <custom ref="jaxreq"/>
                 </marshal>
-                <!-- bean id="_bean78"
-                    method="marshal(unmarshal API RESPONSE Json :: *****)" ref="logger"/-->
+                <bean id="_bean78"
+                    method="marshal(unmarshal API RESPONSE Json :: *****)" ref="logger"/>
                 <to id="_to1" uri="direct:GenerateIRNDetails"/>
                 <bean id="_bean3"
-                    method="response(RESPONSE SEND TO USER :: *****)" ref="logger"/>
+                    method="response(RESPONSE SEND TO CRM :: *****)" ref="logger"/>
                 <doCatch id="_doCatch1">
                     <exception>java.lang.Exception</exception>
                     <setBody id="_setBody3">
@@ -76,21 +73,22 @@
                 </setBody>
                 <bean id="_bean12"
                     method="request(******* Request send to PWC  *********)" ref="logger"/>
-                <to id="_to3" pattern="InOut" uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false&amp;continuationTimeout={{contTimeOut}}"/>
+                <to id="_to3" pattern="InOut" uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false"/>
                 <bean id="_bean4"
                     method="response(API RESPONSE FROM PWC:: *****)" ref="logger"/>
                 <bean id="_bean9" method="process" ref="resProcessor"/>
-                <!-- bean id="_bean5"
-                    method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/-->
+                <bean id="_bean5"
+                    method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/>
+                
                 <choice id="_choice1">
                     <when id="_when1">
                         <simple>${header.CamelHttpResponseCode} == '200'</simple>
                         <setHeader headerName="status" id="_setHeader5">
-                            <jsonpath>$.pwc_response.status</jsonpath>
-                        </setHeader>
-                        <setHeader headerName="error" id="_setHeader6">
-                            <jsonpath>$.pwc_response.message</jsonpath>
-                        </setHeader>
+                    		<jsonpath>$.pwc_response.status</jsonpath>
+		                </setHeader>
+		                <setHeader headerName="error" id="_setHeader6">
+		                    <jsonpath>$.pwc_response.message</jsonpath>
+		                </setHeader>
                         <setHeader headerName="message" id="_setHeader7">
                             <jsonpath>$.pwc_response.message</jsonpath>
                         </setHeader>
@@ -142,35 +140,9 @@
                                 </setHeader>
                             </when>
                             <otherwise id="_otherwise1">
-                                <setHeader headerName="temp1" id="_setHeader15">
+                                <setHeader headerName="message" id="_setHeader15">
                                     <jsonpath>$.pwc_response.message</jsonpath>
                                 </setHeader>
-                                <setHeader headerName="message" id="_setHeader15">
-                                    	<simple>${header.temp1}</simple>
-                                </setHeader>
-                                <choice id="_choice4">
-                                    <when id="_when31">
-                                    <simple>${bodyAs(String)} contains 'business_validations'</simple>
-                                    <setHeader headerName="temp2" id="_setHeader15">
-                                    	<jsonpath>$.pwc_response.validation_remarks.business_validations[*].remark</jsonpath>
-                                    </setHeader>
-                                    <setHeader headerName="message" id="_setHeader15">
-                                    	<simple>${header.message}-${header.temp2}</simple>
-                                	</setHeader>
-                                    </when>
-                                </choice> 
-                                <choice id="_choice40">   
-                                    <when id="_when31">
-                                    <simple>${bodyAs(String)} contains 'irn_schema_validation'</simple>
-                                    <setHeader headerName="temp3" id="_setHeader15">
-                                    	<jsonpath>$.pwc_response.validation_remarks.irn_schema_validation[*].remark</jsonpath>
-                                    </setHeader>
-                                    <setHeader headerName="message" id="_setHeader15">
-                                    	<simple>${header.message},${header.temp3}</simple>
-                                	</setHeader>
-                                    </when>
-                                
-                                </choice>
                             </otherwise>
                         </choice>
                         <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
