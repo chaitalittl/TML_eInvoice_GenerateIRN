@@ -47,6 +47,8 @@ public class ResponseProcessor {
 			String preport_url = (String) inMessage.getHeader("report_url", String.class);
 			String qr_b64_encoded = (String) inMessage.getHeader("qr_b64_encoded");
 
+			pMessage=pMessage.replace("\"","").replace("\\","").replace("[", "").replace("]", "");
+			
 			String finalResponse = "{\"status\":\"" + pStatus + "\",\"message\":\"" + pMessage + "\",\"ackDt\":\""
 					+ pAckDt + "\",\"ackNo\":\"" + pAckNo + "\",\"irn\":\"" + pIrn + "\",\"signedInvoice\":\""
 					+ pSignedInvoice + "\",\"signedQRCode\":\"" + pSignedQRCode + "\",\"irnstatus\":\"" + pIrnstatus
