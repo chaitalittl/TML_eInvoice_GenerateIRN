@@ -141,6 +141,16 @@
                                     <jsonpath>$.qr_b64_encoded</jsonpath>
                                 </setHeader>
                             </when>
+                            <when id="_when2">
+                                <simple>${header.status} == '732'</simple>
+                                <setHeader headerName="temp1" id="_setHeader15">
+                                    <jsonpath>$.irp_response</jsonpath>
+                                </setHeader>
+                                <setHeader headerName="message" id="_setHeader15">
+                                    <simple>${header.message}-${header.temp1}</simple>
+                                </setHeader>
+                                <log id="_log199" message="Header value___${header.message}"/>
+                            </when>
                             <otherwise id="_otherwise1">
                                 <setHeader headerName="temp1" id="_setHeader15">
                                     <jsonpath>$.pwc_response.message</jsonpath>
@@ -157,7 +167,6 @@
                                     <setHeader headerName="message" id="_setHeader15">
                                     <simple>${header.message}-${header.temp2}</simple>
                                     </setHeader>
-                                   
                                     <log id="_log1" message="Header value___${header.message}"/>
                                     </when>
                                 </choice>
@@ -170,7 +179,6 @@
                                     <setHeader headerName="message" id="_setHeader15">
                                     <simple>${header.message},${header.temp3}</simple>
                                     </setHeader>
-                         
                                     <log id="_log1" message="Header value___${header.message}"/>
                                     </when>
                                 </choice>
