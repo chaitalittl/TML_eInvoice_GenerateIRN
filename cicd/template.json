@@ -155,7 +155,25 @@
                                                                        {
                                                                          "name": "TZ",
                                                                          "value": "Asia/Kolkata"
-                                                                       }
+                                                                       },
+                                                                       {
+	"name": "PWC_CUST_ID",
+	"valueFrom": {
+		"secretKeyRef": {
+			"key": "password",
+			"name": "pwc-cust-id"
+		}
+	}
+},
+{
+	"name": "PWC_TOKEN",
+	"valueFrom": {
+		"secretKeyRef": {
+			"key": "password",
+			"name": "pwc-token"
+		}
+	}
+}
                                                                 ],
 								"name": "${NAME}",
 								"image": "docker-registry.default.svc.cluster.local:5000/${PROJECT}/${NAME}:latest",
