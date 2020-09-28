@@ -1,287 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:cxf="http://camel.apache.org/schema/cxf"
-    xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
-    <bean class="com.tml.IRN.LogAggregator" id="logger"/>
-    <bean class="com.tml.IRN.ResponseProcessor" id="resProcessor"/>
-    <cxf:cxfEndpoint address="http://0.0.0.0:8085/GenIRN" id="GenIRN" serviceClass="com.tml.IRN.IRNService">
-        <cxf:properties>
-            <entry key="dataFormat" value="MESSAGE"/>
-        </cxf:properties>
-    </cxf:cxfEndpoint>
-    <cxf:rsClient address="${IRN_URL}" id="rsGenIRN" loggingFeatureEnabled="true"/>
-    <http-conf:conduit name=".*http-conduit">
-        <http-conf:client ReceiveTimeout="${timeout}"/>
-    </http-conf:conduit>
-    <camelContext id="camelContext-93465f9a-acd3-4e76-991e-0773ebdf0b5a"
-        streamCache="true" trace="false" xmlns="http://camel.apache.org/schema/spring">
-        <dataFormats>
-            <jaxb contextPath="com.tml.IRN" id="xml"
-                objectFactory="true" prettyPrint="false"/>
-            <json id="jaxreq" library="Jackson" unmarshalTypeName="com.tml.IRN.RequestObj"/>
-            <json id="json" library="Jackson" unmarshalTypeName="com.tml.IRN.IRNInputResponse"/>
-        </dataFormats>
-        <route id="IRNGenRoute" xmlns:com="http://com.tml.IRN/">
-            <from id="_from1" uri="cxf:bean:GenIRN"/>
-            <doTry id="_doTry1">
-                <bean id="_bean2"
-                    method="sourceIp(REQUEST FROM Source:: **********)" ref="logger"/>
-                <bean id="_bean66"
-                    method="request(******* Request Received from User *********)" ref="logger"/>
-                <setHeader headerName="requestIDN" id="_setHeader16">
-                    <xpath resultType="java.lang.String">//com:IRNInput/request/DocDtls/No/text()</xpath>
-                </setHeader>
-                <setBody id="_setBody1">
-                    <xpath>//*[local-name() = 'request']</xpath>
-                </setBody>
-                <unmarshal id="_unmarshal11" ref="xml"/>
-                <marshal id="_marshal1">
-                    <custom ref="jaxreq"/>
-                </marshal>
-                <!-- bean id="_bean78"
-                    method="marshal(unmarshal API RESPONSE Json :: *****)" ref="logger"/-->
-                <to id="_to1" uri="direct:GenerateIRNDetails"/>
-                <bean id="_bean3"
-                    method="response(RESPONSE SEND TO USER :: *****)" ref="logger"/>
-                <!-- doCatch id="_doCatch1">
-                    <exception>java.lang.Exception</exception>
-                    <setBody id="_setBody3">
-                        <simple>{"message":"ExceptionOccured"}</simple>
-                    </setBody>
-                    <to id="_to2" uri="direct:doCatchCall"/>
-                </doCatch-->
-            </doTry>
-        </route>
-        <route id="R2_IRNDetails">
-            <from id="_from2" uri="direct:GenerateIRNDetails"/>
-            <doTry id="_doTry2">
-                <removeHeaders excludePattern="requestIDN"
-                    id="_removeHeaders1" pattern="*"/>
-                <setHeader headerName="Content-Type" id="_setHeader1">
-                    <constant>application/json</constant>
-                </setHeader>
-                <setHeader headerName="customerid" id="_setHeader2">
-                    <constant>{{Customerid}}</constant>
-                </setHeader>
-                <setHeader headerName="token" id="_setHeader3">
-                    <constant>{{Token}}</constant>
-                </setHeader>
-                <setHeader headerName="lite" id="_setHeader4">
-                    <constant>{{lite}}</constant>
-                </setHeader>
-                <setBody id="_setBody2">
-                    <simple>[${body}]</simple>
-                </setBody>
-                <bean id="_bean12"
-                    method="request(******* Request send to PWC  *********)" ref="logger"/>
-                <to id="_to3" pattern="InOut" uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false&amp;continuationTimeout={{contTimeOut}}"/>
-                <bean id="_bean4"
-                    method="response(API RESPONSE FROM PWC:: *****)" ref="logger"/>
-                <bean id="_bean9" method="process" ref="resProcessor"/>
-                <!-- bean id="_bean5"
-                    method="response(AFTER PROCESSOR BEAN RESPONSE:: *****)" ref="logger"/-->
-                <choice id="_choice1">
-                    <when id="_when1">
-                        <simple>${header.CamelHttpResponseCode} == '200'</simple>
-                        <setHeader headerName="status" id="_setHeader5">
-                            <jsonpath>$.pwc_response.status</jsonpath>
-                        </setHeader>
-                        <setHeader headerName="error" id="_setHeader6">
-                            <jsonpath>$.pwc_response.message</jsonpath>
-                        </setHeader>
-                        <setHeader headerName="message" id="_setHeader7">
-                            <jsonpath>$.pwc_response.message</jsonpath>
-                        </setHeader>
-                        <choice id="_choice2">
-                            <when id="_when2">
-                                <simple>${header.status} == '700' or ${header.status} == '740'</simple>
-                                <setHeader headerName="report_url" id="_setHeader8">
-                                    <jsonpath>$.irp_response.data.report_url</jsonpath>
-                                </setHeader>
-                                <choice id="_choice3">
-                                    <when id="_when2">
-                                    <simple>${header.status} == '700'</simple>
-                                    <setHeader
-                                    headerName="irnstatus" id="_setHeader9">
-                                    <jsonpath>$.irp_response.data.nic_status</jsonpath>
-                                    </setHeader>
-                                    </when>
-                                    <otherwise id="_otherwise1">
-                                    <setHeader
-                                    headerName="irnstatus" id="_setHeader15">
-                                    <jsonpath>$.irp_response.data.nic_response_status</jsonpath>
-                                    </setHeader>
-                                    <setHeader headerName="message" id="_setHeader5">
-                                    <jsonpath>$.irp_response.data.error_details[0].ErrorMessage</jsonpath>
-                                    </setHeader>
-                                    </otherwise>
-                                </choice>
-                                <setHeader headerName="ackDt" id="_setHeader10">
-                                    <jsonpath>$.irp_response.data.nic_response_plaintext_json.AckDt</jsonpath>
-                                </setHeader>
-                                <setHeader headerName="ackNo" id="_setHeader11">
-                                    <jsonpath>$.irp_response.data.nic_response_plaintext_json.AckNo</jsonpath>
-                                </setHeader>
-                                <setHeader headerName="irn" id="_setHeader12">
-                                    <jsonpath>$.irp_response.data.nic_response_plaintext_json.Irn</jsonpath>
-                                </setHeader>
-                                <setHeader headerName="signedInvoice" id="_setHeader13">
-                                    <!--jsonpath>$.irp_response.data.nic_response_plaintext_json.SignedInvoice.data</jsonpath-->
-                                    <simple>null</simple>
-                                </setHeader>
-                                <!-- log id="_log1" message="Header value___${header.signedInvoice}"/-->
-                                <!-- log id="_log2" message="Header value after concate___${header.signedInvoice}"/-->
-                                <setHeader headerName="signedQRCode" id="_setHeader14">
-                                    <!-- jsonpath>$.irp_response.data.nic_response_plaintext_json.data.SignedQRCode</jsonpath -->
-                                    <simple>null</simple>
-                                </setHeader>
-                                <setHeader headerName="qr_b64_encoded" id="_setHeader9">
-                                    <jsonpath>$.qr_b64_encoded</jsonpath>
-                                </setHeader>
-                            </when>
-                            <when id="_when2">
-                                <simple>${header.status} == '732'</simple>
-                                <setHeader headerName="temp1" id="_setHeader15">
-                                    <jsonpath>$.irp_response</jsonpath>
-                                </setHeader>
-                                <setHeader headerName="message" id="_setHeader15">
-                                    <simple>${header.message}-${header.temp1}</simple>
-                                </setHeader>
-                                <log id="_log199" message="Header value___${header.message}"/>
-                            </when>
-                            <otherwise id="_otherwise1">
-                                <setHeader headerName="temp1" id="_setHeader15">
-                                    <jsonpath>$.pwc_response.message</jsonpath>
-                                </setHeader>
-                                <setHeader headerName="message" id="_setHeader15">
-                                    <simple>${header.temp1}</simple>
-                                </setHeader>
-                                <choice id="_choice4">
-                                    <when id="_when31">
-                                    <simple>${bodyAs(String)} contains 'business_validations'</simple>
-                                    <setHeader headerName="temp2" id="_setHeader15">
-                                    <jsonpath>$.pwc_response.validation_remarks.business_validations</jsonpath>
-                                    </setHeader>
-                                    <setHeader headerName="message" id="_setHeader15">
-                                    <simple>${header.message}-${header.temp2}</simple>
-                                    </setHeader>
-                                    <log id="_log1" message="Header value___${header.message}"/>
-                                    </when>
-                                </choice>
-                                <choice id="_choice40">
-                                    <when id="_when31">
-                                    <simple>${bodyAs(String)} contains 'irn_schema_validation'</simple>
-                                    <setHeader headerName="temp3" id="_setHeader15">
-                                    <jsonpath>$.pwc_response.validation_remarks.irn_schema_validation</jsonpath>
-                                    </setHeader>
-                                    <setHeader headerName="message" id="_setHeader15">
-                                    <simple>${header.message},${header.temp3}</simple>
-                                    </setHeader>
-                                    <log id="_log1" message="Header value___${header.message}"/>
-                                    </when>
-                                </choice>
-                            </otherwise>
-                        </choice>
-                        <bean id="_bean1" method="selectedParamProcess" ref="resProcessor"/>
-                        <unmarshal id="_unmarshal1" ref="json"/>
-                        <bean id="_bean68"
-                            method="response(UNMARSHAL API RESPONSE :: *****)" ref="logger"/>
-                        <to id="_to4" uri="xslt:classpath:xmltrnsform.xslt"/>
-                        <bean id="_bean69"
-                            method="response(XSLT API RESPONSE :: *****)" ref="logger"/>
-                    </when>
-                    <otherwise id="_otherwise1">
-                        <bean id="_bean6"
-                            method="response(API RESPONSE :: *****)" ref="logger"/>
-                        <to id="_to5" uri="direct:ExcetionRoute"/>
-                    </otherwise>
-                </choice>
-                <doCatch id="_doCatch2">
-                    <exception>java.net.ConnectException</exception>
-                    <setBody id="_setBody13">
-                        <simple>{"message":"Connection Timeout"}</simple>
-                    </setBody>
-                    <to id="_to6" uri="direct:doCatchCall"/>
-                </doCatch>
-                <doCatch id="_doCatch5">
-                    <exception>java.net.SocketTimeoutException</exception>
-                    <setBody id="_setBody14">
-                        <simple>{"message":"SocketTimeout"}</simple>
-                    </setBody>
-                    <to id="_to10" uri="direct:doCatchCall"/>
-                </doCatch>
-                <doCatch id="_doCatch6">
-                    <exception>java.lang.Exception</exception>
-                    <setBody id="_setBody15">
-                        <simple>{"message":"Exception Occurred"}</simple>
-                    </setBody>
-                    <to id="_to11" uri="direct:doCatchCall"/>
-                </doCatch>
-            </doTry>
-        </route>
-        <route id="RT_4_eXCEPTION_ROUTE">
-            <from id="_from4" uri="direct:ExcetionRoute"/>
-            <bean id="_bean8"
-                method="response(in Exception route :: *****)" ref="logger"/>
-            <doTry id="_doTry3">
-                <when id="_when30">
-                    <simple>${header.CamelHttpResponseCode} == '400'</simple>
-                    <setBody id="_setBody5">
-                        <simple>{"message":"Bad Request"}</simple>
-                    </setBody>
-                </when>
-                <when id="_when4">
-                    <simple>${header.CamelHttpResponseCode} == '401'</simple>
-                    <setBody id="_setBody6">
-                        <simple>{"message":"Authentication Required"}</simple>
-                    </setBody>
-                </when>
-                <when id="_when25">
-                    <simple>${header.CamelHttpResponseCode} == '403'</simple>
-                    <setBody id="_setBody8">
-                        <simple>{"message":"403 Forbidden"}</simple>
-                    </setBody>
-                </when>
-                <when id="_when9">
-                    <simple>${header.CamelHttpResponseCode} == '500'</simple>
-                    <setBody id="_setBody9">
-                        <simple>{"message":"500 Internal Server Error"}</simple>
-                    </setBody>
-                </when>
-                <when id="_when6">
-                    <simple>${header.CamelHttpResponseCode} == '503'</simple>
-                    <setBody id="_setBody10">
-                        <simple>{"message":"503 Service Unavailable"}</simple>
-                    </setBody>
-                </when>
-                <when id="_when7">
-                    <simple>${header.CamelHttpResponseCode} == '504'</simple>
-                    <setBody id="_setBody11">
-                        <simple>{"message":"Gateway TimeOut"}</simple>
-                    </setBody>
-                </when>
-                <bean id="_bean10"
-                    method="response(in Exception route :: *****)" ref="logger"/>
-                <unmarshal id="_unmarshal3" ref="json"/>
-                <to id="_to7" uri="xslt:classpath:xmltrnsform.xslt"/>
-                <bean id="_bean11"
-                    method="response(in Exception route :: *****)" ref="logger"/>
-                <doCatch id="_doCatch3">
-                    <exception>java.lang.Exception</exception>
-                    <setBody id="_setBody12">
-                        <simple>{"message":"ExceptionOccured"}</simple>
-                    </setBody>
-                    <to id="_to8" uri="direct:doCatchCall"/>
-                </doCatch>
-            </doTry>
-        </route>
-        <route id="RT_3_doCatch">
-            <from id="_from3" uri="direct:doCatchCall"/>
-            <bean id="_bean7" method="response(In do catch :: *****)" ref="logger"/>
-            <unmarshal id="_unmarshal2" ref="json"/>
-            <to id="_to9" uri="xslt:classpath:xmltrnsform.xslt"/>
-        </route>
-    </camelContext>
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="          http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd       http://camel.apache.org/schema/cxf           http://camel.apache.org/schema/cxf/camel-cxf.xsd                http://camel.apache.org/schema/spring                 http://camel.apache.org/schema/spring/camel-spring.xsd    http://cxf.apache.org/transports/http/configuration     http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+	<bean class="com.tml.IRN.LogAggregator" id="logger" />
+	<bean class="com.tml.IRN.ResponseProcessor" id="resProcessor" />
+	<cxf:cxfEndpoint address="http://0.0.0.0:8085/GenIRN"
+		id="GenIRN" serviceClass="com.tml.IRN.IRNService">
+		<cxf:properties>
+			<entry key="dataFormat" value="MESSAGE" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+	<cxf:rsClient address="${IRN_URL}" id="rsGenIRN"
+		loggingFeatureEnabled="true" />
+	<http-conf:conduit name=".*http-conduit">
+		<http-conf:client ReceiveTimeout="${timeout}" />
+	</http-conf:conduit>
+	<camelContext
+		id="camelContext-93465f9a-acd3-4e76-991e-0773ebdf0b5a"
+		streamCache="true" trace="false"
+		xmlns="http://camel.apache.org/schema/spring">
+		<dataFormats>
+			<jaxb contextPath="com.tml.IRN" id="xml" objectFactory="true"
+				prettyPrint="false" />
+			<json id="jaxreq" library="Jackson"
+				unmarshalTypeName="com.tml.IRN.RequestObj" />
+			<json id="json" library="Jackson"
+				unmarshalTypeName="com.tml.IRN.IRNInputResponse" />
+		</dataFormats>
+		<route id="IRNGenRoute" xmlns:com="http://com.tml.IRN/">
+			<from id="_from1" uri="cxf:bean:GenIRN" />
+			<doTry id="_doTry1">
+				<bean id="_bean2"
+					method="sourceIp(REQUEST FROM Source:: **********)" ref="logger" />
+				<bean id="_bean66"
+					method="request(******* Request Received from User *********)"
+					ref="logger" />
+				<setHeader headerName="requestIDN" id="_setHeader16">
+					<xpath resultType="java.lang.String">//com:IRNInput/request/DocDtls/No/text()</xpath>
+				</setHeader>
+				<setBody id="_setBody1">
+					<xpath>//*[local-name() = 'request']</xpath>
+				</setBody>
+				<unmarshal id="_unmarshal11" ref="xml" />
+				<marshal id="_marshal1">
+					<custom ref="jaxreq" />
+				</marshal>
+				<!-- bean id="_bean78" method="marshal(unmarshal API RESPONSE Json :: 
+					*****)" ref="logger"/ -->
+				<to id="_to1" uri="direct:GenerateIRNDetails" />
+				<bean id="_bean3"
+					method="response(RESPONSE SEND TO USER :: *****)" ref="logger" />
+				<!-- doCatch id="_doCatch1"> <exception>java.lang.Exception</exception> 
+					<setBody id="_setBody3"> <simple>{"message":"ExceptionOccured"}</simple> 
+					</setBody> <to id="_to2" uri="direct:doCatchCall"/> </doCatch -->
+			</doTry>
+		</route>
+		<route id="R2_IRNDetails">
+			<from id="_from2" uri="direct:GenerateIRNDetails" />
+			<doTry id="_doTry2">
+				<removeHeaders excludePattern="requestIDN"
+					id="_removeHeaders1" pattern="*" />
+				<setHeader headerName="Content-Type" id="_setHeader1">
+					<constant>application/json</constant>
+				</setHeader>
+				<setHeader headerName="customerid" id="_setHeader2">
+					<constant>{{Customerid}}</constant>
+				</setHeader>
+				<setHeader headerName="token" id="_setHeader3">
+					<constant>{{Token}}</constant>
+				</setHeader>
+				<setHeader headerName="lite" id="_setHeader4">
+					<constant>{{lite}}</constant>
+				</setHeader>
+				<setBody id="_setBody2">
+					<simple>[${body}]</simple>
+				</setBody>
+				<bean id="_bean12"
+					method="request(******* Request send to PWC  *********)"
+					ref="logger" />
+				<to id="_to3" pattern="InOut"
+					uri="cxfrs:bean:rsGenIRN?throwExceptionOnFailure=false&amp;continuationTimeout={{contTimeOut}}" />
+				<bean id="_bean4"
+					method="response(API RESPONSE FROM PWC:: *****)" ref="logger" />
+				<bean id="_bean9" method="process" ref="resProcessor" />
+				<!-- bean id="_bean5" method="response(AFTER PROCESSOR BEAN RESPONSE:: 
+					*****)" ref="logger"/ -->
+				<choice id="_choice1">
+					<when id="_when1">
+						<simple>${header.CamelHttpResponseCode} == '200'</simple>
+						<setHeader headerName="status" id="_setHeader5">
+							<jsonpath>$.pwc_response.status</jsonpath>
+						</setHeader>
+						<setHeader headerName="error" id="_setHeader6">
+							<jsonpath>$.pwc_response.message</jsonpath>
+						</setHeader>
+						<setHeader headerName="message" id="_setHeader7">
+							<jsonpath>$.pwc_response.message</jsonpath>
+						</setHeader>
+						<choice id="_choice2">
+							<when id="_when2">
+								<simple>${header.status} == '700' or ${header.status} == '740'</simple>
+								<setHeader headerName="report_url" id="_setHeader8">
+									<jsonpath>$.irp_response.data.report_url</jsonpath>
+								</setHeader>
+								<choice id="_choice3">
+									<when id="_when2">
+										<simple>${header.status} == '700'</simple>
+										<setHeader headerName="irnstatus" id="_setHeader9">
+											<jsonpath>$.irp_response.data.nic_status</jsonpath>
+										</setHeader>
+										<setHeader headerName="ackDt" id="_setHeader10">
+											<jsonpath>$.irp_response.data.nic_response_plaintext_json.AckDt</jsonpath>
+										</setHeader>
+										<setHeader headerName="ackNo" id="_setHeader11">
+											<jsonpath>$.irp_response.data.nic_response_plaintext_json.AckNo</jsonpath>
+										</setHeader>
+										<setHeader headerName="irn" id="_setHeader12">
+											<jsonpath>$.irp_response.data.nic_response_plaintext_json.Irn</jsonpath>
+										</setHeader>
+									</when>
+									<otherwise id="_otherwise1">
+										<setHeader headerName="irnstatus" id="_setHeader15">
+											<jsonpath>$.irp_response.data.nic_response_status</jsonpath>
+										</setHeader>
+										<setHeader headerName="message" id="_setHeader5">
+											<jsonpath>$.irp_response.data.error_details[0].ErrorMessage</jsonpath>
+										</setHeader>
+										<setHeader headerName="ackDt" id="_setHeader10">
+											<jsonpath>$.irp_response.data.InfoDtls[0].Desc.AckDt</jsonpath>
+										</setHeader>
+										<setHeader headerName="ackNo" id="_setHeader11">
+											<jsonpath>$.irp_response.data.InfoDtls[0].Desc.AckNo</jsonpath>
+										</setHeader>
+										<setHeader headerName="irn" id="_setHeader12">
+											<jsonpath>$.irp_response.data.InfoDtls[0].Desc.Irn</jsonpath>
+										</setHeader>
+									</otherwise>
+								</choice>
+
+								<setHeader headerName="signedInvoice"
+									id="_setHeader13">
+									<!--jsonpath>$.irp_response.data.nic_response_plaintext_json.SignedInvoice.data</jsonpath -->
+									<simple>null</simple>
+								</setHeader>
+								<!-- log id="_log1" message="Header value___${header.signedInvoice}"/ -->
+								<!-- log id="_log2" message="Header value after concate___${header.signedInvoice}"/ -->
+								<setHeader headerName="signedQRCode" id="_setHeader14">
+									<!-- jsonpath>$.irp_response.data.nic_response_plaintext_json.data.SignedQRCode</jsonpath -->
+									<simple>null</simple>
+								</setHeader>
+								<setHeader headerName="qr_b64_encoded"
+									id="_setHeader9">
+									<jsonpath>$.qr_b64_encoded</jsonpath>
+								</setHeader>
+							</when>
+							<when id="_when2">
+								<simple>${header.status} == '732'</simple>
+								<setHeader headerName="temp1" id="_setHeader15">
+									<jsonpath>$.irp_response</jsonpath>
+								</setHeader>
+								<setHeader headerName="message" id="_setHeader15">
+									<simple>${header.message}-${header.temp1}</simple>
+								</setHeader>
+								<log id="_log199" message="Header value___${header.message}" />
+							</when>
+							<otherwise id="_otherwise1">
+								<setHeader headerName="temp1" id="_setHeader15">
+									<jsonpath>$.pwc_response.message</jsonpath>
+								</setHeader>
+								<setHeader headerName="message" id="_setHeader15">
+									<simple>${header.temp1}</simple>
+								</setHeader>
+								<choice id="_choice4">
+									<when id="_when31">
+										<simple>${bodyAs(String)} contains 'business_validations'</simple>
+										<setHeader headerName="temp2" id="_setHeader15">
+											<jsonpath>$.pwc_response.validation_remarks.business_validations</jsonpath>
+										</setHeader>
+										<setHeader headerName="message" id="_setHeader15">
+											<simple>${header.message}-${header.temp2}</simple>
+										</setHeader>
+										<log id="_log1" message="Header value___${header.message}" />
+									</when>
+								</choice>
+								<choice id="_choice40">
+									<when id="_when31">
+										<simple>${bodyAs(String)} contains 'irn_schema_validation'</simple>
+										<setHeader headerName="temp3" id="_setHeader15">
+											<jsonpath>$.pwc_response.validation_remarks.irn_schema_validation</jsonpath>
+										</setHeader>
+										<setHeader headerName="message" id="_setHeader15">
+											<simple>${header.message},${header.temp3}</simple>
+										</setHeader>
+										<log id="_log1" message="Header value___${header.message}" />
+									</when>
+								</choice>
+							</otherwise>
+						</choice>
+						<bean id="_bean1" method="selectedParamProcess"
+							ref="resProcessor" />
+						<unmarshal id="_unmarshal1" ref="json" />
+						<bean id="_bean68"
+							method="response(UNMARSHAL API RESPONSE :: *****)" ref="logger" />
+						<to id="_to4" uri="xslt:classpath:xmltrnsform.xslt" />
+						<bean id="_bean69"
+							method="response(XSLT API RESPONSE :: *****)" ref="logger" />
+					</when>
+					<otherwise id="_otherwise1">
+						<bean id="_bean6" method="response(API RESPONSE :: *****)"
+							ref="logger" />
+						<to id="_to5" uri="direct:ExcetionRoute" />
+					</otherwise>
+				</choice>
+				<doCatch id="_doCatch2">
+					<exception>java.net.ConnectException</exception>
+					<setBody id="_setBody13">
+						<simple>{"message":"Connection Timeout"}</simple>
+					</setBody>
+					<to id="_to6" uri="direct:doCatchCall" />
+				</doCatch>
+				<doCatch id="_doCatch5">
+					<exception>java.net.SocketTimeoutException</exception>
+					<setBody id="_setBody14">
+						<simple>{"message":"SocketTimeout"}</simple>
+					</setBody>
+					<to id="_to10" uri="direct:doCatchCall" />
+				</doCatch>
+				<doCatch id="_doCatch6">
+					<exception>java.lang.Exception</exception>
+					<setBody id="_setBody15">
+						<simple>{"message":"Exception Occurred"}</simple>
+					</setBody>
+					<to id="_to11" uri="direct:doCatchCall" />
+				</doCatch>
+			</doTry>
+		</route>
+		<route id="RT_4_eXCEPTION_ROUTE">
+			<from id="_from4" uri="direct:ExcetionRoute" />
+			<bean id="_bean8" method="response(in Exception route :: *****)"
+				ref="logger" />
+			<doTry id="_doTry3">
+				<when id="_when30">
+					<simple>${header.CamelHttpResponseCode} == '400'</simple>
+					<setBody id="_setBody5">
+						<simple>{"message":"Bad Request"}</simple>
+					</setBody>
+				</when>
+				<when id="_when4">
+					<simple>${header.CamelHttpResponseCode} == '401'</simple>
+					<setBody id="_setBody6">
+						<simple>{"message":"Authentication Required"}</simple>
+					</setBody>
+				</when>
+				<when id="_when25">
+					<simple>${header.CamelHttpResponseCode} == '403'</simple>
+					<setBody id="_setBody8">
+						<simple>{"message":"403 Forbidden"}</simple>
+					</setBody>
+				</when>
+				<when id="_when9">
+					<simple>${header.CamelHttpResponseCode} == '500'</simple>
+					<setBody id="_setBody9">
+						<simple>{"message":"500 Internal Server Error"}</simple>
+					</setBody>
+				</when>
+				<when id="_when6">
+					<simple>${header.CamelHttpResponseCode} == '503'</simple>
+					<setBody id="_setBody10">
+						<simple>{"message":"503 Service Unavailable"}</simple>
+					</setBody>
+				</when>
+				<when id="_when7">
+					<simple>${header.CamelHttpResponseCode} == '504'</simple>
+					<setBody id="_setBody11">
+						<simple>{"message":"Gateway TimeOut"}</simple>
+					</setBody>
+				</when>
+				<bean id="_bean10"
+					method="response(in Exception route :: *****)" ref="logger" />
+				<unmarshal id="_unmarshal3" ref="json" />
+				<to id="_to7" uri="xslt:classpath:xmltrnsform.xslt" />
+				<bean id="_bean11"
+					method="response(in Exception route :: *****)" ref="logger" />
+				<doCatch id="_doCatch3">
+					<exception>java.lang.Exception</exception>
+					<setBody id="_setBody12">
+						<simple>{"message":"ExceptionOccured"}</simple>
+					</setBody>
+					<to id="_to8" uri="direct:doCatchCall" />
+				</doCatch>
+			</doTry>
+		</route>
+		<route id="RT_3_doCatch">
+			<from id="_from3" uri="direct:doCatchCall" />
+			<bean id="_bean7" method="response(In do catch :: *****)"
+				ref="logger" />
+			<unmarshal id="_unmarshal2" ref="json" />
+			<to id="_to9" uri="xslt:classpath:xmltrnsform.xslt" />
+		</route>
+	</camelContext>
 </beans>
